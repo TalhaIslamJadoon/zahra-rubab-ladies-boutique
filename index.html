@@ -999,6 +999,131 @@
         .mech{padding:64px 0}
       }
 
+      /* ---------- Orders · Cart · Tracking · Reviews (added) ---------- */
+      .nav-cart{position:relative;flex:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--rose);background:transparent;color:var(--rose-deep);cursor:pointer;transition:transform .3s var(--ease),background .3s ease}
+      .nav-cart:hover{background:var(--blush-soft);transform:translateY(-2px)}
+      .cart-count{position:absolute;top:-5px;right:-5px;min-width:21px;height:21px;padding:0 5px;border-radius:999px;background:var(--rose-deep);color:#fff;font-size:.7rem;font-weight:700;display:grid;place-items:center;border:2px solid var(--ivory)}
+      .cart-count.bump{animation:cartBump .45s var(--ease)}
+      @keyframes cartBump{0%{transform:scale(1)}40%{transform:scale(1.45)}100%{transform:scale(1)}}
+      .shop-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+      .shop-tools input[type="search"]{flex:1;min-width:200px;min-height:48px;border:1.5px solid var(--line);border-radius:999px;background:var(--card);font-family:inherit;font-size:.95rem;color:var(--ink);padding:10px 20px;outline:none}
+      .shop-tools input[type="search"]:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(139,92,246,.13)}
+      .shop-tools select{min-height:48px;border:1.5px solid var(--line);border-radius:999px;background:var(--card);font-family:inherit;font-size:.92rem;color:var(--ink);padding:10px 16px;outline:none;cursor:pointer}
+      .tag.pre{background:var(--gold);color:#fff}
+      .tag.sold{background:#333;color:#fff}
+      .tag.preorder-note{position:static;background:transparent;color:var(--gold);padding:0;letter-spacing:.02em;text-transform:none;font-size:.78rem;font-weight:600}
+      .prod-acts{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+      .prod-acts .order{margin-top:0;flex:1}
+      .add-cart-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:9px 12px;border-radius:999px;border:1px solid var(--plum);background:transparent;color:var(--plum);font-family:inherit;font-weight:500;font-size:.9rem;cursor:pointer;transition:all .3s ease}
+      .add-cart-btn:hover{background:var(--plum);color:#fdf3f6}
+      button[disabled],.btn-disabled{opacity:.45;cursor:not-allowed !important;pointer-events:none}
+      /* Cart drawer */
+      .cart-overlay-bg{position:fixed;inset:0;z-index:330;background:rgba(28,14,22,.5);backdrop-filter:blur(4px)}
+      .cart-drawer{position:fixed;top:0;right:0;bottom:0;z-index:340;width:min(400px,94vw);background:var(--ivory);color:var(--ink);box-shadow:-24px 0 60px rgba(30,10,25,.3);transform:translateX(105%);transition:transform .45s var(--ease);display:flex;flex-direction:column}
+      .cart-drawer.open{transform:none}
+      .cart-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line)}
+      .cart-head h3{font-size:1.5rem}
+      .cart-items{flex:1;overflow-y:auto;padding:14px 20px;display:flex;flex-direction:column;gap:12px}
+      .cart-row{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;align-items:center}
+      .cart-row img{width:56px;height:66px;object-fit:cover;border-radius:10px;flex:none}
+      .cart-row .ci{flex:1;min-width:0}
+      .cart-row .ci b{display:block;font-weight:600;color:var(--plum);font-size:.93rem;line-height:1.25}
+      .cart-row .ci span{font-size:.8rem;color:var(--muted)}
+      .cart-row .ci .cup{font-weight:600;color:var(--rose-deep);font-size:.88rem}
+      .qty-ctrl{display:flex;align-items:center;gap:6px}
+      .qty-ctrl button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--rose);background:transparent;color:var(--rose-deep);font-size:1rem;cursor:pointer;display:grid;place-items:center;line-height:1}
+      .qty-ctrl b{min-width:18px;text-align:center}
+      .cart-remove{border:none;background:transparent;color:#b03a2e;cursor:pointer;font-size:.78rem;font-weight:600;padding:4px}
+      .cart-foot{border-top:1px solid var(--line);padding:18px 22px}
+      .cart-total-row{display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem;color:var(--plum);margin-bottom:14px}
+      .cart-empty{text-align:center;color:var(--muted);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.2rem;padding:36px 8px}
+      /* Order form + size guide modals */
+      .form-card{background:var(--ivory);color:var(--ink);border-radius:24px;max-width:620px;width:100%;max-height:92vh;overflow-y:auto;padding:30px;position:relative;box-shadow:0 34px 80px rgba(0,0,0,.35)}
+      .form-card h3{font-size:1.8rem;margin-bottom:4px}
+      .form-card .sub{color:var(--muted);font-size:.92rem;margin:0 0 16px}
+      .ord-items{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:16px}
+      .ord-line{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+      .ord-line:last-of-type{border-bottom:none}
+      .ord-line .v{color:var(--muted);font-size:.83rem;display:block}
+      .ord-grand{display:flex;justify-content:space-between;font-weight:700;color:var(--plum);padding-top:10px;font-size:1.05rem}
+      .info-strip{background:var(--blush-soft);border-radius:12px;padding:11px 15px;font-size:.88rem;color:var(--ink);margin:12px 0}
+      .info-strip b{color:var(--rose-deep)}
+      .pay-opts{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px}
+      .pay-opt{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;font-size:.9rem;font-weight:500;background:var(--card)}
+      .pay-opt:has(input:checked){border-color:var(--rose-deep);background:var(--blush-soft);color:var(--rose-deep)}
+      .success-box{text-align:center;padding:14px 4px}
+      .success-box .tick{width:70px;height:70px;margin:0 auto 14px;border-radius:50%;background:#e2f6ea;color:#157347;display:grid;place-items:center}
+      .success-box .oid{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:700;color:var(--plum)}
+      .preorder-flag{display:inline-block;background:var(--gold);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.12em;padding:4px 12px;border-radius:999px;text-transform:uppercase}
+      .size-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.95rem}
+      .size-table th,.size-table td{border:1px solid var(--line);padding:10px 12px;text-align:center}
+      .size-table th{background:var(--blush-soft);color:var(--plum);font-weight:600}
+      /* Tracking */
+      .track-form{display:flex;gap:10px;flex-wrap:wrap;max-width:560px}
+      .track-form input{flex:1;min-width:210px;min-height:50px;border:1.5px solid var(--line);border-radius:999px;background:var(--card);font-family:inherit;font-size:.97rem;color:var(--ink);padding:10px 20px;outline:none}
+      .track-form input:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(139,92,246,.13)}
+      .track-result{margin-top:26px;max-width:640px}
+      .track-steps{display:flex;gap:0;margin-top:18px}
+      .tstep{flex:1;text-align:center;position:relative;padding-top:26px;font-size:.82rem;font-weight:600;color:var(--muted)}
+      .tstep::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:15px;height:15px;border-radius:50%;background:var(--card);border:2.5px solid var(--line);z-index:1}
+      .tstep::after{content:"";position:absolute;top:14px;left:-50%;width:100%;height:2.5px;background:var(--line)}
+      .tstep:first-child::after{display:none}
+      .tstep.done{color:var(--rose-deep)}
+      .tstep.done::before{background:var(--rose-deep);border-color:var(--rose-deep)}
+      .tstep.done::after{background:var(--rose-deep)}
+      .track-cancelled{background:#fbe9e7;border:1px solid #e5a49c;color:#8e2f24;border-radius:12px;padding:12px 16px;font-weight:600}
+      /* Reviews */
+      .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+      @media (max-width:860px){ .review-grid{grid-template-columns:1fr} }
+      .review-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 10px 26px rgba(71,37,64,.07)}
+      .review-card .stars{color:var(--gold);letter-spacing:3px;font-size:1.05rem}
+      .review-card p{color:var(--muted);font-size:.95rem;margin:10px 0}
+      .review-card b{color:var(--plum);font-weight:600}
+      /* Delivery cards */
+      .del-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+      @media (max-width:700px){ .del-grid{grid-template-columns:1fr} }
+      .del-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+      .del-card h3{font-size:1.4rem;margin-bottom:6px}
+      .del-card p{margin:0;color:var(--muted)}
+      .del-card .dp{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:700;color:var(--rose-deep)}
+      /* Admin orders */
+      .status-sel{min-height:40px;border:1.5px solid var(--line);border-radius:10px;background:var(--ivory);font-family:inherit;font-size:.88rem;color:var(--ink);padding:6px 10px;cursor:pointer}
+      .tab-badge{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#c0392b;color:#fff;font-size:.68rem;font-weight:700;margin-left:6px;vertical-align:2px}
+      .check-field{display:flex;align-items:center;gap:9px;padding-top:26px}
+      .check-field input{width:20px;height:20px;min-height:20px;accent-color:var(--rose-deep)}
+      .check-field label{margin:0 !important}
+      /* Rail: drift + drag affordances */
+      .rail-stage{touch-action:pan-y;cursor:grab}
+      .rail-stage.dragging{cursor:grabbing}
+      .rail-card{transition:opacity .45s ease,box-shadow .45s ease}
+      @media (max-width:420px){ .rail-card{width:104px;margin-left:-52px} .rail-stage{height:300px} }
+      /* Looks row: swipeable strip, no page overflow */
+      .looks-row{flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;overflow-x:auto;overflow-y:hidden;min-height:0;padding:16px 6px 14px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;max-width:100%}
+      .look-card{scroll-snap-align:center;width:158px}
+      .look-card.selected{outline:3px solid #111;outline-offset:2px;box-shadow:0 22px 40px rgba(60,35,25,.22)}
+      @media (max-width:900px){ .looks-row{flex-wrap:nowrap} .look-card{width:150px} }
+      @media (max-width:520px){ .look-card{width:140px} }
+      .prod-acts .order{font-family:inherit;cursor:pointer;background:transparent}
+      .cart-fab{display:none}
+      @media (max-width:640px){
+        /* Header has no room for one more button at phone widths (and its backdrop-filter would trap a
+           fixed child anyway) — so on phones the header button hides and a twin floats above WhatsApp */
+        .nav-cart{display:none}
+        .cart-fab{display:inline-flex;position:fixed;right:18px;bottom:92px;z-index:85;width:52px;height:52px;background:var(--card);box-shadow:0 14px 30px rgba(71,37,64,.28)}
+        .cart-fab .cart-count{top:-4px;right:-4px}
+      }
+      .worn-line{flex-basis:100%;text-align:center;font-size:.85rem;color:var(--muted)}
+      .worn-line b{color:var(--plum)}
+      .related-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+      .related-card{width:calc(33.33% - 7px);min-width:96px;border:1px solid #e9ded2;border-radius:14px;padding:7px;background:#fff;cursor:pointer;text-align:left;font-family:inherit}
+      @media (prefers-color-scheme: dark){ .related-card{background:#3a2434;border-color:#4a2c40} }
+      .related-card img{width:100%;aspect-ratio:3/3;object-fit:cover;border-radius:9px}
+      .related-card b{display:block;font-size:.78rem;color:#17120f;margin-top:6px;line-height:1.25}
+      @media (prefers-color-scheme: dark){ .related-card b{color:#f6e9ee} }
+      .related-card span{font-size:.78rem;color:#b76e79;font-weight:600}
+      .related-card .r-add{display:block;width:100%;margin-top:6px;min-height:34px;border-radius:999px;border:1px solid #111;background:transparent;color:#111;font-family:inherit;font-size:.76rem;font-weight:600;cursor:pointer}
+      @media (prefers-color-scheme: dark){ .related-card .r-add{border-color:#f6e9ee;color:#f6e9ee} }
+
       @media (prefers-reduced-motion: reduce){
         *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
         .rv,.h-anim,.hero h1 .w,.hero-photo,.float-card,.wa-float{opacity:1 !important;transform:none !important}
@@ -1024,6 +1149,10 @@
           <a href="#visit">Visit Us</a>
           <a class="nav-call" id="navCall" href="tel:+923145209444">0314 5209444</a>
         </nav>
+        <button class="nav-cart" id="cartBtn" type="button" aria-label="Open your cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h15l-1.7 8.5a2 2 0 0 1-2 1.5H8.6a2 2 0 0 1-2-1.6L4.3 3.8A1 1 0 0 0 3.3 3H1.5"/><circle cx="9" cy="21" r="1.4"/><circle cx="17.5" cy="21" r="1.4"/></svg>
+          <span class="cart-count" id="cartCount" hidden>0</span>
+        </button>
         <a class="nav-admin admin-open" href="#admin" aria-label="Open the admin panel">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 14h4"/></svg>
           Admin<span class="long">&nbsp;Panel</span>
@@ -1133,7 +1262,17 @@
         <div class="sec-head rv">
           <span class="kicker">Featured Pieces</span>
           <h2>This season’s favourites</h2>
-          <p>A glimpse of what is hanging in the boutique right now. Tap any piece to ask about it on WhatsApp — sizes, colours and availability confirmed instantly.</p>
+          <p>A glimpse of what is hanging in the boutique right now. Add pieces to your cart or order in a tap — then send your order to us on WhatsApp in one more tap, where sizes, colours and availability are confirmed instantly.</p>
+        </div>
+        <div class="shop-tools rv">
+          <input type="search" id="shopSearch" placeholder="Search pieces — try a name or collection…" aria-label="Search products" />
+          <select id="shopSort" aria-label="Sort products">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name">Name: A–Z</option>
+          </select>
+          <button class="btn btn-ghost btn-sm" id="sizeGuideBtn" type="button">Size Guide</button>
         </div>
         <div class="filters rv" role="group" aria-label="Filter products">
           <button class="chip active" data-filter="all" type="button">All Pieces</button>
@@ -1339,6 +1478,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.3.8-1.7 1.6-2.4 1.6-.6.1-1.4.2-4.6-1-3.9-1.6-6.4-5.5-6.6-5.8-.2-.3-1.6-2.1-1.6-4s.8-2.8 1.1-3.2c.3-.4.6-.5.8-.5h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg>
             Order This Look
           </a>
+          <span class="worn-line" id="wornLine"></span>
         </div>
       </div>
     </section>
@@ -1411,6 +1551,49 @@
       </div>
     </div>
 
+    <!-- ============ DELIVERY & PAYMENT ============ -->
+    <section id="deliveryInfo" style="padding-top:20px">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="kicker">Delivery &amp; Payment</span>
+          <h2>Delivered to your door</h2>
+          <p>Order here or on WhatsApp — we pack with care and dispatch across Pakistan.</p>
+        </div>
+        <div class="del-grid">
+          <div class="del-card rv"><h3>Abbottabad City</h3><p class="dp" id="delLocalLine">Rs 200</p><p id="delLocalDays">Delivery in 1–2 days</p></div>
+          <div class="del-card rv"><h3>Nationwide</h3><p class="dp" id="delNationLine">Rs 350</p><p id="delNationDays">Delivery in 3–5 days, anywhere in Pakistan</p></div>
+        </div>
+        <div class="info-strip rv" style="margin-top:18px">We accept <b>Cash on Delivery</b>, <b>JazzCash</b> and <b>Easypaisa</b>. Payment details are confirmed with you on WhatsApp when your order is placed.</div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section id="reviews" class="shop">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="kicker">Customer Reviews</span>
+          <h2>Loved by our customers</h2>
+        </div>
+        <div class="review-grid" id="reviewGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ TRACK ORDER ============ -->
+    <section id="track">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="kicker">Live Order Tracking</span>
+          <h2>Track your order</h2>
+          <p>Enter the Order ID from your confirmation (like #1001) — or the mobile number you ordered with — to see exactly where your parcel is.</p>
+        </div>
+        <form class="track-form rv" id="trackForm">
+          <input id="trackInput" type="text" placeholder="Order ID (#1001) or mobile number" aria-label="Order ID or mobile number" />
+          <button class="btn btn-plum" type="submit">Track Order</button>
+        </form>
+        <div class="track-result" id="trackResult" aria-live="polite"></div>
+      </div>
+    </section>
+
     <!-- ============ VISIT / CONTACT ============ -->
     <section id="visit">
       <div class="wrap">
@@ -1474,6 +1657,85 @@
       <svg width="27" height="27" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.3.8-1.7 1.6-2.4 1.6-.6.1-1.4.2-4.6-1-3.9-1.6-6.4-5.5-6.6-5.8-.2-.3-1.6-2.1-1.6-4s.8-2.8 1.1-3.2c.3-.4.6-.5.8-.5h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg>
       <span class="lbl">Chat / Order</span>
     </a>
+    <button class="nav-cart cart-fab" id="cartBtnM" type="button" aria-label="Open your cart">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h15l-1.7 8.5a2 2 0 0 1-2 1.5H8.6a2 2 0 0 1-2-1.6L4.3 3.8A1 1 0 0 0 3.3 3H1.5"/><circle cx="9" cy="21" r="1.4"/><circle cx="17.5" cy="21" r="1.4"/></svg>
+      <span class="cart-count" id="cartCountM" hidden>0</span>
+    </button>
+
+    <!-- ============ CART DRAWER ============ -->
+    <div class="cart-overlay-bg" id="cartBg" hidden></div>
+    <aside class="cart-drawer" id="cartDrawer" hidden aria-label="Shopping cart">
+      <div class="cart-head"><h3>Your Cart</h3><button class="qv-close" style="position:static" id="cartClose" type="button" aria-label="Close cart">✕</button></div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-foot">
+        <div class="cart-total-row"><span>Total</span><span id="cartTotalEl">Rs 0</span></div>
+        <button class="btn btn-grad" id="cartCheckout" type="button" style="width:100%">Checkout — Place Order</button>
+      </div>
+    </aside>
+
+    <!-- ============ ORDER FORM ============ -->
+    <div class="qv-overlay" id="orderOverlay" hidden role="dialog" aria-modal="true" aria-label="Place your order">
+      <div class="form-card">
+        <button class="qv-close" id="orderClose" type="button" aria-label="Close order form">✕</button>
+        <div id="orderFormWrap">
+          <h3>Place Your Order</h3>
+          <p class="sub">Fill this in and your order is saved with the boutique — then send it to us on WhatsApp in one more tap, with the full order ready-written for you, so nothing is ever lost.</p>
+          <div class="ord-items" id="orderItems"></div>
+          <form id="orderForm">
+            <div class="fgrid">
+              <div class="field" id="ordVariantSizeWrap" hidden><label for="ordSize">Size</label><select id="ordSize"></select></div>
+              <div class="field" id="ordVariantColourWrap" hidden><label for="ordColour">Colour</label><select id="ordColour"></select></div>
+              <div class="field" id="ordQtyWrap" hidden><label for="ordQty">Quantity</label><input id="ordQty" type="number" min="1" max="20" value="1" /></div>
+              <div class="field"><label for="ordName">Your name *</label><input id="ordName" type="text" placeholder="e.g. Ayesha Khan" autocomplete="name" /></div>
+              <div class="field"><label for="ordPhone">Mobile number *</label><input id="ordPhone" type="tel" placeholder="03xx xxxxxxx" autocomplete="tel" /></div>
+              <div class="field full"><label for="ordAddress">Address / City *</label><textarea id="ordAddress" placeholder="House, street, area, city"></textarea></div>
+              <div class="field full"><label>Payment method</label>
+                <div class="pay-opts" id="ordPayOpts">
+                  <label class="pay-opt"><input type="radio" name="ordPay" value="Cash on Delivery" checked /> Cash on Delivery</label>
+                  <label class="pay-opt"><input type="radio" name="ordPay" value="JazzCash" /> JazzCash</label>
+                  <label class="pay-opt"><input type="radio" name="ordPay" value="Easypaisa" /> Easypaisa</label>
+                </div>
+                <div class="info-strip" id="orderPayInfo" style="margin:8px 0 0"></div>
+              </div>
+              <div class="field full"><label for="ordNote">Note (optional)</label><input id="ordNote" type="text" placeholder="Anything we should know?" /></div>
+            </div>
+            <div class="info-strip" id="orderDeliveryLine"></div>
+            <p class="pin-error" id="orderError" hidden>Please add your name, a valid mobile number and your address.</p>
+            <button class="btn btn-grad" type="submit" style="width:100%">Place Order</button>
+          </form>
+        </div>
+        <div id="orderSuccess" hidden>
+          <div class="success-box">
+            <span class="tick"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg></span>
+            <h3>Order placed — thank you!</h3>
+            <div class="oid" id="successOrderId">#1001</div>
+            <p id="successPreorder" hidden><span class="preorder-flag">Pre-Order</span></p>
+            <p style="color:var(--muted)" id="successText">Your order is saved. Tap below to send it to the boutique on WhatsApp as well — and keep your Order ID to track it any time.</p>
+            <a class="btn btn-wa" id="orderWaBtn" href="#" target="_blank" rel="noopener" style="width:100%;margin-bottom:10px">Send Order on WhatsApp</a>
+            <button class="btn btn-ghost" id="orderDone" type="button" style="width:100%">Continue Shopping</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SIZE GUIDE ============ -->
+    <div class="qv-overlay" id="sizeOverlay" hidden role="dialog" aria-modal="true" aria-label="Size guide">
+      <div class="form-card" style="max-width:520px">
+        <button class="qv-close" id="sizeClose" type="button" aria-label="Close size guide">✕</button>
+        <h3>Size Guide</h3>
+        <p class="sub">Standard boutique measurements for kurtis, suits and dresses. Between sizes? Message us on WhatsApp and we will measure the exact piece for you.</p>
+        <table class="size-table">
+          <thead><tr><th>Size</th><th>Chest (in)</th><th>Length (in)</th><th>Shoulder (in)</th></tr></thead>
+          <tbody>
+            <tr><td><b>S</b></td><td>36</td><td>38</td><td>14.5</td></tr>
+            <tr><td><b>M</b></td><td>38</td><td>39</td><td>15</td></tr>
+            <tr><td><b>L</b></td><td>40</td><td>40</td><td>15.5</td></tr>
+            <tr><td><b>XL</b></td><td>42</td><td>41</td><td>16</td></tr>
+          </tbody>
+        </table>
+        <p class="sub" style="margin-top:14px">Bridal and made-to-order pieces are measured individually in store.</p>
+      </div>
+    </div>
 
     <!-- ============ ADMIN PANEL ============ -->
     <div class="admin-overlay" id="adminOverlay" hidden role="dialog" aria-modal="true" aria-label="Admin panel">
@@ -1499,8 +1761,41 @@
         <div id="adminDash" hidden>
           <div class="admin-tabs" role="tablist" aria-label="Admin sections">
             <button class="atab active" type="button" data-tab="products">Products</button>
+            <button class="atab" type="button" data-tab="orders">Orders<span class="tab-badge" id="ordersBadge" hidden>0</span></button>
             <button class="atab" type="button" data-tab="offers">Offers &amp; Banners</button>
+            <button class="atab" type="button" data-tab="reviews">Reviews</button>
             <button class="atab" type="button" data-tab="settings">Settings</button>
+          </div>
+
+          <div class="apane" id="pane-orders" hidden>
+            <div class="pane-head"><h3>Orders</h3></div>
+            <p class="pane-note">Orders placed on this website, newest first. Change a status and the customer’s Track Order page updates with it.</p>
+            <p class="pane-note" style="background:var(--blush-soft);border-radius:10px;padding:9px 13px">Demo note: yahan wohi orders dikhte hain jo is browser mein kiye gaye hon — asal orders owner ke WhatsApp par bhi pohanchte hain.</p>
+            <div class="admin-list" id="adminOrderList"></div>
+          </div>
+
+          <div class="apane" id="pane-reviews" hidden>
+            <div class="pane-head">
+              <h3>Reviews</h3>
+              <button class="btn btn-grad btn-sm" id="addReviewBtn" type="button">+ Add Review</button>
+            </div>
+            <p class="pane-note">Customer reviews shown on the storefront — add, edit or delete them here.</p>
+            <div class="admin-list" id="adminReviewList"></div>
+            <form class="admin-form" id="reviewForm" hidden>
+              <h3 id="rfTitle">Add Review</h3>
+              <input type="hidden" id="rfId" />
+              <div class="fgrid">
+                <div class="field"><label for="rfName">Customer name *</label><input id="rfName" type="text" placeholder="e.g. Ayesha K." /></div>
+                <div class="field"><label for="rfStars">Stars</label>
+                  <select id="rfStars"><option value="5">★★★★★ (5)</option><option value="4">★★★★ (4)</option><option value="3">★★★ (3)</option><option value="2">★★ (2)</option><option value="1">★ (1)</option></select>
+                </div>
+                <div class="field full"><label for="rfText">Review text *</label><textarea id="rfText" placeholder="What did the customer say?"></textarea></div>
+              </div>
+              <div class="form-acts">
+                <button class="btn btn-grad btn-sm" type="submit">Save Review</button>
+                <button class="btn btn-ghost btn-sm" id="rfCancel" type="button">Cancel</button>
+              </div>
+            </form>
           </div>
 
           <div class="apane" id="pane-products">
@@ -1543,6 +1838,9 @@
                 <div class="field full"><label for="pfDesc">Description</label><textarea id="pfDesc" placeholder="Short, lovely description of the piece…"></textarea></div>
                 <div class="field"><label for="pfSizes">Sizes (comma separated)</label><input id="pfSizes" type="text" placeholder="S, M, L" /></div>
                 <div class="field"><label for="pfColours">Colours (comma separated)</label><input id="pfColours" type="text" placeholder="Rose Pink, Maroon" /></div>
+                <div class="field check-field"><input id="pfSoldOut" type="checkbox" /><label for="pfSoldOut">Sold Out (badge shown, ordering off)</label></div>
+                <div class="field check-field"><input id="pfPreorder" type="checkbox" /><label for="pfPreorder">Pre-Order (booking open)</label></div>
+                <div class="field"><label for="pfPreorderNote">Pre-Order expected note</label><input id="pfPreorderNote" type="text" placeholder="e.g. Expected: 10 days" /></div>
               </div>
               <div class="form-acts">
                 <button class="btn btn-grad btn-sm" type="submit">Save Product</button>
@@ -1585,6 +1883,12 @@
                 <div class="field"><label for="sfWhatsapp">WhatsApp number (with country code)</label><input id="sfWhatsapp" type="text" inputmode="numeric" placeholder="923145209444" /><p class="hint">Used by every Order / Chat button on the site.</p></div>
                 <div class="field"><label for="sfTiming">Boutique timings</label><input id="sfTiming" type="text" /></div>
                 <div class="field full"><label for="sfAddress">Address (one line per row)</label><textarea id="sfAddress"></textarea></div>
+                <div class="field"><label for="sfDelLocalPrice">Delivery — Abbottabad city (Rs)</label><input id="sfDelLocalPrice" type="number" min="0" step="1" /></div>
+                <div class="field"><label for="sfDelLocalDays">Delivery time — Abbottabad</label><input id="sfDelLocalDays" type="text" placeholder="1–2 days" /></div>
+                <div class="field"><label for="sfDelNationPrice">Delivery — Nationwide (Rs)</label><input id="sfDelNationPrice" type="number" min="0" step="1" /></div>
+                <div class="field"><label for="sfDelNationDays">Delivery time — Nationwide</label><input id="sfDelNationDays" type="text" placeholder="3–5 days" /></div>
+                <div class="field"><label for="sfJazz">JazzCash account (optional)</label><input id="sfJazz" type="text" placeholder="Leave empty to hide" /><p class="hint">Shown at checkout only if filled — never printed otherwise.</p></div>
+                <div class="field"><label for="sfEasypaisa">Easypaisa account (optional)</label><input id="sfEasypaisa" type="text" placeholder="Leave empty to hide" /><p class="hint">Shown at checkout only if filled.</p></div>
               </div>
               <div class="form-acts">
                 <button class="btn btn-grad btn-sm" type="submit">Save Settings</button>
@@ -1624,8 +1928,19 @@
           whatsapp: '923145209444',
           phoneDisplay: '0314 5209444',
           address: 'Shop 146, Jadoon Plaza Phase 3,\nMansehra Road, Mandian, Abbottabad',
-          timing: 'Mon–Thu & Sat–Sun · 10:00 AM – 10:00 PM · Fri 3:00 PM – 10:00 PM'
+          timing: 'Mon–Thu & Sat–Sun · 10:00 AM – 10:00 PM · Fri 3:00 PM – 10:00 PM',
+          deliveryLocalPrice: 200, deliveryLocalDays: '1–2 days',
+          deliveryNationPrice: 350, deliveryNationDays: '3–5 days',
+          jazzcash: '', easypaisa: ''
         },
+        orders: [],
+        nextOrder: 1001,
+        cart: [],
+        reviews: [
+          { id:'r1', name:'Ayesha K.', stars:5, text:'Bought the embroidered 3-piece for my sister’s mehndi — stitching and fall were beautiful, and fitting help in store was so kind.' },
+          { id:'r2', name:'Mahnoor S.', stars:5, text:'My bridal lehenga viewing felt special from start to finish. Honest advice, no pressure, and the trousseau pieces are gorgeous.' },
+          { id:'r3', name:'Fatima R.', stars:4, text:'Lovely kurtis for everyday wear and the silk dupattas are my favourite in Abbottabad. Prices are fair for the quality.' }
+        ],
         products: [
           { id:'p1', name:'Embroidered 3-Piece Suit', price:8999, cat:'pret', collection:'Luxury Pret', slot:'kurti', tag:'Bestseller', img:'assets/p-suit.jpg', desc:'Rose-pink shirt with fine thread-work, matching trousers and a soft chiffon dupatta.', sizes:'S, M, L', colours:'Rose Pink, Maroon' },
           { id:'p2', name:'Chiffon Party Dress', price:12499, cat:'formal', collection:'Formal / Party', slot:'frock', tag:'New In', img:'assets/p-chiffon.jpg', desc:'Flowing dusty-rose chiffon with hand-set beadwork on the shoulders — made for receptions.', sizes:'S, M, L', colours:'Dusty Rose' },
@@ -1650,7 +1965,15 @@
       var state = (function(){
         try {
           var raw = localStorage.getItem(LS_KEY);
-          if (raw) { var p = JSON.parse(raw); if (p && p.settings && p.products && p.offers) { if (!p.shoes) p.shoes = clone(SEED.shoes); return p; } }
+          if (raw) { var p = JSON.parse(raw); if (p && p.settings && p.products && p.offers) {
+            if (!p.shoes) p.shoes = clone(SEED.shoes);
+            if (!Array.isArray(p.orders)) p.orders = [];
+            if (!p.nextOrder) p.nextOrder = 1001;
+            if (!Array.isArray(p.cart)) p.cart = [];
+            if (!Array.isArray(p.reviews)) p.reviews = clone(SEED.reviews);
+            for (var k in SEED.settings) { if (p.settings[k] === undefined) p.settings[k] = SEED.settings[k]; }
+            return p;
+          } }
         } catch (e) {}
         return clone(SEED);
       })();
@@ -1717,27 +2040,66 @@
       }
 
       var activeFilter = 'all';
+      var shopSearch = '', shopSort = 'featured';
+      function productById(id){ for (var i = 0; i < state.products.length; i++) if (state.products[i].id === id) return state.products[i]; return null; }
+      function shoeById(id){ for (var i = 0; i < state.shoes.length; i++) if (state.shoes[i].id === id) return state.shoes[i]; return null; }
       function renderProducts(instant){
         var grid = $('prodGrid'); if (!grid) return;
-        var shown = 0;
-        var html = state.products.map(function(p){
-          var show = (activeFilter === 'all' || p.cat === activeFilter);
-          if (show) shown++;
+        var q = shopSearch.trim().toLowerCase();
+        var list = state.products.filter(function(p){
+          if (activeFilter !== 'all' && p.cat !== activeFilter) return false;
+          if (q) {
+            var hay = (p.name + ' ' + (p.collection || '') + ' ' + (CATS[p.cat] || '') + ' ' + p.cat).toLowerCase();
+            if (hay.indexOf(q) === -1) return false;
+          }
+          return true;
+        });
+        if (shopSort === 'price-asc') list.sort(function(a, b){ return a.price - b.price; });
+        else if (shopSort === 'price-desc') list.sort(function(a, b){ return b.price - a.price; });
+        else if (shopSort === 'name') list.sort(function(a, b){ return a.name.localeCompare(b.name); });
+        if (!list.length) {
+          grid.innerHTML = '<p class="empty-note">No pieces match that search — try another name, or ask us on WhatsApp what is in store today.</p>';
+          return;
+        }
+        grid.innerHTML = list.map(function(p){
           var meta = [];
           if (p.sizes) meta.push('<b>Sizes:</b> ' + esc(String(p.sizes).replace(/,\s*/g, ' · ')));
           if (p.colours) meta.push('<b>Colours:</b> ' + esc(p.colours));
-          return '<article class="prod rv' + (instant ? ' in' : '') + (show ? '' : ' hide') + '" data-cat="' + esc(p.cat) + '">'
+          var badge = '';
+          if (p.soldOut) badge = '<span class="tag sold">Sold Out</span>';
+          else if (p.preorder) badge = '<span class="tag pre">Pre-Order</span>';
+          else if (p.tag) badge = '<span class="tag' + (p.cat === 'bridal' ? ' bridal' : '') + '">' + esc(p.tag) + '</span>';
+          var acts = '';
+          if (p.soldOut) {
+            acts = '<div class="prod-acts"><button type="button" class="add-cart-btn" disabled>Sold Out</button><button type="button" class="order" disabled>Unavailable</button></div>';
+          } else {
+            acts = '<div class="prod-acts"><button type="button" class="add-cart-btn" data-add="' + esc(p.id) + '">Add to Cart</button>'
+              + '<button type="button" class="order" data-order="' + esc(p.id) + '">Order Now</button></div>';
+          }
+          return '<article class="prod rv' + (instant ? ' in' : '') + '" data-cat="' + esc(p.cat) + '">'
             + '<div class="ph"><img src="' + esc(p.img) + '" alt="' + esc(p.name) + ' — ' + esc(p.collection || '') + '" loading="lazy" />'
-            + (p.tag ? '<span class="tag' + (p.cat === 'bridal' ? ' bridal' : '') + '">' + esc(p.tag) + '</span>' : '') + '</div>'
+            + badge + '</div>'
             + '<div class="bd"><span class="cat">' + esc(p.collection || CATS[p.cat] || '') + '</span>'
             + '<h3>' + esc(p.name) + '</h3><p class="desc">' + esc(p.desc) + '</p>'
             + (meta.length ? '<p class="meta">' + meta.join(' &nbsp;·&nbsp; ') + '</p>' : '')
+            + (p.preorder && p.preorderNote ? '<p class="meta"><span class="tag preorder-note">' + esc(p.preorderNote) + '</span></p>' : '')
             + '<div class="price-row"><span class="price">Rs ' + fmt(p.price) + '</span><span class="demo-note">Demo price</span></div>'
-            + '<a class="order" target="_blank" rel="noopener" href="' + waLink('Assalam-o-Alaikum! I am interested in the ' + p.name + ' (Rs ' + fmt(p.price) + ') on your website. Is it available?') + '">Order on WhatsApp</a>'
+            + acts
             + '</div></article>';
         }).join('');
-        if (!shown) html = '<p class="empty-note">New pieces are being stitched for this rail — please ask us on WhatsApp what is in store today.</p>';
-        grid.innerHTML = html;
+        grid.querySelectorAll('[data-add]').forEach(function(b){
+          b.addEventListener('click', function(){
+            var p = productById(b.getAttribute('data-add')); if (!p) return;
+            var sizes = splitList(p.sizes), cols = splitList(p.colours);
+            addToCart({ id: p.id, name: p.name, price: p.price, img: p.img, size: sizes.length ? sizes[0] : '', colour: cols.length ? cols[0] : '', preorder: !!p.preorder });
+          });
+        });
+        grid.querySelectorAll('[data-order]').forEach(function(b){
+          b.addEventListener('click', function(){
+            var p = productById(b.getAttribute('data-order')); if (!p) return;
+            openSingleOrder(p, '', '');
+          });
+        });
         if (!instant) grid.querySelectorAll('.rv').forEach(watchRv);
       }
 
@@ -1756,6 +2118,9 @@
         applySettings();
         renderProducts(instant);
         renderOffers();
+        if (typeof renderDelivery === 'function') renderDelivery();
+        if (typeof renderReviews === 'function') renderReviews();
+        if (typeof updateCartBadge === 'function') updateCartBadge();
         if (typeof renderCoverflow === 'function') renderCoverflow();
         if (typeof validateWorn === 'function') validateWorn();
         if (typeof renderMechanics === 'function') renderMechanics();
@@ -1872,6 +2237,24 @@
 
       var tryonTab = 'kurti';
       var worn = { outfit:null, outfitSlot:'kurti', shoe:null, focus:null, focusSlot:'kurti', colour:'' };
+      /* Layering kinds: FULL = one-piece outfit (frock, bridal), TOP = kurti/top worn as the outfit photo,
+         EXTRA = footwear/accessory that layers over anything. A FULL clears TOP+BOTTOM; a TOP/BOTTOM clears FULL;
+         EXTRA never clears an outfit. The stage shows ONE outfit photo, so the worn set below is the single
+         source of truth for both the model image and the "On the model now" label/total. */
+      var KIND_OF_SLOT = { kurti:'TOP', frock:'FULL', bridal:'FULL', shoes:'EXTRA' };
+      var wornSet = { full:null, top:null, bottom:null, extra:null };
+      function displayedOutfit(){ return wornSet.full || wornSet.top || wornSet.bottom || null; }
+      function wornPieces(){
+        var out = [];
+        var o = displayedOutfit(); if (o) out.push(o);
+        if (wornSet.extra) out.push(wornSet.extra);
+        return out;
+      }
+      function syncWornLegacy(){
+        worn.outfit = displayedOutfit();
+        if (worn.outfit) worn.outfitSlot = worn.outfit.slot;
+        worn.shoe = wornSet.extra;
+      }
 
       var ACCENTS = { kurti:'#b76e79', frock:'#8b5cf6', bridal:'#c39a6b', shoes:'#2e7f7a' };
       var WORDS = { kurti:'STYLE', frock:'GRACE', bridal:'GLAM', shoes:'CHIC' };
@@ -1886,7 +2269,8 @@
           return;
         }
         cf.innerHTML = items.map(function(it){
-          var isWorn = (tryonTab === 'shoes') ? (worn.shoe && worn.shoe.id === it.id) : (worn.outfit && worn.outfit.id === it.id);
+          var disp = displayedOutfit();
+          var isWorn = (tryonTab === 'shoes') ? (wornSet.extra && wornSet.extra.id === it.id) : (disp && disp.id === it.id);
           return '<button type="button" class="cf-card' + (isWorn ? ' worn' : '') + '" data-id="' + esc(it.id) + '" aria-label="Try on ' + esc(it.name) + '">'
             + '<span class="ph"><img src="' + esc(it.img) + '" alt="' + esc(it.name) + '" loading="lazy" />'
             + '<span class="cf-try" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></span>'
@@ -1943,25 +2327,30 @@
       }
 
       function wear(it){
-        if (it.slot === 'shoes') {
-          worn.shoe = it;
+        var kind = KIND_OF_SLOT[it.slot] || 'FULL';
+        if (kind === 'EXTRA' || it.slot === 'shoes') {
+          wornSet.extra = it; /* EXTRA layers over anything — the outfit stays */
           var ss = $('stageShoe');
           $('stageShoeImg').src = it.img;
           $('stageShoeName').textContent = it.name;
           ss.hidden = false;
           ss.style.animation = 'none'; void ss.offsetWidth; ss.style.animation = '';
         } else {
-          worn.outfit = it; worn.outfitSlot = it.slot;
+          if (kind === 'FULL') { wornSet.full = it; wornSet.top = null; wornSet.bottom = null; }
+          else if (kind === 'TOP') { wornSet.top = it; wornSet.full = null; }
+          else if (kind === 'BOTTOM') { wornSet.bottom = it; wornSet.full = null; }
+          var disp = displayedOutfit();
           var img = $('stageImg');
-          img.src = it.img; img.alt = 'Studio model wearing ' + it.name;
+          img.src = disp.img; img.alt = 'Studio model wearing ' + disp.name;
           img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
-          $('stageName').textContent = it.name;
-          $('stagePrice').textContent = 'Rs ' + fmt(it.price);
+          $('stageName').textContent = disp.name;
+          $('stagePrice').textContent = 'Rs ' + fmt(disp.price);
           var st = $('stage');
           st.classList.remove('swap'); void st.offsetWidth; st.classList.add('swap');
           setTimeout(function(){ st.classList.remove('swap'); }, 850);
-          st.style.boxShadow = '0 34px 70px rgba(71,37,64,.22), 0 0 0 6px ' + hexA(swatchBg(colourList(it)[0] || ''), '59');
+          st.style.boxShadow = '0 34px 70px rgba(71,37,64,.22), 0 0 0 6px ' + hexA(swatchBg(colourList(disp)[0] || ''), '59');
         }
+        syncWornLegacy();
         worn.focus = it; worn.focusSlot = it.slot;
         var cols = colourList(it);
         worn.colour = cols.length ? cols[0] : '';
@@ -2007,16 +2396,27 @@
             toast(it2.name + ' — colour: ' + c);
           });
         });
-        $('tbOrder').setAttribute('href', waLink('Assalam-o-Alaikum! I tried on the ' + it.name + ' (Rs ' + fmt(it.price) + ')' + (worn.colour ? ', colour ' + worn.colour : '') + ' in your Virtual Fitting Room. Is it available?'));
+        $('tbOrder').setAttribute('href', '#');
+        /* "On the model now" = exactly the worn set: one outfit (FULL or TOP/BOTTOM) + any EXTRA. No phantom pieces. */
+        var pieces = wornPieces();
+        var wl = $('wornLine');
+        if (wl) {
+          if (pieces.length) {
+            var total = pieces.reduce(function(s, x){ return s + (Number(x.price) || 0); }, 0);
+            wl.innerHTML = 'On the model now: <b>' + pieces.map(function(x){ return esc(x.name); }).join(' + ') + '</b> · Look total Rs ' + fmt(total);
+          } else wl.textContent = '';
+        }
       }
 
       function validateWorn(){
-        if (worn.outfit && !findTryon(worn.outfit.id)) {
+        ['full','top','bottom','extra'].forEach(function(k){ if (wornSet[k] && !findTryon(wornSet[k].id)) wornSet[k] = null; });
+        if (!wornSet.extra) $('stageShoe').hidden = true;
+        syncWornLegacy();
+        if (!displayedOutfit()) {
           var first = tryonItems('kurti')[0] || tryonItems('frock')[0] || tryonItems('bridal')[0];
-          if (first) { worn.outfit = null; wear(first); return; }
+          if (first) { wear(first); return; }
         }
-        if (worn.shoe && !findTryon(worn.shoe.id)) { worn.shoe = null; $('stageShoe').hidden = true; }
-        if (worn.focus && !findTryon(worn.focus.id)) { worn.focus = worn.outfit; worn.focusSlot = worn.outfitSlot; renderBar(); }
+        if (worn.focus && !findTryon(worn.focus.id)) { worn.focus = displayedOutfit(); worn.focusSlot = worn.outfitSlot; renderBar(); }
       }
 
       /* Category switch = gentle crossfade: showroom fades out, new category fades in */
@@ -2042,6 +2442,17 @@
 
       (function initTryon(){
         var cf = $('coverflow'); if (!cf) return;
+        $('tbOrder').addEventListener('click', function(e){
+          e.preventDefault();
+          var pieces = wornPieces();
+          if (!pieces.length) { toast('Try a piece on the model first.'); return; }
+          var items = pieces.map(function(x){
+            var prod = productById(x.id);
+            var cols = colourList(x);
+            return { id: x.id, name: x.name, price: x.price, img: x.img, size: '', colour: (worn.focus && worn.focus.id === x.id && worn.colour) ? worn.colour : (cols.length ? cols[0] : ''), qty: 1, preorder: prod ? !!prod.preorder : false };
+          });
+          openMultiOrder(items, 'look');
+        });
         document.querySelectorAll('.ttab').forEach(function(tab){
           tab.addEventListener('click', function(){ switchTab(tab.getAttribute('data-slot')); });
         });
@@ -2095,7 +2506,7 @@
           $('pinError').hidden = true;
           $('adminLogin').hidden = true;
           $('adminDash').hidden = false;
-          renderAdminProducts(); renderAdminOffers(); fillSettings();
+          renderAdminProducts(); renderAdminOffers(); fillSettings(); renderAdminOrders(); renderAdminReviews();
           toast('Welcome back! Panel unlocked.');
         } else {
           $('pinError').hidden = false;
@@ -2111,7 +2522,9 @@
         tab.addEventListener('click', function(){
           document.querySelectorAll('.atab').forEach(function(t){ t.classList.remove('active'); });
           tab.classList.add('active');
-          ['products','offers','settings'].forEach(function(k){ $('pane-' + k).hidden = (k !== tab.getAttribute('data-tab')); });
+          ['products','orders','offers','reviews','settings'].forEach(function(k){ $('pane-' + k).hidden = (k !== tab.getAttribute('data-tab')); });
+          if (tab.getAttribute('data-tab') === 'orders') renderAdminOrders();
+          if (tab.getAttribute('data-tab') === 'reviews') renderAdminReviews();
         });
       });
 
@@ -2135,9 +2548,22 @@
           row.innerHTML = '<img src="' + esc(p.img) + '" alt="" />'
             + '<div class="info"><b>' + esc(p.name) + '</b><span>Rs ' + fmt(p.price) + ' · ' + esc(CATS[p.cat] || p.cat) + ' · ' + esc(p.collection || '') + '</span></div>'
             + '<span class="pill">' + esc(SLOT_LABEL[slotOf(p)] || 'Shop only') + '</span>'
+            + (p.soldOut ? '<span class="pill off">Sold Out</span>' : '')
+            + (p.preorder ? '<span class="pill on">Pre-Order</span>' : '')
             + '<div class="acts"><button type="button" class="btn btn-ghost btn-sm act-edit">Edit</button>'
+            + '<button type="button" class="btn btn-ghost btn-sm act-sold">' + (p.soldOut ? 'Back in Stock' : 'Mark Sold Out') + '</button>'
+            + '<button type="button" class="btn btn-ghost btn-sm act-pre">' + (p.preorder ? 'Pre-Order Off' : 'Pre-Order On') + '</button>'
             + '<button type="button" class="btn btn-danger btn-sm act-del">Delete</button></div>';
           row.querySelector('.act-edit').addEventListener('click', function(){ fillProductForm(p); });
+          row.querySelector('.act-sold').addEventListener('click', function(){
+            p.soldOut = !p.soldOut; save(); syncStorefront(true); renderAdminProducts();
+            toast(p.soldOut ? '“' + p.name + '” is now Sold Out on the storefront.' : '“' + p.name + '” is back in stock.');
+          });
+          row.querySelector('.act-pre').addEventListener('click', function(){
+            p.preorder = !p.preorder; if (p.preorder && !p.preorderNote) p.preorderNote = 'Expected: 10 days';
+            save(); syncStorefront(true); renderAdminProducts();
+            toast(p.preorder ? '“' + p.name + '” is now open for Pre-Order.' : 'Pre-Order off for “' + p.name + '”.');
+          });
           armable(row.querySelector('.act-del'), function(){
             state.products = state.products.filter(function(x){ return x.id !== p.id; });
             save(); syncStorefront(true); renderAdminProducts();
@@ -2164,6 +2590,9 @@
         $('pfDesc').value = p ? (p.desc || '') : '';
         $('pfSizes').value = p ? (p.sizes || '') : '';
         $('pfColours').value = p ? (p.colours || '') : '';
+        $('pfSoldOut').checked = p ? !!p.soldOut : false;
+        $('pfPreorder').checked = p ? !!p.preorder : false;
+        $('pfPreorderNote').value = p ? (p.preorderNote || '') : '';
         $('pfPhotoData').value = '';
         $('pfPhotoFile').value = '';
         var sel = $('pfPhotoSelect');
@@ -2210,7 +2639,10 @@
           img: img,
           desc: $('pfDesc').value.trim(),
           sizes: $('pfSizes').value.trim(),
-          colours: $('pfColours').value.trim()
+          colours: $('pfColours').value.trim(),
+          soldOut: $('pfSoldOut').checked,
+          preorder: $('pfPreorder').checked,
+          preorderNote: $('pfPreorderNote').value.trim()
         };
         var id = $('pfId').value;
         if (id) {
@@ -2285,6 +2717,12 @@
         $('sfPhone').value = s.phoneDisplay;
         $('sfAddress').value = s.address;
         $('sfTiming').value = s.timing;
+        $('sfDelLocalPrice').value = s.deliveryLocalPrice;
+        $('sfDelLocalDays').value = s.deliveryLocalDays;
+        $('sfDelNationPrice').value = s.deliveryNationPrice;
+        $('sfDelNationDays').value = s.deliveryNationDays;
+        $('sfJazz').value = s.jazzcash || '';
+        $('sfEasypaisa').value = s.easypaisa || '';
       }
       $('settingsForm').addEventListener('submit', function(e){
         e.preventDefault();
@@ -2294,18 +2732,347 @@
           shopName: $('sfName').value.trim() || state.settings.shopName,
           whatsapp: wa,
           phoneDisplay: $('sfPhone').value.trim() || state.settings.phoneDisplay,
+          deliveryLocalPrice: parseInt($('sfDelLocalPrice').value, 10) || 0,
+          deliveryLocalDays: $('sfDelLocalDays').value.trim() || state.settings.deliveryLocalDays,
+          deliveryNationPrice: parseInt($('sfDelNationPrice').value, 10) || 0,
+          deliveryNationDays: $('sfDelNationDays').value.trim() || state.settings.deliveryNationDays,
+          jazzcash: $('sfJazz').value.trim(),
+          easypaisa: $('sfEasypaisa').value.trim(),
           address: $('sfAddress').value.trim() || state.settings.address,
           timing: $('sfTiming').value.trim() || state.settings.timing
         };
         save(); syncStorefront(true);
         toast('Settings saved — the whole storefront now uses them.');
       });
+      /* ---------- Reviews admin ---------- */
+      $('addReviewBtn').addEventListener('click', function(){
+        $('reviewForm').hidden = false;
+        $('rfTitle').textContent = 'Add Review';
+        $('rfId').value = ''; $('rfName').value = ''; $('rfStars').value = '5'; $('rfText').value = '';
+      });
+      $('rfCancel').addEventListener('click', function(){ $('reviewForm').hidden = true; });
+      $('reviewForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        var name = $('rfName').value.trim(), text = $('rfText').value.trim();
+        if (!name || !text) { toast('Please add a customer name and review text.'); return; }
+        var data = { name: name, stars: parseInt($('rfStars').value, 10) || 5, text: text };
+        var id = $('rfId').value;
+        if (id) state.reviews = state.reviews.map(function(r){ return r.id === id ? Object.assign({}, r, data) : r; });
+        else { data.id = 'r' + Date.now(); state.reviews.push(data); }
+        save(); renderReviews(); renderAdminReviews();
+        $('reviewForm').hidden = true;
+        toast('Review saved — storefront updated.');
+      });
+
       armable($('resetBtn'), function(){
         state = clone(SEED);
         try { localStorage.removeItem(LS_KEY); } catch (e) {}
         save(); fillSettings(); syncStorefront(true); renderAdminProducts(); renderAdminOffers();
         toast('Demo data restored to the original pieces.');
       });
+
+      /* ================= Cart ================= */
+      function cartQtyTotal(){ return state.cart.reduce(function(s, i){ return s + i.qty; }, 0); }
+      function cartGrandTotal(){ return state.cart.reduce(function(s, i){ return s + i.qty * (Number(i.price) || 0); }, 0); }
+      function updateCartBadge(){
+        var n = cartQtyTotal();
+        ['cartCount', 'cartCountM'].forEach(function(id){
+          var b = $(id); if (!b) return;
+          b.textContent = n; b.hidden = n === 0;
+        });
+      }
+      function addToCart(item){
+        var key = item.id + '|' + (item.size || '') + '|' + (item.colour || '');
+        var found = null;
+        state.cart.forEach(function(ci){ if ((ci.id + '|' + (ci.size || '') + '|' + (ci.colour || '')) === key) found = ci; });
+        if (found) found.qty += (item.qty || 1);
+        else state.cart.push({ id: item.id, name: item.name, price: Number(item.price) || 0, img: item.img || '', size: item.size || '', colour: item.colour || '', qty: item.qty || 1, preorder: !!item.preorder });
+        save(); updateCartBadge(); renderCart();
+        ['cartCount', 'cartCountM'].forEach(function(id){ var b = $(id); if (b) { b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); } });
+        toast('Added to cart — ' + item.name);
+      }
+      function renderCart(){
+        var box = $('cartItems'); if (!box) return;
+        if (!state.cart.length) {
+          box.innerHTML = '<p class="cart-empty">Your cart is empty — add a piece you love.</p>';
+        } else {
+          box.innerHTML = state.cart.map(function(ci, idx){
+            var variant = [ci.size ? 'Size ' + ci.size : '', ci.colour || ''].filter(Boolean).join(' · ');
+            return '<div class="cart-row"><img src="' + esc(ci.img) + '" alt="" />'
+              + '<div class="ci"><b>' + esc(ci.name) + (ci.preorder ? ' <span class="preorder-flag">Pre-Order</span>' : '') + '</b>'
+              + (variant ? '<span>' + esc(variant) + '</span><br />' : '')
+              + '<span class="cup">Rs ' + fmt(ci.price) + '</span></div>'
+              + '<div><div class="qty-ctrl"><button type="button" data-dec="' + idx + '" aria-label="Decrease quantity">−</button><b>' + ci.qty + '</b><button type="button" data-inc="' + idx + '" aria-label="Increase quantity">+</button></div>'
+              + '<button type="button" class="cart-remove" data-rem="' + idx + '">Remove</button></div></div>';
+          }).join('');
+          box.querySelectorAll('[data-inc]').forEach(function(b){ b.addEventListener('click', function(){ state.cart[+b.getAttribute('data-inc')].qty++; save(); updateCartBadge(); renderCart(); }); });
+          box.querySelectorAll('[data-dec]').forEach(function(b){ b.addEventListener('click', function(){ var i = +b.getAttribute('data-dec'); state.cart[i].qty--; if (state.cart[i].qty < 1) state.cart.splice(i, 1); save(); updateCartBadge(); renderCart(); }); });
+          box.querySelectorAll('[data-rem]').forEach(function(b){ b.addEventListener('click', function(){ state.cart.splice(+b.getAttribute('data-rem'), 1); save(); updateCartBadge(); renderCart(); }); });
+        }
+        $('cartTotalEl').textContent = 'Rs ' + fmt(cartGrandTotal());
+        $('cartCheckout').disabled = !state.cart.length;
+        $('cartCheckout').classList.toggle('btn-disabled', !state.cart.length);
+      }
+      function openCart(){
+        renderCart();
+        $('cartBg').hidden = false;
+        var d = $('cartDrawer');
+        d.hidden = false;
+        void d.offsetWidth;
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ d.classList.add('open'); }); });
+      }
+      function closeCart(){
+        $('cartBg').hidden = true;
+        var d = $('cartDrawer');
+        d.classList.remove('open');
+        setTimeout(function(){ if (!d.classList.contains('open')) d.hidden = true; }, reduceMotion ? 0 : 460);
+      }
+
+      /* ================= Order Form ================= */
+      var orderCtx = { mode: 'single', product: null, items: [] };
+      function orderItemsTotal(){ return orderCtx.items.reduce(function(s, i){ return s + i.qty * (Number(i.price) || 0); }, 0); }
+      function openSingleOrder(p, size, colour){
+        var sizes = splitList(p.sizes), cols = splitList(p.colours);
+        orderCtx = { mode: 'single', product: p, items: [{ id: p.id, name: p.name, price: p.price, img: p.img, size: size || (sizes.length ? sizes[0] : ''), colour: colour || (cols.length ? cols[0] : ''), qty: 1, preorder: !!p.preorder }] };
+        showOrderForm();
+      }
+      function openMultiOrder(items, mode){
+        orderCtx = { mode: mode || 'multi', product: null, items: items.map(function(i){ return { id: i.id, name: i.name, price: Number(i.price) || 0, img: i.img || '', size: i.size || '', colour: i.colour || '', qty: i.qty || 1, preorder: !!i.preorder }; }) };
+        showOrderForm();
+      }
+      function showOrderForm(){
+        $('orderSuccess').hidden = true;
+        $('orderFormWrap').hidden = false;
+        $('orderError').hidden = true;
+        renderOrderForm();
+        $('orderOverlay').hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+      function closeOrderForm(){ $('orderOverlay').hidden = true; document.body.style.overflow = ''; }
+      function renderOrderForm(){
+        var single = orderCtx.mode === 'single' && orderCtx.product;
+        $('orderItems').innerHTML = orderCtx.items.map(function(i){
+          var variant = [i.size ? 'Size ' + i.size : '', i.colour || ''].filter(Boolean).join(' · ');
+          return '<div class="ord-line"><span>' + esc(i.name) + (i.preorder ? ' <span class="preorder-flag">Pre-Order</span>' : '') + (variant ? '<span class="v">' + esc(variant) + '</span>' : '') + '<span class="v">Qty ' + i.qty + '</span></span><span>Rs ' + fmt(i.price * i.qty) + '</span></div>';
+        }).join('') + '<div class="ord-grand"><span>Grand Total</span><span>Rs ' + fmt(orderItemsTotal()) + '</span></div>';
+        var s = state.settings;
+        $('orderDeliveryLine').innerHTML = 'Delivery: <b>Abbottabad Rs ' + fmt(s.deliveryLocalPrice) + '</b> (' + esc(s.deliveryLocalDays) + ') · <b>Nationwide Rs ' + fmt(s.deliveryNationPrice) + '</b> (' + esc(s.deliveryNationDays) + ') — delivery is confirmed with your order on WhatsApp.';
+        var sizeWrap = $('ordVariantSizeWrap'), colWrap = $('ordVariantColourWrap'), qtyWrap = $('ordQtyWrap');
+        if (single) {
+          var sizes = splitList(orderCtx.product.sizes), cols = splitList(orderCtx.product.colours);
+          sizeWrap.hidden = !sizes.length; colWrap.hidden = !cols.length; qtyWrap.hidden = false;
+          $('ordSize').innerHTML = sizes.map(function(x){ return '<option' + (x === orderCtx.items[0].size ? ' selected' : '') + '>' + esc(x) + '</option>'; }).join('');
+          $('ordColour').innerHTML = cols.map(function(x){ return '<option' + (x === orderCtx.items[0].colour ? ' selected' : '') + '>' + esc(x) + '</option>'; }).join('');
+          $('ordQty').value = orderCtx.items[0].qty;
+        } else { sizeWrap.hidden = true; colWrap.hidden = true; qtyWrap.hidden = true; }
+        updatePayInfo();
+      }
+      function selectedPay(){ var r = document.querySelector('input[name="ordPay"]:checked'); return r ? r.value : 'Cash on Delivery'; }
+      function updatePayInfo(){
+        var s = state.settings, pay = selectedPay(), extra = '';
+        if (pay === 'JazzCash' && s.jazzcash) extra = ' JazzCash account: <b>' + esc(s.jazzcash) + '</b>';
+        if (pay === 'Easypaisa' && s.easypaisa) extra = ' Easypaisa account: <b>' + esc(s.easypaisa) + '</b>';
+        $('orderPayInfo').innerHTML = 'We accept <b>Cash on Delivery</b>, <b>JazzCash</b> and <b>Easypaisa</b>.' + extra;
+      }
+      function orderWaText(o){
+        var lines = o.items.map(function(i){
+          var variant = [i.size ? 'Size ' + i.size : '', i.colour || ''].filter(Boolean).join(', ');
+          return '• ' + i.name + (variant ? ' (' + variant + ')' : '') + ' × ' + i.qty + ' — Rs ' + fmt(i.price * i.qty) + (i.preorder ? ' [PRE-ORDER]' : '');
+        }).join('\n');
+        return 'Assalam-o-Alaikum! New order from the ' + state.settings.shopName + ' website.\n'
+          + 'Order ID: ' + o.id + (o.preorder ? ' (PRE-ORDER)' : '') + '\n'
+          + 'Name: ' + o.customer + '\nPhone: ' + o.phone + '\nAddress: ' + o.address + '\n'
+          + 'Items:\n' + lines + '\nGrand Total: Rs ' + fmt(o.total)
+          + '\nPayment: ' + o.payment + (o.note ? '\nNote: ' + o.note : '');
+      }
+      function submitOrder(){
+        var name = $('ordName').value.trim();
+        var phone = $('ordPhone').value.trim();
+        var address = $('ordAddress').value.trim();
+        var digits = phone.replace(/\D/g, '');
+        if (name.length < 3 || digits.length < 10 || address.length < 6) { $('orderError').hidden = false; return; }
+        if (orderCtx.mode === 'single' && orderCtx.items.length) {
+          orderCtx.items[0].size = $('ordSize').value || orderCtx.items[0].size;
+          orderCtx.items[0].colour = $('ordColour').value || orderCtx.items[0].colour;
+          orderCtx.items[0].qty = Math.max(1, parseInt($('ordQty').value, 10) || 1);
+        }
+        var seq = state.nextOrder || 1001;
+        state.nextOrder = seq + 1;
+        var items = orderCtx.items.map(function(i){ return { id: i.id, name: i.name, price: i.price, img: i.img, size: i.size, colour: i.colour, qty: i.qty, preorder: !!i.preorder }; });
+        var order = {
+          seq: seq, id: '#' + seq,
+          date: new Date().toISOString(),
+          customer: name, phone: phone, address: address,
+          items: items,
+          item: items.map(function(i){ return i.name; }).join(', '),
+          variant: items.map(function(i){ return [i.size, i.colour].filter(Boolean).join(' / '); }).filter(Boolean).join('; '),
+          qty: items.reduce(function(s, i){ return s + i.qty; }, 0),
+          total: items.reduce(function(s, i){ return s + i.qty * i.price; }, 0),
+          status: 'New', payment: selectedPay(), note: $('ordNote').value.trim(),
+          preorder: items.some(function(i){ return i.preorder; })
+        };
+        state.orders.unshift(order);
+        if (orderCtx.mode === 'cart') { state.cart = []; updateCartBadge(); renderCart(); }
+        save();
+        if (typeof renderAdminOrders === 'function') renderAdminOrders();
+        $('orderFormWrap').hidden = true;
+        $('orderSuccess').hidden = false;
+        $('successOrderId').textContent = order.id;
+        $('successPreorder').hidden = !order.preorder;
+        $('successText').textContent = order.preorder
+          ? 'This is a PRE-ORDER — the boutique will confirm the expected availability with you. Tap below to send the order on WhatsApp too, and keep your Order ID to track it.'
+          : 'Your order is saved. Tap below to send it to the boutique on WhatsApp as well — and keep your Order ID to track it any time.';
+        $('orderWaBtn').setAttribute('href', waLink(orderWaText(order)));
+        orderCtx = { mode: 'single', product: null, items: [] };
+      }
+
+      /* ================= Delivery & Reviews (storefront) ================= */
+      function renderDelivery(){
+        var s = state.settings;
+        if ($('delLocalLine')) $('delLocalLine').textContent = 'Rs ' + fmt(s.deliveryLocalPrice);
+        if ($('delLocalDays')) $('delLocalDays').textContent = 'Delivery in ' + s.deliveryLocalDays;
+        if ($('delNationLine')) $('delNationLine').textContent = 'Rs ' + fmt(s.deliveryNationPrice);
+        if ($('delNationDays')) $('delNationDays').textContent = 'Delivery in ' + s.deliveryNationDays + ', anywhere in Pakistan';
+      }
+      function starStr(n){ var out = ''; for (var i = 1; i <= 5; i++) out += i <= n ? '★' : '☆'; return out; }
+      function renderReviews(){
+        var g = $('reviewGrid'); if (!g) return;
+        if (!state.reviews.length) { g.innerHTML = '<p class="empty-note">Reviews will appear here soon.</p>'; return; }
+        g.innerHTML = state.reviews.map(function(r){
+          return '<div class="review-card rv in"><div class="stars" aria-label="' + r.stars + ' out of 5 stars">' + starStr(r.stars) + '</div><p>“' + esc(r.text) + '”</p><b>' + esc(r.name) + '</b></div>';
+        }).join('');
+      }
+
+      /* ================= Order Tracking ================= */
+      function findOrderForTrack(q){
+        var raw = String(q || '').trim();
+        if (!raw) return null;
+        var digits = raw.replace(/\D/g, '');
+        var byId = null;
+        state.orders.forEach(function(o){ if (String(o.seq) === digits || o.id === raw || o.id === '#' + digits) byId = o; });
+        if (byId && (raw.indexOf('#') > -1 || /^\d+$/.test(raw))) return byId;
+        if (digits.length >= 10) {
+          var byPhone = null;
+          state.orders.forEach(function(o){ if (!byPhone && o.phone.replace(/\D/g, '') === digits) byPhone = o; });
+          if (byPhone) return byPhone;
+          /* also accept a bare order number typed without # */
+          if (byId) return byId;
+        }
+        return byId;
+      }
+      function renderTracking(o){
+        var box = $('trackResult'); if (!box) return;
+        if (!o) { box.innerHTML = '<p style="color:var(--muted)">No order found with that ID or number in this browser. Please check the Order ID from your confirmation and try again.</p>'; return; }
+        var steps = ['Received', 'Confirmed', 'Dispatched', 'Delivered'];
+        var idx = { 'New': 0, 'Confirmed': 1, 'Dispatched': 2, 'Delivered': 3 }[o.status];
+        var head = '<div style="background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px">'
+          + '<b style="font-family:Cormorant Garamond,serif;font-size:1.4rem;color:var(--plum)">Order ' + esc(o.id) + '</b>'
+          + (o.preorder ? ' <span class="preorder-flag">Pre-Order</span>' : '')
+          + '<p style="color:var(--muted);margin:4px 0 0">' + esc(o.item) + ' · Total Rs ' + fmt(o.total) + ' · Placed ' + new Date(o.date).toLocaleDateString() + '</p>';
+        if (o.status === 'Cancelled') {
+          box.innerHTML = head + '<div class="track-cancelled" style="margin-top:16px">This order was cancelled. Please message the boutique on WhatsApp if you need any help.</div></div>';
+          return;
+        }
+        box.innerHTML = head + '<div class="track-steps">' + steps.map(function(s, i){
+          return '<div class="tstep' + (i <= idx ? ' done' : '') + '">' + s + '</div>';
+        }).join('') + '</div></div>';
+      }
+
+      /* ================= Admin: Orders & Reviews ================= */
+      var ORDER_STATUSES = ['New', 'Confirmed', 'Dispatched', 'Delivered', 'Cancelled'];
+      function updateOrdersBadge(){
+        var n = state.orders.filter(function(o){ return o.status === 'New'; }).length;
+        var b = $('ordersBadge'); if (b) { b.textContent = n; b.hidden = n === 0; }
+      }
+      function renderAdminOrders(){
+        updateOrdersBadge();
+        var list = $('adminOrderList'); if (!list) return;
+        if (!state.orders.length) { list.innerHTML = '<p class="pane-note">No orders yet — orders placed on this website (in this browser) will appear here.</p>'; return; }
+        list.innerHTML = '';
+        state.orders.slice().sort(function(a, b){ return b.seq - a.seq; }).forEach(function(o){
+          var row = document.createElement('div'); row.className = 'admin-row';
+          var when = new Date(o.date);
+          var itemsHtml = o.items.map(function(i){
+            var variant = [i.size ? 'Size ' + i.size : '', i.colour || ''].filter(Boolean).join(' · ');
+            return esc(i.name) + (variant ? ' (' + esc(variant) + ')' : '') + ' × ' + i.qty + (i.preorder ? ' [PRE-ORDER]' : '');
+          }).join('<br />');
+          row.innerHTML = '<div class="info"><b>' + esc(o.id) + ' — ' + esc(o.customer) + '</b>'
+            + '<span>' + esc(o.phone) + ' · ' + when.toLocaleDateString() + ' ' + when.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + '<br />' + itemsHtml + '<br />Qty ' + o.qty + ' · <b style="color:var(--rose-deep)">Rs ' + fmt(o.total) + '</b> · ' + esc(o.payment || 'Cash on Delivery') + (o.address ? '<br />' + esc(o.address) : '') + '</span></div>'
+            + (o.preorder ? '<span class="preorder-flag">Pre-Order</span>' : '')
+            + '<div class="acts"><select class="status-sel" aria-label="Order status">' + ORDER_STATUSES.map(function(s){ return '<option' + (s === o.status ? ' selected' : '') + '>' + s + '</option>'; }).join('') + '</select>'
+            + '<button type="button" class="btn btn-danger btn-sm act-del">Delete</button></div>';
+          row.querySelector('.status-sel').addEventListener('change', function(){
+            o.status = this.value; save(); updateOrdersBadge();
+            toast('Order ' + o.id + ' is now ' + o.status + ' — tracking updated.');
+          });
+          armable(row.querySelector('.act-del'), function(){
+            state.orders = state.orders.filter(function(x){ return x.seq !== o.seq; });
+            save(); renderAdminOrders();
+            toast('Order ' + o.id + ' deleted.');
+          });
+          list.appendChild(row);
+        });
+      }
+      function renderAdminReviews(){
+        var list = $('adminReviewList'); if (!list) return;
+        if (!state.reviews.length) { list.innerHTML = '<p class="pane-note">No reviews yet — add one above.</p>'; return; }
+        list.innerHTML = '';
+        state.reviews.forEach(function(r){
+          var row = document.createElement('div'); row.className = 'admin-row';
+          row.innerHTML = '<div class="info"><b>' + esc(r.name) + ' — ' + starStr(r.stars) + '</b><span>' + esc(r.text) + '</span></div>'
+            + '<div class="acts"><button type="button" class="btn btn-ghost btn-sm act-edit">Edit</button>'
+            + '<button type="button" class="btn btn-danger btn-sm act-del">Delete</button></div>';
+          row.querySelector('.act-edit').addEventListener('click', function(){
+            $('reviewForm').hidden = false;
+            $('rfTitle').textContent = 'Edit Review';
+            $('rfId').value = r.id; $('rfName').value = r.name; $('rfStars').value = String(r.stars); $('rfText').value = r.text;
+            $('reviewForm').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+          });
+          armable(row.querySelector('.act-del'), function(){
+            state.reviews = state.reviews.filter(function(x){ return x.id !== r.id; });
+            save(); renderReviews(); renderAdminReviews();
+            toast('Review deleted.');
+          });
+          list.appendChild(row);
+        });
+      }
+
+      /* ================= Shop tools / cart / order / tracking wiring ================= */
+      (function initCommerce(){
+        var search = $('shopSearch'), sort = $('shopSort');
+        if (search) search.addEventListener('input', function(){ shopSearch = this.value; renderProducts(true); });
+        if (sort) sort.addEventListener('change', function(){ shopSort = this.value; renderProducts(true); });
+        if ($('sizeGuideBtn')) $('sizeGuideBtn').addEventListener('click', openSizeGuide);
+        if ($('sizeClose')) $('sizeClose').addEventListener('click', closeSizeGuide);
+        if ($('sizeOverlay')) $('sizeOverlay').addEventListener('click', function(e){ if (e.target === this) closeSizeGuide(); });
+        if ($('cartBtn')) $('cartBtn').addEventListener('click', openCart);
+        if ($('cartBtnM')) $('cartBtnM').addEventListener('click', openCart);
+        if ($('cartClose')) $('cartClose').addEventListener('click', closeCart);
+        if ($('cartBg')) $('cartBg').addEventListener('click', closeCart);
+        if ($('cartCheckout')) $('cartCheckout').addEventListener('click', function(){
+          if (!state.cart.length) return;
+          closeCart();
+          openMultiOrder(state.cart.map(function(ci){ return { id: ci.id, name: ci.name, price: ci.price, img: ci.img, size: ci.size, colour: ci.colour, qty: ci.qty, preorder: ci.preorder }; }), 'cart');
+        });
+        if ($('orderClose')) $('orderClose').addEventListener('click', closeOrderForm);
+        if ($('orderDone')) $('orderDone').addEventListener('click', closeOrderForm);
+        if ($('orderOverlay')) $('orderOverlay').addEventListener('click', function(e){ if (e.target === this) closeOrderForm(); });
+        if ($('orderForm')) $('orderForm').addEventListener('submit', function(e){ e.preventDefault(); submitOrder(); });
+        ['ordSize', 'ordColour'].forEach(function(id){
+          if ($(id)) $(id).addEventListener('change', function(){
+            if (orderCtx.items.length) { orderCtx.items[0].size = $('ordSize').value; orderCtx.items[0].colour = $('ordColour').value; renderOrderForm(); }
+          });
+        });
+        if ($('ordQty')) $('ordQty').addEventListener('change', function(){
+          if (orderCtx.items.length) { orderCtx.items[0].qty = Math.max(1, parseInt(this.value, 10) || 1); renderOrderForm(); }
+        });
+        document.querySelectorAll('input[name="ordPay"]').forEach(function(r){ r.addEventListener('change', updatePayInfo); });
+        if ($('trackForm')) $('trackForm').addEventListener('submit', function(e){ e.preventDefault(); renderTracking(findOrderForTrack($('trackInput').value)); });
+        document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { closeCart(); if (!$('orderOverlay').hidden) closeOrderForm(); if (!$('sizeOverlay').hidden) closeSizeGuide(); } });
+        renderCart(); updateCartBadge(); renderDelivery(); renderReviews(); updateOrdersBadge();
+      })();
+      function openSizeGuide(){ $('sizeOverlay').hidden = false; document.body.style.overflow = 'hidden'; }
+      function closeSizeGuide(){ $('sizeOverlay').hidden = true; if ($('qvOverlay').hidden && $('orderOverlay').hidden) document.body.style.overflow = ''; }
 
       /* ================= 2026 Mechanics: Orbit Wheel · Curved Rail · Shuffle Looks · Quick View ================= */
       function splitList(v){ return String(v || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean); }
@@ -2345,22 +3112,45 @@
         $('qvViewToggle').style.display = hasBack ? 'flex' : 'none';
         $('qvViewToggle').querySelectorAll('button').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-view') === qv.view); });
         var sizes = splitList(p.sizes); var cols = splitList(p.colours);
+        var related = state.products.filter(function(x){ return x.cat === p.cat && x.id !== p.id; }).slice(0, 3);
         $('qvBody').innerHTML =
           '<span class="m-kicker">' + esc(p.collection || CATS[p.cat] || 'Boutique Piece') + (hasBack ? ' · ' + (qv.view === 'back' ? 'Back View' : 'Front View') : '') + '</span>'
           + '<h3 class="q-name">' + esc(p.name) + '</h3>'
           + '<div class="q-price">Rs ' + fmt(p.price) + '</div>'
+          + (p.soldOut ? '<p style="margin:8px 0 0"><span class="tag sold">Sold Out</span></p>' : (p.preorder ? '<p style="margin:8px 0 0"><span class="tag pre">Pre-Order</span>' + (p.preorderNote ? ' <span style="font-size:.88rem;color:#8a7d78">' + esc(p.preorderNote) + '</span>' : '') + '</p>' : ''))
           + '<p class="q-desc">' + esc(p.desc || '') + '</p>'
           + (sizes.length ? '<span class="m-label">Select Size</span><div class="size-row">' + sizes.map(function(s){ return '<button type="button" class="size-box qv-size' + (s === qv.size ? ' active' : '') + '" data-size="' + esc(s) + '">' + esc(s) + '</button>'; }).join('') + '</div>' : '')
           + (cols.length ? '<span class="m-label">Colour</span><div class="qv-swatches">' + cols.map(function(c){ var av = !!colourPhoto(p, c); return '<button type="button" class="swatch qv-col' + (c === qv.colour ? ' active' : '') + (av ? '' : ' unavailable') + '" data-colour="' + esc(c) + '"' + (av ? '' : ' disabled aria-disabled="true"') + ' title="' + esc(c) + (av ? '' : ' — photo not available') + '" aria-label="Colour ' + esc(c) + (av ? '' : ' (photo not available)') + '" style="background:' + swatchBg(c) + ';width:30px;height:30px"></button>'; }).join('') + '</div><p style="font-size:.85rem;color:#8a7d78;margin:8px 0 0">Colour: <b>' + esc(qv.colour) + '</b></p>' : '')
-          + '<div class="qv-actions"><a class="m-pill" id="qvOrder" target="_blank" rel="noopener" href="#">Order on WhatsApp</a>'
-          + '<button type="button" class="m-pill ghost" id="qvBackBtn">Keep Browsing</button></div>';
-        function updOrder(){
-          $('qvOrder').setAttribute('href', waLink('Assalam-o-Alaikum! I am interested in the ' + p.name + ' (Rs ' + fmt(p.price) + ')' + (qv.size ? ', size ' + qv.size : '') + (qv.colour ? ', colour ' + qv.colour : '') + ' on your website. Is it available?'));
-        }
-        updOrder();
+          + '<p style="margin:12px 0 0"><button type="button" id="qvSizeGuide" style="background:none;border:none;padding:0;font-family:inherit;font-size:.88rem;font-weight:600;color:var(--rose-deep);text-decoration:underline;cursor:pointer">Size guide</button></p>'
+          + (p.soldOut
+              ? '<div class="qv-actions"><button type="button" class="m-pill" disabled>Sold Out</button><button type="button" class="m-pill ghost" id="qvBackBtn">Keep Browsing</button></div>'
+              : '<div class="qv-actions"><button type="button" class="m-pill" id="qvOrder">Order Now</button>'
+                + '<button type="button" class="m-pill ghost" id="qvAddCart">Add to Cart</button>'
+                + '<button type="button" class="m-pill ghost" id="qvBackBtn">Keep Browsing</button></div>')
+          + (related.length ? '<span class="m-label" style="margin-top:22px">You May Also Like</span><div class="related-row">' + related.map(function(r){
+              return '<div class="related-card" data-rel="' + esc(r.id) + '"><img src="' + esc(r.img) + '" alt="' + esc(r.name) + '" loading="lazy" /><b>' + esc(r.name) + '</b><span>Rs ' + fmt(r.price) + '</span>'
+                + (r.soldOut ? '<span style="display:block;font-size:.75rem;font-weight:700;color:#b03a2e;margin-top:4px">Sold Out</span>' : '<button type="button" class="r-add" data-reladd="' + esc(r.id) + '">Add to Cart</button>') + '</div>';
+            }).join('') + '</div>' : '');
         $('qvBody').querySelectorAll('.qv-size').forEach(function(b){ b.addEventListener('click', function(){ qv.size = b.getAttribute('data-size'); renderQuickView(); }); });
         $('qvBody').querySelectorAll('.qv-col').forEach(function(b){ b.addEventListener('click', function(){ qv.colour = b.getAttribute('data-colour'); renderQuickView(); }); });
         $('qvBackBtn').addEventListener('click', closeQuickView);
+        if ($('qvSizeGuide')) $('qvSizeGuide').addEventListener('click', function(){ openSizeGuide(); });
+        if ($('qvOrder')) $('qvOrder').addEventListener('click', function(){ closeQuickView(); openSingleOrder(p, qv.size, qv.colour); });
+        if ($('qvAddCart')) $('qvAddCart').addEventListener('click', function(){ addToCart({ id: p.id, name: p.name, price: p.price, img: colourPhoto(p, qv.colour) || p.img, size: qv.size, colour: qv.colour, preorder: !!p.preorder }); });
+        $('qvBody').querySelectorAll('[data-rel]').forEach(function(card){
+          card.addEventListener('click', function(e){
+            if (e.target.closest('[data-reladd]')) return;
+            var r = productById(card.getAttribute('data-rel')); if (r) openQuickView(r);
+          });
+        });
+        $('qvBody').querySelectorAll('[data-reladd]').forEach(function(b){
+          b.addEventListener('click', function(e){
+            e.stopPropagation();
+            var r = productById(b.getAttribute('data-reladd')); if (!r) return;
+            var rs = splitList(r.sizes), rc = splitList(r.colours);
+            addToCart({ id: r.id, name: r.name, price: r.price, img: r.img, size: rs.length ? rs[0] : '', colour: rc.length ? rc[0] : '', preorder: !!r.preorder });
+          });
+        });
       }
       $('qvClose').addEventListener('click', closeQuickView);
       $('qvOverlay').addEventListener('click', function(e){ if (e.target === this) closeQuickView(); });
@@ -2481,13 +3271,18 @@
         var y = (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * y1 + t * t * y2;
         return { x: x / 1000 * W, y: y / 240 * H };
       }
+      /* Rail motion: a global drift offset (0..1) travels the cards along the curve and wraps.
+         Pauses while the visitor interacts and for a few seconds after; off entirely for reduced motion. */
+      var railAnim = { offset: 0, last: 0, running: false, visible: false, pauseUntil: 0, dragging: false, suppressClickUntil: 0 };
       function layoutRail(){
         var stage = $('railStage'); if (!stage) return;
         var W = stage.clientWidth, H = stage.clientHeight; if (!W) return;
-        var n = rail.items.length;
+        var n = rail.items.length; if (!n) return;
+        var tEdge = W < 560 ? 0.20 : 0.10; /* inset travel range — end cards stay fully on-screen at phone widths */
         stage.querySelectorAll('.rail-card').forEach(function(card, i){
-          var tEdge = W < 560 ? 0.17 : 0.10; /* keep end cards fully on-screen at phone widths */
-          var t = n === 1 ? 0.5 : tEdge + (1 - 2 * tEdge) * (i / (n - 1));
+          var base = n === 1 ? 0.5 : i / n;
+          var tt = (((base + railAnim.offset) % 1) + 1) % 1;
+          var t = n === 1 ? 0.5 : tEdge + (1 - 2 * tEdge) * tt;
           var pt = railPoint(t, W, H);
           var isA = i === rail.active;
           card.style.left = pt.x.toFixed(1) + 'px';
@@ -2496,6 +3291,22 @@
           card.style.zIndex = isA ? '6' : '2';
           card.classList.toggle('active', isA);
         });
+      }
+      function railLoop(ts){
+        if (!railAnim.running) return;
+        if (!railAnim.last) railAnim.last = ts;
+        var dt = Math.min(ts - railAnim.last, 64); railAnim.last = ts;
+        if (railAnim.visible && !railAnim.dragging && !document.hidden && performance.now() > railAnim.pauseUntil) {
+          railAnim.offset += dt * 0.000016; /* gentle drift — one full circuit ≈ 60s */
+          layoutRail();
+        }
+        requestAnimationFrame(railLoop);
+      }
+      function startRailLoop(){
+        if (reduceMotion) { layoutRail(); return; }
+        if (railAnim.running) return;
+        railAnim.running = true; railAnim.last = 0;
+        requestAnimationFrame(railLoop);
       }
       function renderRailCaption(){
         var cap = $('railCaption'); if (!cap) return;
@@ -2511,6 +3322,7 @@
       }
       function setRailActive(i){
         rail.active = i;
+        railAnim.pauseUntil = performance.now() + 4000; /* hold the drift while the visitor looks */
         $('railStage').classList.add('has-active');
         layoutRail(); renderRailCaption();
       }
@@ -2527,6 +3339,7 @@
           b.addEventListener('mouseenter', function(){ setRailActive(i); });
           b.addEventListener('focus', function(){ setRailActive(i); });
           b.addEventListener('click', function(){
+            if (performance.now() < railAnim.suppressClickUntil) return; /* that was a drag, not a tap */
             if (rail.active !== i) { setRailActive(i); return; } /* first tap spotlights, second opens */
             openQuickView(p);
           });
@@ -2534,7 +3347,45 @@
         });
         stage.classList.toggle('has-active', rail.items.length > 0);
         layoutRail(); renderRailCaption();
+        startRailLoop();
       }
+      /* Rail drag/swipe: only clearly-horizontal drags are claimed, so vertical page scroll still works over the rail */
+      (function initRailDrag(){
+        var stage = $('railStage'); if (!stage) return;
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function(en){ railAnim.visible = en[0].isIntersecting; }, { threshold: 0.04 }).observe($('railSec'));
+        } else railAnim.visible = true;
+        var startX = 0, startY = 0, startOffset = 0, claiming = false, pointerId = null;
+        stage.addEventListener('pointerdown', function(e){
+          startX = e.clientX; startY = e.clientY; startOffset = railAnim.offset;
+          claiming = false; pointerId = e.pointerId;
+          railAnim.pauseUntil = performance.now() + 4000;
+        });
+        stage.addEventListener('pointermove', function(e){
+          if (pointerId === null || e.pointerId !== pointerId) return;
+          var dx = e.clientX - startX, dy = e.clientY - startY;
+          if (!claiming) {
+            if (Math.abs(dx) > 9 && Math.abs(dx) > Math.abs(dy) * 1.25) {
+              claiming = true; railAnim.dragging = true;
+              stage.classList.add('dragging');
+              try { stage.setPointerCapture(e.pointerId); } catch (err) {}
+            } else return;
+          }
+          var W = stage.clientWidth || 1;
+          railAnim.offset = startOffset + dx / W;
+          railAnim.pauseUntil = performance.now() + 4000;
+          layoutRail();
+        });
+        function endDrag(e){
+          if (pointerId === null || (e && e.pointerId !== pointerId)) return;
+          if (claiming) railAnim.suppressClickUntil = performance.now() + 250;
+          claiming = false; railAnim.dragging = false; pointerId = null;
+          stage.classList.remove('dragging');
+          railAnim.pauseUntil = performance.now() + 3500; /* resume the gentle drift a few seconds later */
+        }
+        stage.addEventListener('pointerup', endDrag);
+        stage.addEventListener('pointercancel', endDrag);
+      })();
 
       /* ---------- 3) Shuffle Grid — Try the Look ---------- */
       var looks = { list: [], order: [], selected: 0, included: {} };
@@ -2562,28 +3413,57 @@
         looks.order = list.map(function(_, i){ return i; });
         if (looks.selected >= list.length) looks.selected = 0;
       }
-      function renderLooks(){
+      function renderLooks(animateFlip){
         var row = $('looksRow'); if (!row) return;
         if (!looks.list.length) { row.innerHTML = '<p class="empty-note">Looks are being styled — add products from the Admin Panel.</p>'; $('lookDetail').hidden = true; return; }
-        var n = looks.order.length, mid = (n - 1) / 2;
-        row.innerHTML = looks.order.map(function(li, pos){
+        /* FLIP step 1: remember where every card sits right now */
+        var prevRects = {};
+        if (animateFlip && !reduceMotion) {
+          row.querySelectorAll('.look-card').forEach(function(c){ prevRects[c.getAttribute('data-look')] = c.getBoundingClientRect(); });
+        }
+        row.innerHTML = looks.order.map(function(li){
           var look = looks.list[li];
-          var dist = Math.abs(pos - mid);
-          var s = Math.max(0.78, 1.14 - dist * 0.13);
-          var op = Math.max(0.45, 1 - dist * 0.17);
+          var sel = li === looks.selected;
+          var s = sel ? 1.06 : 0.97;
           var total = look.pieces.reduce(function(sum, pc){ return sum + (Number(pc.price) || 0); }, 0);
-          return '<button type="button" class="look-card' + (li === looks.selected ? ' selected' : '') + '" data-look="' + li + '" style="transform:scale(' + s.toFixed(2) + ');opacity:' + op.toFixed(2) + ';z-index:' + (10 - Math.round(dist)) + '" aria-label="' + esc(look.title) + '">'
+          return '<button type="button" class="look-card' + (sel ? ' selected' : '') + '" data-look="' + li + '" data-scale="' + s + '" style="transform:scale(' + s + ');opacity:' + (sel ? 1 : 0.88) + ';z-index:' + (sel ? 8 : 2) + '" aria-label="' + esc(look.title) + '">'
             + '<img src="' + esc(look.main.img) + '" alt="' + esc(look.main.name) + ' styled look" loading="lazy" />'
             + '<b>' + esc(look.title) + '</b><span>Full look · Rs ' + fmt(total) + '</span></button>';
         }).join('');
         row.querySelectorAll('.look-card').forEach(function(card){
-          card.addEventListener('click', function(){
-            looks.selected = parseInt(card.getAttribute('data-look'), 10);
-            looks.included = {};
-            renderLooks(); renderLookDetail();
-            if (!reduceMotion) $('lookDetail').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          });
+          card.addEventListener('click', function(){ selectLook(parseInt(card.getAttribute('data-look'), 10)); });
         });
+        /* FLIP step 2: cards visibly glide from their old spot to the new one */
+        if (animateFlip && !reduceMotion) {
+          row.querySelectorAll('.look-card').forEach(function(c){
+            var old = prevRects[c.getAttribute('data-look')]; if (!old) return;
+            var nr = c.getBoundingClientRect();
+            var dx = old.left - nr.left, dy = old.top - nr.top;
+            if (!dx && !dy) return;
+            var finalT = 'scale(' + c.getAttribute('data-scale') + ')';
+            c.style.transition = 'none';
+            c.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px) ' + finalT;
+            requestAnimationFrame(function(){
+              requestAnimationFrame(function(){
+                c.style.transition = 'transform .65s cubic-bezier(.22,.75,.25,1)';
+                c.style.transform = finalT;
+                setTimeout(function(){ c.style.transition = ''; }, 700);
+              });
+            });
+          });
+        }
+      }
+      function selectLook(li){
+        looks.selected = li;
+        looks.included = {};
+        renderLooks(false); renderLookDetail();
+        /* Bring the chosen card forward in the line itself — centred in the swipeable row */
+        var row = $('looksRow');
+        var card = row ? row.querySelector('[data-look="' + li + '"]') : null;
+        if (card) {
+          var target = card.offsetLeft - (row.clientWidth - card.offsetWidth) / 2;
+          row.scrollTo({ left: Math.max(0, target), behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
       }
       function lookTotal(look){
         return look.pieces.reduce(function(sum, pc, idx){
@@ -2607,7 +3487,8 @@
                 + '<button type="button" class="piece-add' + (inc ? ' added' : '') + '" data-idx="' + idx + '" aria-label="' + (inc ? 'Remove ' : 'Add ') + esc(pc.name) + '">' + (inc ? '✓' : '+') + '</button></div>';
             }).join('')
           + '<div class="look-total"><span>Total</span><b>Rs ' + fmt(lookTotal(look)) + '</b></div>'
-          + '<a class="m-pill" id="orderLookBtn" target="_blank" rel="noopener" href="#" style="width:100%;margin-top:10px">Order Full Look</a></div>';
+          + '<button type="button" class="m-pill" id="orderLookBtn" style="width:100%;margin-top:10px">Order Full Look</button>'
+          + '<button type="button" class="m-pill ghost" id="cartLookBtn" style="width:100%;margin-top:10px">Add Look Pieces to Cart</button></div>';
         box.querySelectorAll('.piece-add').forEach(function(b){
           b.addEventListener('click', function(){
             var idx = b.getAttribute('data-idx'), key = look.id + ':' + idx;
@@ -2615,9 +3496,23 @@
             renderLookDetail();
           });
         });
-        var chosen = look.pieces.filter(function(pc, idx){ return looks.included[look.id + ':' + idx] !== false; });
-        var lines = chosen.map(function(pc){ return '• ' + pc.name + ' — Rs ' + fmt(pc.price); }).join('\n');
-        $('orderLookBtn').setAttribute('href', waLink('Assalam-o-Alaikum! I would like to order this complete look from Zahra Rubab Ladies Boutique:\n' + lines + '\nTotal: Rs ' + fmt(lookTotal(look)) + '\nIs it available?'));
+        function chosenItems(){
+          return look.pieces.filter(function(pc, idx){ return looks.included[look.id + ':' + idx] !== false; }).map(function(pc){
+            var prod = pc.isShoe ? null : productById(pc.id);
+            return { id: pc.id, name: pc.name, price: pc.price, img: pc.img, size: '', colour: '', qty: 1, preorder: prod ? !!prod.preorder : false };
+          });
+        }
+        $('orderLookBtn').addEventListener('click', function(){
+          var items = chosenItems();
+          if (!items.length) { toast('Add at least one piece to the look first.'); return; }
+          openMultiOrder(items, 'look'); /* ONE combined multi-item order */
+        });
+        $('cartLookBtn').addEventListener('click', function(){
+          var items = chosenItems();
+          if (!items.length) { toast('Add at least one piece to the look first.'); return; }
+          items.forEach(function(i){ addToCart(i); });
+          openCart();
+        });
       }
       $('shuffleBtn').addEventListener('click', function(){
         for (var i = looks.order.length - 1; i > 0; i--) {
@@ -2625,7 +3520,7 @@
           var tmp = looks.order[i]; looks.order[i] = looks.order[j]; looks.order[j] = tmp;
         }
         if (looks.order.length > 1 && looks.order[0] === looks.selected) { /* keep it lively */ }
-        renderLooks();
+        renderLooks(true); /* FLIP — watch the cards glide to their new places */
         toast('Looks shuffled — a fresh order, fresh inspiration.');
       });
 
