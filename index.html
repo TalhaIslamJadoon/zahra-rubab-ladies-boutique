@@ -1,0 +1,2654 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Zahra Rubab Ladies Boutique — Demo Website</title>
+    <meta name="description" content="Zahra Rubab Ladies Boutique — premium ladies wear at Jadoon Plaza Phase 3, Mandian, Abbottabad. Luxury pret, formal wear, bridal trousseau and everyday elegance." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --ivory:#fdf9f7;
+        --ivory-2:#f9f1ee;
+        --blush:#f6dde0;
+        --blush-soft:#fbeef0;
+        --rose:#b76e79;
+        --rose-deep:#9d5561;
+        --gold:#c39a6b;
+        --plum:#472540;
+        --plum-2:#5d3153;
+        --ink:#3c2a33;
+        --muted:#7d6470;
+        --card:#ffffff;
+        --line:#ecd9d5;
+        --shadow:0 18px 45px rgba(71,37,64,.12);
+        --wa:#22b358;
+        --blue:#2f6bff;
+        --cyan:#0fb5d9;
+        --violet:#8b5cf6;
+        --grad:linear-gradient(100deg,#2f6bff 0%,#0fb5d9 28%,#8b5cf6 55%,#b76e79 80%,#2f6bff 100%);
+        --grad-soft:linear-gradient(100deg,rgba(47,107,255,.14),rgba(15,181,217,.14),rgba(139,92,246,.14),rgba(183,110,121,.14));
+        --ease:cubic-bezier(.22,.75,.25,1);
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --ivory:#221320;
+          --ivory-2:#2a1826;
+          --blush:#3d2436;
+          --blush-soft:#331e2e;
+          --rose:#d79aa4;
+          --rose-deep:#e2b3ba;
+          --gold:#d3ab7d;
+          --plum:#f3d9e6;
+          --plum-2:#e8c3d8;
+          --ink:#f6e9ee;
+          --muted:#c4a3b2;
+          --card:#2e1a29;
+          --line:#4a2c40;
+          --shadow:0 18px 45px rgba(0,0,0,.45);
+        }
+      }
+      *{box-sizing:border-box}
+      [hidden]{display:none !important}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;background:var(--ivory);color:var(--ink);overflow-x:clip;
+        font-family:"Jost",system-ui,sans-serif;font-weight:300;
+        font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+      }
+      h1,h2,h3,.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.12;color:var(--plum);margin:0}
+      img{display:block;max-width:100%}
+      a{color:inherit}
+      .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+      section{padding:84px 0;position:relative}
+
+      /* ---------- Scroll progress ---------- */
+      .progress{
+        position:fixed;top:0;left:0;right:0;height:3px;z-index:90;
+        background:var(--grad);background-size:300% 100%;
+        transform-origin:0 50%;transform:scaleX(0);
+        animation:gradShift 7s linear infinite;
+      }
+      @keyframes gradShift{to{background-position:300% 0}}
+
+      /* ---------- Animated gradient text ---------- */
+      .grad-text{
+        background:var(--grad);background-size:300% 100%;
+        -webkit-background-clip:text;background-clip:text;
+        -webkit-text-fill-color:transparent;color:transparent;
+        animation:gradShift 6s linear infinite;
+      }
+
+      .kicker{
+        display:inline-flex;align-items:center;gap:12px;color:var(--rose-deep);
+        letter-spacing:.32em;text-transform:uppercase;font-size:.72rem;font-weight:500;
+      }
+      .kicker::before,.kicker.center::after{
+        content:"";width:34px;height:2px;border-radius:2px;flex:none;
+        background:var(--grad);background-size:300% 100%;animation:gradShift 6s linear infinite;
+        transform:scaleX(0);transform-origin:0 50%;transition:transform .8s var(--ease) .15s;
+      }
+      .kicker.center::before{transform-origin:100% 50%}
+      .in .kicker::before,.in .kicker.center::after,.kicker.in::before{transform:scaleX(1)}
+      .hero .kicker::before{transform:scaleX(1);transition-delay:.7s}
+      .sec-head{max-width:640px;margin-bottom:44px}
+      .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+      .sec-head h2{font-size:clamp(2rem,4.5vw,2.9rem);margin:12px 0 10px}
+      .sec-head p{color:var(--muted);margin:0}
+
+      /* ---------- Buttons: gradient + shine sweep ---------- */
+      .btn{
+        position:relative;overflow:hidden;isolation:isolate;
+        display:inline-flex;align-items:center;justify-content:center;gap:9px;
+        min-height:48px;padding:12px 26px;border-radius:999px;text-decoration:none;
+        font-weight:500;font-size:.95rem;letter-spacing:.04em;
+        transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s ease;
+        border:1px solid transparent;cursor:pointer;font-family:inherit;
+      }
+      .btn::after{
+        content:"";position:absolute;top:-10%;bottom:-10%;left:-90%;width:45%;
+        background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+        transform:skewX(-20deg);transition:left .65s var(--ease);pointer-events:none;
+      }
+      .btn:hover{transform:translateY(-3px)}
+      .btn:hover::after{left:135%}
+      .btn:active{transform:translateY(-1px) scale(.98)}
+      .btn-plum{
+        background:linear-gradient(110deg,var(--plum) 0%,var(--plum-2) 45%,var(--rose-deep) 100%);
+        background-size:220% 100%;color:#fdf3f6;
+        transition:transform .3s var(--ease),box-shadow .3s var(--ease),background-position .6s var(--ease);
+      }
+      .btn-plum:hover{background-position:95% 0;box-shadow:0 14px 30px rgba(71,37,64,.32)}
+      .btn-grad{
+        background:var(--grad);background-size:300% 100%;color:#fff;
+        animation:gradShift 6s linear infinite;
+        box-shadow:0 12px 28px rgba(90,80,220,.28);
+      }
+      .btn-grad:hover{box-shadow:0 18px 38px rgba(90,80,220,.4)}
+      .btn-ghost{background:transparent;border-color:var(--rose);color:var(--rose-deep)}
+      .btn-ghost:hover{background:var(--blush-soft);box-shadow:0 10px 22px rgba(183,110,121,.18)}
+      .btn-wa{background:var(--wa);color:#fff}
+      .btn-wa:hover{box-shadow:0 14px 30px rgba(34,179,88,.4)}
+      .btn-sm{min-height:40px;padding:8px 16px;font-size:.85rem}
+      .btn-danger{background:transparent;border-color:var(--rose);color:var(--rose-deep)}
+      .btn-danger:hover{background:var(--rose);color:#fff}
+      .btn-danger.confirm{background:var(--rose-deep);border-color:var(--rose-deep);color:#fff}
+      @media (prefers-color-scheme: dark){ .btn-plum{background:linear-gradient(110deg,#e9c6d8,#f3d9e6 55%,#e2b3ba);color:#33182a} }
+
+      /* ---------- Nav ---------- */
+      header{
+        position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);
+        background:color-mix(in srgb, var(--ivory) 86%, transparent);
+        border-bottom:1px solid var(--line);
+        transition:box-shadow .35s ease;
+      }
+      header.scrolled{box-shadow:0 10px 30px rgba(71,37,64,.12)}
+      header::after{
+        content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;
+        background:var(--grad);background-size:300% 100%;opacity:0;transition:opacity .4s ease;
+        animation:gradShift 7s linear infinite;
+      }
+      header.scrolled::after{opacity:.85}
+      .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+      .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+      .mono{
+        width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;
+        color:var(--rose-deep);position:relative;
+        font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-weight:700;letter-spacing:.02em;
+        background:var(--blush-soft);
+      }
+      .mono::before{
+        content:"";position:absolute;inset:0;border-radius:50%;padding:1.5px;
+        background:conic-gradient(from var(--a,0deg),var(--gold),var(--rose),var(--violet),var(--cyan),var(--gold));
+        -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+        -webkit-mask-composite:xor;mask-composite:exclude;
+        animation:ringSpin 7s linear infinite;
+      }
+      @property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
+      @keyframes ringSpin{to{--a:360deg}}
+      .brand b{font-family:"Cormorant Garamond",serif;font-size:1.28rem;font-weight:700;color:var(--plum);display:block;line-height:1.05}
+      .brand small{letter-spacing:.3em;text-transform:uppercase;font-size:.58rem;color:var(--muted)}
+      .nav-links{display:flex;gap:6px;align-items:center}
+      .nav-links a{
+        position:relative;text-decoration:none;padding:10px 13px;min-height:40px;display:inline-flex;align-items:center;
+        font-size:.92rem;letter-spacing:.05em;color:var(--ink);border-radius:999px;
+        transition:color .25s ease,background .25s ease;
+      }
+      .nav-links a:not(.nav-call)::after{
+        content:"";position:absolute;left:13px;right:13px;bottom:5px;height:2px;border-radius:2px;
+        background:var(--grad);background-size:300% 100%;
+        transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease);
+      }
+      .nav-links a:hover{background:var(--blush-soft);color:var(--rose-deep)}
+      .nav-links a:not(.nav-call):hover::after{transform:scaleX(1)}
+      .nav-call{
+        overflow:hidden;background:linear-gradient(110deg,var(--plum),var(--rose-deep));color:#fdf3f6 !important;font-weight:500;
+        transition:transform .3s var(--ease),box-shadow .3s var(--ease) !important;
+      }
+      .nav-call:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(71,37,64,.3)}
+      @media (prefers-color-scheme: dark){ .nav-call{background:linear-gradient(110deg,#e9c6d8,#e2b3ba);color:#33182a !important} }
+      .nav-admin{
+        flex:none;display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:9px 16px;border-radius:999px;
+        text-decoration:none;font-size:.88rem;font-weight:600;letter-spacing:.04em;color:var(--plum);
+        border:1.5px solid transparent;
+        background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;
+        background-size:auto,300% 100%;animation:gradShift 6s linear infinite;
+        transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+      }
+      .nav-admin:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(90,80,220,.25)}
+      @media (max-width:820px){ .nav-links a:not(.nav-call){display:none} }
+      @media (max-width:640px){
+        .brand small{display:none}
+        .brand b{font-size:1.08rem}
+        .mono{width:40px;height:40px;font-size:1rem}
+        .nav{gap:8px}
+        .nav-links a.nav-call{padding:9px 11px;font-size:.85rem}
+        .nav-admin{padding:8px 12px;font-size:.82rem}
+        .nav-admin .long{display:none}
+      }
+
+      /* ---------- Hero ---------- */
+      .hero{position:relative;overflow:hidden;padding:64px 0 84px;background:
+        radial-gradient(700px 420px at 88% -60px, var(--blush) 0%, transparent 62%),
+        radial-gradient(560px 380px at -120px 78%, var(--blush-soft) 0%, transparent 60%),
+        var(--ivory);}
+      .hero::before{
+        content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+        background:var(--grad-soft);background-size:300% 100%;
+        animation:gradShift 14s linear infinite alternate;
+        -webkit-mask:radial-gradient(640px 400px at 82% 0%,#000 0%,transparent 65%);
+        mask:radial-gradient(640px 400px at 82% 0%,#000 0%,transparent 65%);
+      }
+      .orb{position:absolute;border-radius:50%;pointer-events:none;opacity:.5;animation:orbFloat 12s ease-in-out infinite}
+      .orb-1{width:130px;height:130px;top:36px;right:6%;background:radial-gradient(circle at 32% 30%,rgba(15,181,217,.5),rgba(15,181,217,0) 68%)}
+      .orb-2{width:180px;height:180px;bottom:-40px;left:-30px;background:radial-gradient(circle at 32% 30%,rgba(139,92,246,.42),rgba(139,92,246,0) 68%);animation-delay:2.2s}
+      .orb-3{width:90px;height:90px;top:52%;left:42%;background:radial-gradient(circle at 32% 30%,rgba(47,107,255,.4),rgba(47,107,255,0) 68%);animation-delay:4s}
+      @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(14px,-22px) scale(1.07)}}
+      .petal{position:absolute;border-radius:60% 4px 60% 4px;background:var(--blush);opacity:.55;pointer-events:none;animation:drift 11s ease-in-out infinite}
+      @keyframes drift{0%,100%{transform:translateY(0) rotate(24deg)}50%{transform:translateY(-18px) rotate(42deg)}}
+      .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;position:relative}
+      .h-anim{opacity:0;animation:riseIn .95s var(--ease) forwards;animation-delay:var(--hd,0s)}
+      @keyframes riseIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+      .hero h1{font-size:clamp(2.9rem,7vw,4.9rem);font-weight:600}
+      .hero h1 .w{display:inline-block;opacity:0;animation:wordIn .9s var(--ease) forwards;animation-delay:var(--hd,0s)}
+      @keyframes wordIn{from{opacity:0;transform:translateY(46px) rotate(2.5deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+      .hero h1 em{font-style:italic}
+      .hero .tagline{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(1.25rem,2.6vw,1.55rem);color:var(--rose-deep);margin:16px 0 6px}
+      .hero p.lead{color:var(--muted);max-width:480px;margin:10px 0 30px}
+      .hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+      .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;color:var(--muted);font-size:.9rem}
+      .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+      .dot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--grad);background-size:300% 100%;animation:gradShift 5s linear infinite,dotPulse 2.6s ease-in-out infinite}
+      @keyframes dotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.45)}}
+      .hero-photo{position:relative;opacity:0;animation:photoIn 1.15s var(--ease) .35s forwards}
+      @keyframes photoIn{from{opacity:0;transform:translateY(38px) scale(.965)}to{opacity:1;transform:translateY(0) scale(1)}}
+      .hero-photo .frame{
+        border-radius:230px 230px 18px 18px;overflow:hidden;box-shadow:var(--shadow);
+        border:1px solid var(--line);aspect-ratio:4/5.1;position:relative;
+      }
+      .hero-photo .frame::after{
+        content:"";position:absolute;inset:0;pointer-events:none;
+        background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.34) 48%,transparent 62%);
+        transform:translateX(-130%);animation:frameShine 5.5s var(--ease) 1.6s infinite;
+      }
+      @keyframes frameShine{0%,55%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+      .hero-photo img{width:100%;height:112%;object-fit:cover;will-change:transform}
+      .hero-photo::before{
+        content:"";position:absolute;inset:-16px auto auto -16px;width:110px;height:110px;
+        border:1px solid var(--gold);border-radius:50%;opacity:.6;
+        animation:ringPulse 4.5s ease-in-out infinite;
+      }
+      @keyframes ringPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.1);opacity:.3}}
+      .float-card{
+        position:absolute;display:flex;gap:11px;align-items:center;background:var(--card);
+        border:1px solid var(--line);border-radius:16px;padding:11px 16px;box-shadow:var(--shadow);
+        font-size:.86rem;line-height:1.35;opacity:0;
+        animation:cardIn .9s var(--ease) forwards,bob 6s ease-in-out infinite;
+      }
+      @keyframes cardIn{from{opacity:0;transform:translateY(22px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+      @keyframes bob{0%,100%{margin-top:0}50%{margin-top:-9px}}
+      .float-card b{font-family:"Cormorant Garamond",serif;font-size:1.05rem;color:var(--plum);display:block}
+      .float-card .ic{width:38px;height:38px;flex:none;border-radius:50%;background:var(--blush-soft);display:grid;place-items:center;color:var(--rose-deep)}
+      .fc-1{left:-38px;bottom:88px;animation-delay:.95s,1.9s}
+      .fc-2{right:-14px;top:52px;animation-delay:1.15s,2.4s}
+      @media (max-width:900px){
+        .hero-grid{grid-template-columns:1fr;gap:40px}
+        .hero-photo{max-width:430px;margin:0 auto;width:100%}
+        .fc-1{left:2px}.fc-2{right:2px}
+      }
+
+      /* ---------- Ribbon / marquee ---------- */
+      .ribbon{
+        color:#f7e3ee;padding:13px 0;position:relative;max-width:100%;
+        overflow:hidden;overflow:clip;contain:paint;
+        background:linear-gradient(100deg,var(--plum) 0%,var(--rose-deep) 30%,#6d4bb0 55%,#2563eb 78%,var(--plum) 100%);
+        background-size:300% 100%;animation:gradShift 16s linear infinite;
+      }
+      @media (prefers-color-scheme: dark){ .ribbon{background:linear-gradient(100deg,#170b14,#4a2438 30%,#3c2a6e 55%,#173a75 78%,#170b14);background-size:300% 100%} }
+      .ribbon-track{display:flex;gap:0;width:max-content;flex:none;animation:slide 28s linear infinite}
+      .ribbon:hover .ribbon-track{animation-play-state:paused}
+      .ribbon-track span{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.08rem;padding:0 26px;white-space:nowrap}
+      .ribbon-track i{color:#ffd9a8;font-style:normal;display:inline-block;animation:twinkle 2.4s ease-in-out infinite}
+      .ribbon-track span:nth-child(2n) i{animation-delay:1.2s}
+      @keyframes twinkle{0%,100%{transform:scale(1) rotate(0deg);opacity:.85}50%{transform:scale(1.35) rotate(25deg);opacity:1}}
+      @keyframes slide{to{transform:translateX(-50%)}}
+
+      /* ---------- Offers ---------- */
+      .offers{padding:72px 0 4px}
+      .offers .sec-head{margin-bottom:30px}
+      .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+      @media (max-width:760px){ .offer-grid{grid-template-columns:1fr} }
+      .offer-card{
+        border-radius:18px;padding:24px 26px;position:relative;overflow:hidden;
+        border:1.5px solid transparent;
+        background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;
+        background-size:auto,300% 100%;animation:gradShift 7s linear infinite;
+        transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+      }
+      .offer-card:hover{transform:translateY(-5px);box-shadow:0 20px 38px rgba(71,37,64,.15)}
+      .offer-card h3{font-size:1.5rem;margin-bottom:5px}
+      .offer-card p{margin:0;color:var(--muted);font-size:.95rem}
+
+      /* ---------- Collections ---------- */
+      .col-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+      .col-card{
+        position:relative;border-radius:20px;overflow:hidden;text-decoration:none;
+        grid-column:span 2;aspect-ratio:3/3.9;display:block;box-shadow:0 10px 28px rgba(71,37,64,.10);
+        transition:transform .55s var(--ease),box-shadow .55s var(--ease);
+      }
+      .col-card.wide{grid-column:span 3;aspect-ratio:3/2.55}
+      .col-card::after{
+        content:"";position:absolute;inset:0;border-radius:20px;padding:2px;opacity:0;transition:opacity .45s ease;pointer-events:none;
+        background:var(--grad);background-size:300% 100%;animation:gradShift 5s linear infinite;
+        -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+        -webkit-mask-composite:xor;mask-composite:exclude;
+      }
+      .col-card:hover{transform:translateY(-9px);box-shadow:0 26px 48px rgba(71,37,64,.22)}
+      .col-card:hover::after{opacity:1}
+      .col-card img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+      .col-card:hover img{transform:scale(1.09) rotate(.6deg)}
+      .col-card .veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(43,16,36,.78) 0%,rgba(43,16,36,.18) 46%,transparent 70%);transition:opacity .5s ease}
+      .col-card:hover .veil{opacity:.92}
+      .col-card .txt{position:absolute;left:20px;right:20px;bottom:16px;color:#fff;transition:transform .5s var(--ease)}
+      .col-card:hover .txt{transform:translateY(-5px)}
+      .col-card h3{color:#fff;font-size:1.55rem}
+      .col-card p{margin:3px 0 0;font-size:.88rem;color:#f3dbe4;font-weight:300}
+      .col-card .go{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#ecc9a3;margin-top:8px;display:inline-block;transition:transform .4s var(--ease),color .3s ease}
+      .col-card:hover .go{transform:translateX(7px);color:#fff}
+      @media (max-width:820px){
+        .col-grid{grid-template-columns:1fr 1fr}
+        .col-card,.col-card.wide{grid-column:span 1;aspect-ratio:3/3.6}
+        .col-card.wide{grid-column:span 2;aspect-ratio:16/10}
+      }
+      @media (max-width:430px){ .col-grid{grid-template-columns:1fr} .col-card,.col-card.wide{grid-column:span 1;aspect-ratio:4/3.4} }
+
+      /* ---------- Products ---------- */
+      .shop{background:
+        radial-gradient(620px 340px at 100% 0%, var(--blush-soft) 0%, transparent 55%),
+        var(--ivory-2)}
+      .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+      .chip{
+        position:relative;overflow:hidden;min-height:44px;padding:9px 20px;border-radius:999px;border:1px solid var(--rose);
+        background:transparent;color:var(--rose-deep);font-family:"Jost",sans-serif;font-size:.92rem;
+        letter-spacing:.05em;cursor:pointer;transition:transform .3s var(--ease),background .3s ease,color .3s ease,box-shadow .3s ease,border-color .3s ease;
+      }
+      .chip::after{
+        content:"";position:absolute;top:-10%;bottom:-10%;left:-90%;width:45%;
+        background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);
+        transform:skewX(-20deg);transition:left .6s var(--ease);pointer-events:none;
+      }
+      .chip:hover{background:var(--blush-soft);transform:translateY(-2px)}
+      .chip:hover::after{left:135%}
+      .chip:active{transform:scale(.96)}
+      .chip.active{
+        background:var(--grad);background-size:300% 100%;animation:gradShift 6s linear infinite;
+        border-color:transparent;color:#fff;box-shadow:0 10px 22px rgba(90,80,220,.3);
+      }
+      .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+      @media (max-width:1020px){ .prod-grid{grid-template-columns:repeat(3,1fr)} }
+      @media (max-width:760px){ .prod-grid{grid-template-columns:repeat(2,1fr);gap:14px} }
+      @media (max-width:380px){ .prod-grid{grid-template-columns:1fr} }
+      .prod{
+        background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+        display:flex;flex-direction:column;position:relative;
+        transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s ease;
+      }
+      .prod::before{
+        content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:2;
+        background:var(--grad);background-size:300% 100%;animation:gradShift 5s linear infinite;
+        transform:scaleX(0);transform-origin:0 50%;transition:transform .5s var(--ease);
+      }
+      .prod:hover{transform:translateY(-9px);box-shadow:0 24px 44px rgba(71,37,64,.18);border-color:transparent}
+      .prod:hover::before{transform:scaleX(1)}
+      .prod.pop{animation:popIn .55s var(--ease)}
+      @keyframes popIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+      .prod .ph{position:relative;aspect-ratio:3/3.4;overflow:hidden}
+      .prod .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+      .prod:hover .ph img{transform:scale(1.09) rotate(.5deg)}
+      .prod .ph::after{
+        content:"";position:absolute;inset:0;pointer-events:none;
+        background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);
+        transform:translateX(-130%);transition:transform .9s var(--ease);
+      }
+      .prod:hover .ph::after{transform:translateX(130%)}
+      .tag{
+        position:absolute;top:12px;left:12px;z-index:2;background:rgba(253,248,244,.94);color:var(--rose-deep);
+        font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+        padding:5px 11px;border-radius:999px;transition:transform .35s var(--ease);
+      }
+      .prod:hover .tag{transform:translateY(-2px) scale(1.05)}
+      .tag.bridal{background:var(--plum);color:#f7e3ee}
+      .prod .bd{padding:16px 17px 18px;display:flex;flex-direction:column;gap:5px;flex:1}
+      .prod .cat{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600}
+      .prod h3{font-size:1.32rem;transition:color .3s ease}
+      .prod:hover h3{color:var(--rose-deep)}
+      .prod .desc{font-size:.88rem;color:var(--muted);margin:0;flex:1}
+      .prod .meta{font-size:.79rem;color:var(--muted);margin:2px 0 0;letter-spacing:.02em}
+      .prod .meta b{color:var(--rose-deep);font-weight:600}
+      .price-row{display:flex;align-items:baseline;gap:9px;margin-top:9px;flex-wrap:wrap}
+      .price{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-weight:700;color:var(--plum)}
+      .demo-note{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--rose);border-radius:999px;padding:2px 8px}
+      .order{
+        position:relative;overflow:hidden;margin-top:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;
+        border-radius:999px;border:1px solid var(--wa);color:var(--wa);text-decoration:none;font-weight:500;font-size:.9rem;
+        transition:transform .3s var(--ease),background .3s ease,color .3s ease,box-shadow .3s ease;padding:9px 14px;text-align:center;
+      }
+      .order::after{
+        content:"";position:absolute;top:-10%;bottom:-10%;left:-90%;width:45%;
+        background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);
+        transform:skewX(-20deg);transition:left .6s var(--ease);pointer-events:none;
+      }
+      .order:hover{background:var(--wa);color:#fff;transform:translateY(-2px);box-shadow:0 12px 24px rgba(34,179,88,.32)}
+      .order:hover::after{left:135%}
+      .prod.hide{display:none}
+      .empty-note{grid-column:1/-1;text-align:center;color:var(--muted);padding:34px 10px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.25rem}
+
+      /* ---------- About ---------- */
+      .about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;align-items:center}
+      .about-photo{position:relative}
+      .about-photo .frame{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/4.6}
+      .about-photo img{width:100%;height:112%;object-fit:cover;will-change:transform}
+      .about-photo .stamp{
+        position:absolute;right:-14px;bottom:26px;color:#f7e3ee;border-radius:16px;
+        padding:14px 20px;text-align:center;box-shadow:var(--shadow);
+        background:linear-gradient(120deg,var(--plum),var(--rose-deep) 60%,#6d4bb0);
+        background-size:250% 100%;animation:gradShift 8s linear infinite;
+        transition:transform .45s var(--ease);
+      }
+      .about-photo:hover .stamp{transform:translateY(-5px) rotate(-1.5deg)}
+      @media (prefers-color-scheme: dark){ .about-photo .stamp{background:linear-gradient(120deg,#e9c6d8,#e2b3ba);color:#33182a} }
+      .about-photo .stamp b{font-family:"Cormorant Garamond",serif;font-size:1.5rem;display:block;line-height:1}
+      .about-photo .stamp span{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+      .about-txt p{color:var(--muted)}
+      .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+      .stat{padding-top:12px;position:relative}
+      .stat::before{
+        content:"";position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px;
+        background:var(--grad);background-size:300% 100%;animation:gradShift 6s linear infinite;
+        transform:scaleX(0);transform-origin:0 50%;transition:transform 1s var(--ease) .2s;
+      }
+      .in .stat::before,.stat.in::before{transform:scaleX(1)}
+      .stat b{font-family:"Cormorant Garamond",serif;font-size:1.7rem;color:var(--rose-deep);display:block;line-height:1}
+      .stat span{font-size:.8rem;color:var(--muted);letter-spacing:.06em}
+      @media (max-width:860px){ .about-grid{grid-template-columns:1fr;gap:38px} .about-photo{max-width:440px} }
+
+      /* ---------- Why us ---------- */
+      .why{color:#f3dbe4;overflow:hidden;
+        background:linear-gradient(130deg,var(--plum) 0%,#5d3153 38%,#4a3572 72%,#2c3a75 100%);
+        background-size:260% 100%;animation:gradShift 18s linear infinite alternate;
+      }
+      @media (prefers-color-scheme: dark){ .why{background:linear-gradient(130deg,#170b14,#2a1830 40%,#241a4a 75%,#12233f);background-size:260% 100%} }
+      .why .kicker{color:#e9b7c6}
+      .why h2{color:#fdf3f6}
+      .why .sec-head p{color:#d9b6c6}
+      .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+      @media (max-width:960px){ .why-grid{grid-template-columns:repeat(2,1fr)} }
+      @media (max-width:520px){ .why-grid{grid-template-columns:1fr} }
+      .why-card{
+        border:1px solid rgba(243,219,228,.22);border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;
+        background:rgba(255,255,255,.045);
+        transition:background .35s ease,transform .45s var(--ease),border-color .35s ease;
+      }
+      .why-card::before{
+        content:"";position:absolute;top:0;left:0;right:0;height:3px;
+        background:var(--grad);background-size:300% 100%;animation:gradShift 5s linear infinite;
+        transform:scaleX(0);transform-origin:0 50%;transition:transform .5s var(--ease);
+      }
+      .why-card:hover{background:rgba(255,255,255,.1);transform:translateY(-7px);border-color:rgba(243,219,228,.45)}
+      .why-card:hover::before{transform:scaleX(1)}
+      .why-card .ic{
+        width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin-bottom:16px;
+        border:1px solid var(--gold);color:#ecc9a3;
+        transition:transform .5s var(--ease),background .35s ease;
+      }
+      .why-card:hover .ic{transform:rotate(-8deg) scale(1.12);background:rgba(195,154,107,.16)}
+      .why-card h3{color:#fdf3f6;font-size:1.42rem;margin-bottom:7px}
+      .why-card p{margin:0;font-size:.93rem;color:#dec0cf}
+
+      /* ---------- Visit ---------- */
+      .visit-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
+      @media (max-width:860px){ .visit-grid{grid-template-columns:1fr} }
+      .visit-card{
+        background:var(--card);border:1px solid var(--line);border-radius:22px;padding:32px;
+        box-shadow:0 10px 28px rgba(71,37,64,.07);
+        transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+      }
+      .visit-card:hover{transform:translateY(-5px);box-shadow:0 22px 42px rgba(71,37,64,.14)}
+      .visit-card h3{font-size:1.6rem;margin-bottom:14px}
+      .row{display:flex;gap:14px;padding:13px 0;border-bottom:1px dashed var(--line);align-items:flex-start;transition:transform .35s var(--ease)}
+      .row:hover{transform:translateX(5px)}
+      .row:last-of-type{border-bottom:none}
+      .row .ic{width:42px;height:42px;flex:none;border-radius:50%;background:var(--blush-soft);display:grid;place-items:center;color:var(--rose-deep);transition:transform .4s var(--ease)}
+      .row:hover .ic{transform:scale(1.12) rotate(-6deg)}
+      .row b{display:block;font-weight:500;color:var(--plum);font-size:.95rem}
+      .row p,.row a.val{margin:2px 0 0;color:var(--muted);font-size:.95rem;text-decoration:none}
+      .row a.val:hover{color:var(--rose-deep)}
+      .visit-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+      .map-card{
+        border-radius:22px;overflow:hidden;position:relative;min-height:320px;
+        background:
+          radial-gradient(420px 240px at 80% 8%, var(--blush) 0%, transparent 60%),
+          linear-gradient(150deg,var(--blush-soft),var(--ivory-2));
+        border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;padding:34px;
+        transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+      }
+      .map-card:hover{transform:translateY(-5px);box-shadow:0 22px 42px rgba(71,37,64,.13)}
+      .map-pin{
+        width:74px;height:74px;margin:0 auto 16px;border-radius:50% 50% 50% 6px;transform:rotate(-45deg);
+        display:grid;place-items:center;box-shadow:var(--shadow);
+        background:linear-gradient(135deg,var(--rose),#8b5cf6);
+        animation:pinBob 3.2s ease-in-out infinite;
+      }
+      @keyframes pinBob{0%,100%{transform:rotate(-45deg) translate(0,0)}50%{transform:rotate(-45deg) translate(-5px,-5px)}}
+      .map-pin svg{transform:rotate(45deg)}
+      .map-card h3{font-size:1.7rem}
+      .map-card p{color:var(--muted);max-width:340px;margin:8px auto 20px}
+
+      /* ---------- Footer ---------- */
+      footer{border-top:1px solid var(--line);padding:38px 0 110px;text-align:center;color:var(--muted);font-size:.9rem;position:relative;overflow:hidden}
+      footer::before{
+        content:"";position:absolute;top:0;left:0;right:0;height:2px;
+        background:var(--grad);background-size:300% 100%;animation:gradShift 7s linear infinite;
+      }
+      footer .fb{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:700}
+      footer p{margin:6px 0}
+      footer .admin-link{
+        display:inline-block;margin-top:10px;font-weight:600;letter-spacing:.05em;color:var(--rose-deep);
+        text-decoration:none;border-bottom:1.5px solid var(--rose);padding-bottom:1px;transition:color .3s ease,border-color .3s ease;
+      }
+      footer .admin-link:hover{color:var(--violet);border-color:var(--violet)}
+      footer .credit-line{margin-top:22px;font-weight:600;letter-spacing:.06em;color:var(--rose-deep);font-size:.92rem}
+
+      /* ---------- WhatsApp float ---------- */
+      .wa-float{
+        position:fixed;right:18px;bottom:18px;z-index:80;display:inline-flex;align-items:center;gap:10px;
+        background:var(--wa);color:#fff;text-decoration:none;font-weight:500;font-size:.95rem;
+        padding:13px 20px 13px 14px;min-height:56px;border-radius:999px;box-shadow:0 14px 32px rgba(20,120,60,.4);
+        opacity:0;animation:waIn .8s var(--ease) 1.4s forwards,waBob 5s ease-in-out 2.4s infinite;
+      }
+      @keyframes waIn{from{opacity:0;transform:translateY(26px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+      @keyframes waBob{0%,100%{margin-bottom:0}50%{margin-bottom:7px}}
+      .wa-float:hover{transform:translateY(-3px) scale(1.04)}
+      .wa-float::after{
+        content:"";position:absolute;inset:0;border-radius:999px;border:2px solid var(--wa);
+        animation:pulse 2.2s ease-out infinite;pointer-events:none;
+      }
+      .wa-float::before{
+        content:"";position:absolute;inset:0;border-radius:999px;border:2px solid var(--cyan);
+        animation:pulse 2.2s ease-out 1.1s infinite;pointer-events:none;
+      }
+      @keyframes pulse{0%{transform:scale(1);opacity:.65}70%,100%{transform:scale(1.18);opacity:0}}
+      @media (max-width:520px){ .wa-float .lbl{display:none} .wa-float{padding:14px;border-radius:50%} }
+
+      /* ---------- Scroll reveal system ---------- */
+      .rv{opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease),transform .85s var(--ease);transition-delay:var(--d,0s)}
+      .rv-left{transform:translateX(-38px)}
+      .rv-right{transform:translateX(38px)}
+      .rv-zoom{transform:scale(.94) translateY(14px)}
+      .rv.in{opacity:1;transform:none}
+      section .sec-head.rv{transform:translateY(24px)}
+      section .sec-head.rv.in{transform:none}
+
+      /* ---------- Admin panel ---------- */
+      .admin-overlay{
+        position:fixed;inset:0;z-index:300;overflow-y:auto;overflow-x:hidden;
+        background:
+          radial-gradient(640px 380px at 90% -40px, var(--blush) 0%, transparent 60%),
+          var(--ivory);
+        animation:adminIn .45s var(--ease);
+      }
+      @keyframes adminIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+      .admin-shell{max-width:980px;margin:0 auto;padding:22px 20px 70px}
+      .admin-top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+      .admin-brand{display:flex;align-items:center;gap:12px;min-width:0}
+      .admin-brand b{font-family:"Cormorant Garamond",serif;font-size:1.45rem;color:var(--plum);display:block;line-height:1.05}
+      .admin-brand small{color:var(--muted);font-size:.82rem;letter-spacing:.04em}
+      .login-card{
+        max-width:430px;margin:6vh auto 0;background:var(--card);border-radius:22px;padding:36px 32px;
+        box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden;
+        border:1.5px solid transparent;
+        background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;
+        background-size:auto,300% 100%;animation:gradShift 7s linear infinite;
+      }
+      .login-card h2{font-size:2rem;margin-bottom:8px}
+      .login-card p{color:var(--muted);margin:0 0 18px;font-size:.95rem}
+      .login-card label{display:block;text-align:left;font-weight:500;font-size:.9rem;color:var(--plum);margin-bottom:6px}
+      .pin-input{
+        width:100%;min-height:56px;border:1.5px solid var(--line);border-radius:14px;background:var(--ivory);
+        font-family:inherit;font-size:1.5rem;letter-spacing:.55em;text-align:center;color:var(--ink);
+        padding:10px 12px;margin:6px 0 4px;outline:none;transition:border-color .3s ease,box-shadow .3s ease;
+      }
+      .pin-input:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(139,92,246,.15)}
+      .pin-hint{font-size:.85rem !important;background:var(--blush-soft);border-radius:10px;padding:8px 12px}
+      .pin-hint b{color:var(--rose-deep);letter-spacing:.2em}
+      .pin-error{color:#c0392b !important;font-weight:500;font-size:.9rem !important}
+      .shake{animation:shake .45s ease}
+      @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(9px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+      .login-card .btn{width:100%;margin-top:8px}
+      .admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+      .atab{
+        min-height:44px;padding:10px 20px;border-radius:999px;border:1px solid var(--rose);cursor:pointer;
+        background:transparent;color:var(--rose-deep);font-family:inherit;font-size:.93rem;font-weight:500;letter-spacing:.03em;
+        transition:transform .3s var(--ease),background .3s ease,color .3s ease,box-shadow .3s ease;
+      }
+      .atab:hover{transform:translateY(-2px);background:var(--blush-soft)}
+      .atab.active{
+        background:var(--grad);background-size:300% 100%;animation:gradShift 6s linear infinite;
+        border-color:transparent;color:#fff;box-shadow:0 10px 22px rgba(90,80,220,.3);
+      }
+      .pane-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+      .pane-head h3{font-size:1.65rem}
+      .pane-note{color:var(--muted);font-size:.9rem;margin:-6px 0 16px}
+      .admin-list{display:flex;flex-direction:column;gap:12px}
+      .admin-row{
+        display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);
+        border-radius:16px;padding:12px 14px;flex-wrap:wrap;
+        transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+      }
+      .admin-row:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(71,37,64,.1)}
+      .admin-row img{width:56px;height:56px;flex:none;border-radius:12px;object-fit:cover;border:1px solid var(--line)}
+      .admin-row .info{flex:1;min-width:150px}
+      .admin-row .info b{display:block;font-weight:600;color:var(--plum);font-size:1rem;line-height:1.3}
+      .admin-row .info span{color:var(--muted);font-size:.85rem}
+      .admin-row .acts{display:flex;gap:8px;flex-wrap:wrap}
+      .pill{
+        display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+        padding:3px 10px;border-radius:999px;background:var(--blush-soft);color:var(--rose-deep);
+      }
+      .pill.on{background:#e2f6ea;color:#157347}
+      .pill.off{background:#f3e2e2;color:#a33}
+      .admin-form{
+        background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;
+        margin-top:18px;box-shadow:0 12px 30px rgba(71,37,64,.08);animation:popIn .5s var(--ease);
+      }
+      .admin-form h3{font-size:1.5rem;margin-bottom:16px}
+      .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+      @media (max-width:640px){ .fgrid{grid-template-columns:1fr} }
+      .fgrid .full{grid-column:1/-1}
+      .field label{display:block;font-weight:500;font-size:.88rem;color:var(--plum);margin-bottom:5px}
+      .field input,.field select,.field textarea{
+        width:100%;min-height:48px;border:1.5px solid var(--line);border-radius:12px;background:var(--ivory);
+        font-family:inherit;font-size:.97rem;font-weight:300;color:var(--ink);padding:10px 14px;outline:none;
+        transition:border-color .3s ease,box-shadow .3s ease;
+      }
+      .field textarea{min-height:84px;resize:vertical}
+      .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(139,92,246,.13)}
+      .field .hint{font-size:.78rem;color:var(--muted);margin-top:4px}
+      .photo-preview{display:flex;align-items:center;gap:12px;margin-top:8px}
+      .photo-preview img{width:64px;height:64px;border-radius:12px;object-fit:cover;border:1px solid var(--line)}
+      .photo-preview span{font-size:.82rem;color:var(--muted)}
+      .form-acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+      .reset-zone{margin-top:26px;border-top:1px dashed var(--line);padding-top:20px}
+      .reset-zone p{color:var(--muted);font-size:.9rem;margin:0 0 12px}
+      .toast{
+        position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:400;
+        background:var(--plum);color:#fdf3f6;font-weight:500;font-size:.93rem;
+        padding:13px 24px;border-radius:999px;box-shadow:0 16px 34px rgba(30,10,25,.35);
+        opacity:0;pointer-events:none;transition:opacity .35s ease,transform .35s var(--ease);max-width:92vw;text-align:center;
+      }
+      .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+      @media (prefers-color-scheme: dark){ .toast{background:#e9c6d8;color:#33182a} }
+
+      /* ---------- Virtual try-on studio ---------- */
+      .studio{
+        --accent:#b76e79;
+        overflow:hidden;padding:96px 0 90px;
+        background:
+          radial-gradient(760px 420px at 50% -80px, #ffffff 0%, transparent 60%),
+          linear-gradient(180deg,#f8f8f9 0%,#f4f2f3 55%,#efedef 100%);
+      }
+      @media (prefers-color-scheme: dark){ .studio{background:linear-gradient(180deg,#2b1a28,#241521 60%,#20121d)} }
+      .studio::after{
+        content:"";position:absolute;left:0;right:0;bottom:0;height:190px;z-index:0;pointer-events:none;
+        background:linear-gradient(180deg,transparent,rgba(255,255,255,.55));
+        border-top:1px solid rgba(255,255,255,.65);
+      }
+      @media (prefers-color-scheme: dark){ .studio::after{background:linear-gradient(180deg,transparent,rgba(255,255,255,.05));border-top-color:rgba(255,255,255,.08)} }
+      .stage-area{transition:opacity .38s ease,transform .38s ease}
+      .stage-area.fading{opacity:0;transform:scale(.982)}
+      .bigword{transition:opacity .38s ease}
+      .bigword.fading{opacity:0}
+      .tryon-bar{transition:opacity .38s ease}
+      .tryon-bar.fading{opacity:0}
+      .stage-wrap::before{
+        content:"";position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);z-index:0;
+        width:125%;height:40px;border-radius:50%;pointer-events:none;
+        background:radial-gradient(ellipse at center,rgba(60,35,55,.3) 0%,rgba(60,35,55,.12) 45%,transparent 70%);
+        filter:blur(3px);
+      }
+      .stage-wrap::after{
+        content:"";position:absolute;left:50%;bottom:-30px;transform:translateX(-50%);z-index:0;
+        width:105%;height:52px;border-radius:50%;pointer-events:none;
+        background:radial-gradient(ellipse at center,rgba(255,255,255,.95) 0%,rgba(255,255,255,.35) 50%,transparent 72%);
+        filter:blur(4px);
+      }
+      .stage{z-index:1}
+      .tb-thumb{width:46px;height:46px;flex:none;border-radius:14px;object-fit:cover;border:1px solid rgba(255,255,255,.85);box-shadow:0 8px 18px rgba(71,37,64,.16)}
+      .bigword{
+        position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);z-index:0;
+        font-family:"Cormorant Garamond",serif;font-weight:700;line-height:1;white-space:nowrap;
+        font-size:clamp(7rem,24vw,21rem);letter-spacing:.04em;pointer-events:none;user-select:none;
+        background:linear-gradient(100deg,rgba(183,110,121,.16),rgba(195,154,107,.14) 35%,rgba(139,92,246,.13) 70%,rgba(15,181,217,.12));
+        background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+        animation:gradShift 16s linear infinite,wordFloat 11s ease-in-out infinite;
+      }
+      @keyframes wordFloat{0%,100%{margin-top:0}50%{margin-top:-14px}}
+      .studio .wrap{position:relative;z-index:2}
+      .studio .sec-head{margin-bottom:8px}
+      .tryon-tabs{
+        display:flex;gap:4px;justify-content:flex-start;max-width:max-content;margin:22px auto 6px;
+        padding:6px;border-radius:999px;overflow-x:auto;max-width:100%;
+        background:rgba(255,255,255,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+        border:1px solid rgba(255,255,255,.75);box-shadow:0 14px 34px rgba(71,37,64,.12);
+      }
+      @media (prefers-color-scheme: dark){ .tryon-tabs{background:rgba(46,26,41,.55);border-color:rgba(255,255,255,.14)} }
+      .ttab{
+        flex:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:999px;
+        border:1px solid transparent;background:transparent;color:var(--muted);cursor:pointer;
+        font-family:inherit;font-size:.93rem;font-weight:500;letter-spacing:.04em;
+        transition:transform .3s var(--ease),background .3s ease,color .3s ease,box-shadow .3s ease;
+      }
+      .ttab svg{flex:none}
+      .ttab:hover{transform:translateY(-2px);color:var(--rose-deep)}
+      .ttab.active{
+        background:var(--accent);color:#fff;
+        box-shadow:0 10px 22px rgba(71,37,64,.28);
+      }
+      .stage-area{position:relative;margin-top:8px}
+      .stage-wrap{display:grid;place-items:center;position:relative;z-index:3;padding:26px 0 8px;pointer-events:none}
+      .stage{
+        pointer-events:auto;position:relative;width:min(318px,74vw);aspect-ratio:3/4.35;
+        border-radius:170px 170px 22px 22px;overflow:hidden;background:var(--card);
+        border:1px solid rgba(255,255,255,.8);
+        box-shadow:0 34px 70px rgba(71,37,64,.22),0 0 0 6px rgba(255,255,255,.35);
+        transition:box-shadow .5s ease;
+      }
+      .stage::after{
+        content:"";position:absolute;inset:0;pointer-events:none;
+        background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.3) 50%,transparent 66%);
+        transform:translateX(-130%);transition:transform .8s var(--ease);
+      }
+      .stage.swap::after{transform:translateX(130%)}
+      .stage img.outfit{width:100%;height:100%;object-fit:cover;animation:stageIn .45s var(--ease)}
+      @keyframes stageIn{from{opacity:.35;transform:scale(1.045)}to{opacity:1;transform:scale(1)}}
+      .stage-chip{
+        position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:4;max-width:92%;
+        display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;white-space:nowrap;
+        background:rgba(255,255,255,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+        border:1px solid rgba(255,255,255,.8);box-shadow:0 10px 24px rgba(71,37,64,.14);
+        font-size:.83rem;font-weight:500;color:var(--plum);
+      }
+      .stage-chip b{font-family:"Cormorant Garamond",serif;font-size:.98rem}
+      .stage-chip .p{color:var(--rose-deep);font-weight:600}
+      @media (prefers-color-scheme: dark){ .stage-chip{background:rgba(46,26,41,.62);color:#f3d9e6} }
+      .stage-shoe{
+        position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:4;text-align:center;
+        animation:stageIn .45s var(--ease);
+      }
+      .stage-shoe img{
+        width:96px;height:96px;object-fit:cover;border-radius:18px;margin:0 auto;
+        border:2px solid rgba(255,255,255,.9);box-shadow:0 16px 30px rgba(71,37,64,.3);
+      }
+      .stage-shoe span{
+        display:inline-block;margin-top:7px;padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.06em;
+        background:rgba(255,255,255,.68);backdrop-filter:blur(10px);color:var(--plum);
+        border:1px solid rgba(255,255,255,.8);
+      }
+      @media (prefers-color-scheme: dark){ .stage-shoe span{background:rgba(46,26,41,.68);color:#f3d9e6} }
+      .coverflow{
+        position:absolute;left:0;right:0;top:0;bottom:0;z-index:2;
+        overflow:hidden;pointer-events:none;
+      }
+      .cf-card{
+        position:absolute;left:0;top:50%;width:158px;border-radius:20px;padding:12px;cursor:pointer;text-align:left;
+        pointer-events:auto;
+        background:rgba(255,255,255,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+        border:1px solid rgba(255,255,255,.75);box-shadow:0 18px 36px rgba(71,37,64,.13);
+        font-family:inherit;color:var(--ink);will-change:transform,opacity;
+        transition:box-shadow .35s var(--ease),border-color .35s ease;
+      }
+      @media (prefers-color-scheme: dark){ .cf-card{background:rgba(46,26,41,.55);border-color:rgba(255,255,255,.14)} }
+      .cf-card:hover{box-shadow:0 24px 44px rgba(71,37,64,.2)}
+      .cf-card.worn{border-color:var(--accent);box-shadow:0 20px 40px rgba(71,37,64,.28)}
+      .cf-card .ph{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:3/3.2}
+      .cf-card .ph img{width:100%;height:100%;object-fit:cover}
+      .cf-try{
+        position:absolute;right:8px;bottom:8px;width:38px;height:38px;border-radius:50%;border:none;cursor:pointer;
+        display:grid;place-items:center;color:#fff;
+        background:var(--accent);
+        box-shadow:0 8px 18px rgba(71,37,64,.35);transition:transform .3s var(--ease);
+      }
+      .cf-try:hover{transform:scale(1.14) rotate(90deg)}
+      .cf-card h4{font-family:"Cormorant Garamond",serif;font-size:1.08rem;font-weight:600;color:var(--plum);margin:10px 2px 1px;line-height:1.15}
+      .cf-card .cp{font-size:.82rem;color:var(--rose-deep);font-weight:600;margin:0 2px}
+      .cf-card .cs{font-size:.72rem;color:var(--muted);margin:1px 2px 2px;letter-spacing:.03em}
+      .cf-nav{
+        position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:48px;height:48px;border-radius:50%;
+        border:1px solid rgba(255,255,255,.8);cursor:pointer;display:grid;place-items:center;color:var(--plum);
+        background:rgba(255,255,255,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+        box-shadow:0 14px 30px rgba(71,37,64,.16);transition:transform .3s var(--ease),background .3s ease;
+      }
+      .cf-nav:hover{transform:translateY(-50%) scale(1.1);background:rgba(255,255,255,.85)}
+      .cf-nav.prev{left:max(10px,2vw)}
+      .cf-nav.next{right:max(10px,2vw)}
+      @media (prefers-color-scheme: dark){ .cf-nav{background:rgba(46,26,41,.6);color:#f3d9e6} }
+      .tryon-bar{
+        position:relative;z-index:4;margin:20px auto 0;max-width:760px;
+        display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;
+        padding:13px 22px;border-radius:999px;
+        background:rgba(255,255,255,.58);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+        border:1px solid rgba(255,255,255,.78);box-shadow:0 18px 38px rgba(71,37,64,.13);
+      }
+      @media (prefers-color-scheme: dark){ .tryon-bar{background:rgba(46,26,41,.58);border-color:rgba(255,255,255,.14)} }
+      .tryon-bar .tb-ic{
+        width:42px;height:42px;flex:none;border-radius:50%;display:grid;place-items:center;color:#fff;
+        background:var(--accent);transition:background .4s ease;
+      }
+      .tryon-bar .tb-name{font-family:"Cormorant Garamond",serif;font-size:1.18rem;font-weight:700;color:var(--plum);line-height:1.1}
+      .tryon-bar .tb-sub{font-size:.78rem;color:var(--muted)}
+      .swatches{display:flex;gap:8px;align-items:center}
+      .swatch{
+        width:26px;height:26px;border-radius:50%;cursor:pointer;padding:0;flex:none;
+        border:2px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(71,37,64,.25);
+        transition:transform .3s var(--ease),box-shadow .3s ease;
+      }
+      .swatch:hover{transform:scale(1.18)}
+      .swatch.active{box-shadow:0 0 0 2px #fff,0 0 0 4.5px var(--accent);transform:scale(1.12)}
+      .tryon-bar .tb-order{
+        margin-left:auto;display:inline-flex;align-items:center;gap:7px;min-height:42px;padding:9px 18px;border-radius:999px;
+        background:var(--wa);color:#fff;text-decoration:none;font-weight:500;font-size:.88rem;
+        transition:transform .3s var(--ease),box-shadow .3s ease;
+      }
+      .tryon-bar .tb-order:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(34,179,88,.35)}
+      @media (max-width:640px){
+        .tryon-tabs{flex-wrap:wrap;justify-content:center;border-radius:26px;max-width:100%}
+        .ttab{padding:9px 15px;font-size:.88rem}
+      }
+      @media (max-width:900px){
+        .stage-area{display:flex;flex-direction:column}
+        .stage-wrap{order:1;padding-top:16px}
+        .coverflow{position:relative;top:auto;bottom:auto;transform:none;order:2;margin-top:6px;height:264px}
+        .cf-nav{display:none}
+        .cf-card{width:138px}
+        .tryon-bar{border-radius:24px;margin-top:8px}
+        .tryon-bar .tb-order{margin-left:0}
+      }
+
+      /* ---------- 2026 carousel mechanics (orbit / rail / looks) ---------- */
+      .mech{background:#fbf6ef;color:#17120f;padding:88px 0}
+      .mech.alt{background:#f6efe6}
+      @media (prefers-color-scheme: dark){ .mech{background:#241722} .mech.alt{background:#2a1a26} }
+      .mech .m-kicker{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#9a8a83;font-weight:600}
+      .mech h2.m-title{font-family:"Jost",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:#17120f;font-size:clamp(1.5rem,3.4vw,2.2rem);margin:10px 0 8px}
+      @media (prefers-color-scheme: dark){ .mech h2.m-title{color:#f6e9ee} }
+      .mech .m-sub{color:#8a7d78;max-width:560px;margin:0;font-size:.97rem}
+      .mech .m-head{border-bottom:1px solid #ddd2c9;padding-bottom:22px;margin-bottom:34px}
+      @media (prefers-color-scheme: dark){ .mech .m-head{border-bottom-color:#4a2c40} }
+      .m-pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#111;color:#fff;border:none;border-radius:999px;min-height:48px;padding:12px 28px;font-family:inherit;font-weight:600;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s ease}
+      .m-pill:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(20,10,15,.28)}
+      .m-pill.ghost{background:transparent;color:#111;border:1.5px solid #111}
+      @media (prefers-color-scheme: dark){ .m-pill.ghost{color:#f6e9ee;border-color:#f6e9ee} }
+
+      /* Orbit wheel */
+      .orbit-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:36px;align-items:center}
+      @media (max-width:900px){ .orbit-grid{grid-template-columns:1fr} }
+      .orbit-stage{position:relative;height:430px;border-radius:24px;background:radial-gradient(520px 300px at 50% 88%,#fff 0%,#f3e9dd 62%,transparent 100%);border:1px solid #e7dbce;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+      .orbit-stage.dragging{cursor:grabbing}
+      @media (prefers-color-scheme: dark){ .orbit-stage{background:radial-gradient(520px 300px at 50% 88%,#3a2434 0%,#2a1a26 62%,transparent 100%);border-color:#4a2c40} }
+      .orbit-ring{position:absolute;left:50%;top:50%;width:78%;height:62%;transform:translate(-50%,-50%);border:1.5px solid #ddd0c2;border-radius:50%;pointer-events:none}
+      .orbit-hint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:#a3938a;white-space:nowrap;pointer-events:none}
+      .orbit-card{position:absolute;left:0;top:0;width:132px;margin-left:-66px;margin-top:-88px;background:#fff;border:1px solid #e9ded2;border-radius:16px;padding:8px;box-shadow:0 16px 32px rgba(60,35,25,.14);cursor:pointer;text-align:left;font-family:inherit;will-change:transform,opacity;transition:transform .5s var(--ease),opacity .5s ease}
+      .orbit-stage.dragging .orbit-card{transition:none}
+      .orbit-card img{width:100%;aspect-ratio:3/3.4;object-fit:cover;border-radius:11px;pointer-events:none}
+      .orbit-card span{display:block;font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#17120f;margin-top:7px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .orbit-info .o-name{font-family:"Jost",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,3.6vw,2.4rem);line-height:1.08;color:#111;margin:6px 0 4px}
+      @media (prefers-color-scheme: dark){ .orbit-info .o-name{color:#fff} }
+      .orbit-info .o-coll{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:#9a8a83;font-weight:600}
+      .orbit-info .o-price{font-size:1.35rem;font-weight:600;color:#111;margin:8px 0 4px}
+      @media (prefers-color-scheme: dark){ .orbit-info .o-price{color:#f6e9ee} }
+      .orbit-info .o-desc{color:#8a7d78;font-size:.94rem;margin:6px 0 16px}
+      .m-label{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:#9a8a83;font-weight:600;display:block;margin:14px 0 8px}
+      .size-row{display:flex;flex-wrap:wrap;gap:8px}
+      .size-box{min-width:46px;min-height:44px;padding:8px 12px;border:1.5px solid #cfc2b6;background:transparent;color:#17120f;border-radius:10px;font-family:inherit;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .25s ease}
+      .size-box:hover{border-color:#111}
+      .size-box.active{background:#111;color:#fff;border-color:#111}
+      @media (prefers-color-scheme: dark){ .size-box{color:#f6e9ee;border-color:#5a3d50} .size-box.active{background:#f6e9ee;color:#241722;border-color:#f6e9ee} }
+      .orbit-thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+      .orbit-thumbs button{width:58px;height:58px;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:#fff;transition:transform .25s ease,border-color .25s ease}
+      .orbit-thumbs button img{width:100%;height:100%;object-fit:cover}
+      .orbit-thumbs button:hover{transform:translateY(-3px)}
+      .orbit-thumbs button.active{border-color:#111}
+      .orbit-count{font-size:.85rem;letter-spacing:.2em;color:#9a8a83;font-weight:600;margin-top:16px}
+      .orbit-count b{color:#111;font-size:1rem}
+      @media (prefers-color-scheme: dark){ .orbit-count b{color:#fff} }
+
+      /* Curved rail */
+      .rail-stage{position:relative;height:360px;margin-top:6px}
+      .rail-stage svg.rail-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+      .rail-card{position:absolute;width:138px;margin-left:-69px;background:#fff;border:1px solid #e9ded2;border-radius:16px;padding:8px;box-shadow:0 14px 28px rgba(60,35,25,.12);cursor:pointer;text-align:left;font-family:inherit;transition:transform .45s var(--ease),opacity .45s ease,box-shadow .45s ease;will-change:transform,opacity}
+      .rail-card::before{content:"";position:absolute;left:50%;top:-16px;width:1.5px;height:16px;background:#c9bba9}
+      .rail-card::after{content:"";position:absolute;left:50%;top:-21px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#fff;border:1.5px solid #b7a58f}
+      .rail-card img{width:100%;aspect-ratio:3/3.3;object-fit:cover;border-radius:11px;pointer-events:none}
+      .rail-card span{display:block;font-size:.66rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#17120f;margin-top:7px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .rail-stage.has-active .rail-card{opacity:.38}
+      .rail-stage.has-active .rail-card.active{opacity:1;box-shadow:0 26px 46px rgba(60,35,25,.24)}
+      .rail-caption{border-top:1px solid #ddd2c9;margin-top:26px;padding-top:22px;display:grid;grid-template-columns:1fr auto;gap:8px 26px;align-items:start}
+      @media (prefers-color-scheme: dark){ .rail-caption{border-top-color:#4a2c40} }
+      @media (max-width:640px){ .rail-caption{grid-template-columns:1fr} .rail-stage{height:320px} .rail-card{width:112px;margin-left:-56px} }
+      .rail-caption .r-name{font-family:"Jost",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(1.3rem,3vw,1.8rem);color:#111;line-height:1.1}
+      @media (prefers-color-scheme: dark){ .rail-caption .r-name{color:#fff} }
+      .rail-caption .r-price{font-weight:600;font-size:1.15rem;color:#111;white-space:nowrap}
+      @media (prefers-color-scheme: dark){ .rail-caption .r-price{color:#f6e9ee} }
+      .rail-caption .r-desc{color:#8a7d78;font-size:.95rem;margin:4px 0 0;max-width:560px}
+
+      /* Shuffle looks */
+      .looks-row{display:flex;justify-content:center;align-items:flex-end;gap:14px;min-height:300px;padding:10px 0 4px;flex-wrap:nowrap}
+      .look-card{flex:none;width:158px;background:#fff;border:1px solid #e9ded2;border-radius:18px;padding:9px;cursor:pointer;text-align:left;font-family:inherit;box-shadow:0 14px 28px rgba(60,35,25,.1);transition:transform .55s var(--ease),opacity .55s ease}
+      .look-card img{width:100%;aspect-ratio:3/3.6;object-fit:cover;border-radius:12px;pointer-events:none}
+      .look-card b{display:block;font-family:"Jost",sans-serif;font-weight:700;text-transform:uppercase;font-size:.78rem;color:#111;margin-top:9px;line-height:1.25}
+      .look-card span{font-size:.8rem;color:#8a7d78;font-weight:600}
+      .look-card.selected{outline:2px solid #111;outline-offset:2px}
+      @media (max-width:900px){ .looks-row{flex-wrap:wrap;min-height:0} .look-card{width:calc(33.33% - 10px)} }
+      @media (max-width:520px){ .look-card{width:calc(50% - 8px)} }
+      .looks-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px;border-top:1px solid #ddd2c9;padding-top:22px}
+      @media (prefers-color-scheme: dark){ .looks-bar{border-top-color:#4a2c40} }
+      .look-detail{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;margin-top:30px;background:#fff;border:1px solid #e9ded2;border-radius:22px;padding:22px;box-shadow:0 18px 38px rgba(60,35,25,.1)}
+      @media (prefers-color-scheme: dark){ .look-detail{background:#2e1a29;border-color:#4a2c40} }
+      @media (max-width:820px){ .look-detail{grid-template-columns:1fr} }
+      .look-detail .ld-img{border-radius:16px;overflow:hidden;aspect-ratio:3/3.4}
+      .look-detail .ld-img img{width:100%;height:100%;object-fit:cover}
+      .piece-row{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid #eee3d8}
+      @media (prefers-color-scheme: dark){ .piece-row{border-bottom-color:#4a2c40} }
+      .piece-row img{width:52px;height:52px;border-radius:10px;object-fit:cover;flex:none;border:1px solid #e9ded2}
+      .piece-row .pi{flex:1;min-width:0}
+      .piece-row .pi b{display:block;font-weight:600;color:#17120f;font-size:.95rem;line-height:1.3}
+      @media (prefers-color-scheme: dark){ .piece-row .pi b{color:#f6e9ee} }
+      .piece-row .pi span{font-size:.85rem;color:#8a7d78;font-weight:600}
+      .piece-add{width:42px;height:42px;flex:none;border-radius:50%;border:1.5px solid #111;background:transparent;color:#111;font-size:1.25rem;font-weight:600;cursor:pointer;display:grid;place-items:center;transition:all .25s ease;font-family:inherit;line-height:1}
+      .piece-add:hover{transform:scale(1.1)}
+      .piece-add.added{background:#111;color:#fff}
+      @media (prefers-color-scheme: dark){ .piece-add{border-color:#f6e9ee;color:#f6e9ee} .piece-add.added{background:#f6e9ee;color:#241722} }
+      .piece-row.excluded{opacity:.42}
+      .look-total{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0 4px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#111}
+      @media (prefers-color-scheme: dark){ .look-total{color:#fff} }
+      .look-total b{font-size:1.4rem}
+
+      /* Quick view modal */
+      .qv-overlay{position:fixed;inset:0;z-index:320;background:rgba(28,14,22,.55);backdrop-filter:blur(6px);display:grid;place-items:center;padding:18px;overflow-y:auto;animation:adminIn .35s var(--ease)}
+      .qv-card{background:#fdfaf6;color:#17120f;border-radius:24px;max-width:860px;width:100%;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;box-shadow:0 34px 80px rgba(0,0,0,.35);position:relative}
+      @media (prefers-color-scheme: dark){ .qv-card{background:#2e1a29;color:#f6e9ee} }
+      @media (max-width:700px){ .qv-card{grid-template-columns:1fr} }
+      .qv-media{position:relative;min-height:320px;background:#f1e7da}
+      .qv-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+      .swatch{position:relative}
+      .swatch.unavailable{opacity:.45;cursor:not-allowed;filter:grayscale(.55)}
+      .swatch.unavailable::after{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:3px;margin-left:-1.5px;border-radius:2px;background:#c23b2e;transform:rotate(45deg);pointer-events:none}
+      .qv-view-toggle{position:absolute;left:14px;bottom:14px;display:flex;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-radius:999px;padding:4px;gap:4px;z-index:2}
+      .qv-view-toggle button{border:none;background:transparent;font-family:inherit;font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;min-height:38px;border-radius:999px;cursor:pointer;color:#17120f}
+      .qv-view-toggle button.active{background:#111;color:#fff}
+      .qv-body{padding:30px 30px 32px}
+      .qv-body .q-name{font-family:"Jost",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.1;color:#111;margin:6px 0}
+      @media (prefers-color-scheme: dark){ .qv-body .q-name{color:#fff} }
+      .qv-body .q-price{font-size:1.3rem;font-weight:600}
+      .qv-body .q-desc{color:#8a7d78;font-size:.95rem;margin:10px 0 4px}
+      .qv-close{position:absolute;top:12px;right:12px;z-index:3;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.9);color:#17120f;font-size:1.15rem;cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+      .qv-swatches{display:flex;gap:9px;flex-wrap:wrap}
+      .qv-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+      .mech .empty-note{color:#8a7d78}
+
+      /* ---------- Mobile performance mode + finger-friendly targets (≤760px) ---------- */
+      @media (max-width:760px){
+        /* Cheaper glass: less blur repaint, same frosted look */
+        .cf-card,.tryon-tabs,.tryon-bar,.stage-chip,.stage-shoe span,.qv-view-toggle{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+        .hero-photo .frame::after{animation:none}
+        .orb,.petal{animation-duration:20s}
+        .bigword{animation:gradShift 16s linear infinite}
+        .float-card{animation:cardIn .9s var(--ease) forwards}
+        /* Tap targets ≈40px+ */
+        .swatch{width:34px;height:34px}
+        .qv-swatches .swatch{width:38px !important;height:38px !important}
+        .cf-try{width:42px;height:42px}
+        .orbit-thumbs button{width:62px;height:62px}
+        .orbit-stage{height:380px}
+        .orbit-card{width:112px;margin-left:-56px;margin-top:-76px}
+        section{padding:64px 0}
+        .mech{padding:64px 0}
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+        .rv,.h-anim,.hero h1 .w,.hero-photo,.float-card,.wa-float{opacity:1 !important;transform:none !important}
+        .progress{transform:scaleX(0) !important}
+        .toast{opacity:0}
+        .toast.show{opacity:1}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+
+    <header id="siteHeader">
+      <div class="wrap nav">
+        <a class="brand" href="#top" aria-label="Zahra Rubab Ladies Boutique — home">
+          <span class="mono">ZR</span>
+          <span><b>Zahra Rubab</b><small>Ladies Boutique</small></span>
+        </a>
+        <nav class="nav-links" aria-label="Main">
+          <a href="#collections">Collections</a>
+          <a href="#shop">Featured</a>
+          <a href="#about">About</a>
+          <a href="#visit">Visit Us</a>
+          <a class="nav-call" id="navCall" href="tel:+923145209444">0314 5209444</a>
+        </nav>
+        <a class="nav-admin admin-open" href="#admin" aria-label="Open the admin panel">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 14h4"/></svg>
+          Admin<span class="long">&nbsp;Panel</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <div class="hero" id="top">
+      <span class="orb orb-1" aria-hidden="true"></span>
+      <span class="orb orb-2" aria-hidden="true"></span>
+      <span class="orb orb-3" aria-hidden="true"></span>
+      <span class="petal" style="width:26px;height:26px;top:110px;left:6%"></span>
+      <span class="petal" style="width:18px;height:18px;top:64px;right:12%;animation-delay:1.4s"></span>
+      <span class="petal" style="width:34px;height:34px;bottom:60px;left:44%;animation-delay:2.6s"></span>
+      <div class="wrap hero-grid">
+        <div>
+          <span class="kicker h-anim" style="--hd:.05s">Jadoon Plaza · Abbottabad</span>
+          <h1><span class="w" style="--hd:.15s">Zahra</span> <span class="w" style="--hd:.28s">Rubab</span><br /><em><span class="w grad-text" style="--hd:.45s">Ladies</span> <span class="w grad-text" style="--hd:.58s">Boutique</span></em></h1>
+          <p class="tagline h-anim" style="--hd:.75s">“Where every woman finds her occasion.”</p>
+          <p class="lead h-anim" style="--hd:.88s">Finely embroidered pret, graceful formals and bridal trousseau pieces — handpicked fabrics, honest prices and a fitting-room welcome, in the heart of Mandian, Abbottabad.</p>
+          <div class="hero-ctas h-anim" style="--hd:1s">
+            <a class="btn btn-grad" href="#shop">Browse Featured Pieces</a>
+            <a class="btn btn-wa" id="heroWa" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20saw%20the%20Zahra%20Rubab%20Ladies%20Boutique%20website%20and%20I%20would%20like%20to%20ask%20about%20a%20dress." target="_blank" rel="noopener">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.3.8-1.7 1.6-2.4 1.6-.6.1-1.4.2-4.6-1-3.9-1.6-6.4-5.5-6.6-5.8-.2-.3-1.6-2.1-1.6-4s.8-2.8 1.1-3.2c.3-.4.6-.5.8-.5h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg>
+              Order on WhatsApp
+            </a>
+          </div>
+          <div class="hero-meta h-anim" style="--hd:1.12s">
+            <span><i class="dot"></i> New designs every season</span>
+            <span><i class="dot"></i> Stitching &amp; fitting help in-store</span>
+            <span><i class="dot"></i> Ladies-only, family-run</span>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="frame"><img id="heroImg" src="assets/hero.jpg" alt="Model wearing an ivory and blush embroidered formal outfit with gold hand-work" /></div>
+          <div class="float-card fc-1">
+            <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.4L12 15l-1.9-4.6L5.5 9l4.6-1.4L12 3Z"/><path d="M19 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2Z"/></svg></span>
+            <span><b>Hand-Finished</b>Embroidery &amp; embellishment</span>
+          </div>
+          <div class="float-card fc-2">
+            <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></span>
+            <span><b>Bridal Trousseau</b>Curated with love</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon-track" id="ribbonTrack">
+        <span>New Arrivals Every Season <i>✦</i></span><span>Luxury Pret <i>✦</i></span><span>Formal &amp; Party Wear <i>✦</i></span><span>Bridal Trousseau <i>✦</i></span><span>Everyday Elegance <i>✦</i></span><span>Seasonal Edits <i>✦</i></span><span>Personal Styling Help <i>✦</i></span>
+      </div>
+    </div>
+
+    <!-- ============ OFFERS (managed in Admin Panel) ============ -->
+    <section class="offers" id="offers" hidden>
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="kicker">Current Offers</span>
+          <h2>Specials at the boutique</h2>
+        </div>
+        <div class="offer-grid" id="offerGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ COLLECTIONS ============ -->
+    <section id="collections">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="kicker">Our Collections</span>
+          <h2>Five little worlds of elegance</h2>
+          <p>From a Tuesday kurti to the lehenga of a lifetime — every rail in the boutique is arranged by occasion, so you find your piece in minutes.</p>
+        </div>
+        <div class="col-grid">
+          <a class="col-card rv" style="--d:0s" href="#shop">
+            <img src="assets/col-pret.jpg" alt="Blush pink embroidered luxury pret outfit displayed with its dupatta" loading="lazy" />
+            <span class="veil"></span>
+            <span class="txt"><h3>Luxury Pret</h3><p>Embroidered 2 &amp; 3-piece suits, ready to wear</p><span class="go">Explore →</span></span>
+          </a>
+          <a class="col-card rv" style="--d:.12s" href="#shop">
+            <img src="assets/col-formal.jpg" alt="Two heavily embroidered floor-length formal gowns in soft tones" loading="lazy" />
+            <span class="veil"></span>
+            <span class="txt"><h3>Formal / Party Wear</h3><p>Chiffons, nets &amp; gowns for evenings that matter</p><span class="go">Explore →</span></span>
+          </a>
+          <a class="col-card rv" style="--d:.24s" href="#shop">
+            <img src="assets/col-bridal.jpg" alt="Bride wearing a heavily embroidered red and gold bridal lehenga" loading="lazy" />
+            <span class="veil"></span>
+            <span class="txt"><h3>Bridal Trousseau</h3><p>Lehengas, maxis &amp; complete trousseau sets</p><span class="go">Explore →</span></span>
+          </a>
+          <a class="col-card wide rv" style="--d:.1s" href="#shop">
+            <img src="assets/col-everyday.jpg" alt="Teal hand-embroidered kurta worn for everyday elegance" loading="lazy" />
+            <span class="veil"></span>
+            <span class="txt"><h3>Everyday Elegance</h3><p>Kurtis &amp; co-ords that make ordinary days lovely</p><span class="go">Explore →</span></span>
+          </a>
+          <a class="col-card wide rv" style="--d:.22s" href="#shop">
+            <img src="assets/col-seasonal.jpg" alt="Model in a bright pink floral lawn suit from the seasonal edit" loading="lazy" />
+            <span class="veil"></span>
+            <span class="txt"><h3>Seasonal Edits</h3><p>Summer lawns, festive Eid edits &amp; winter velvets</p><span class="go">Explore →</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED PRODUCTS ============ -->
+    <section class="shop" id="shop">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="kicker">Featured Pieces</span>
+          <h2>This season’s favourites</h2>
+          <p>A glimpse of what is hanging in the boutique right now. Tap any piece to ask about it on WhatsApp — sizes, colours and availability confirmed instantly.</p>
+        </div>
+        <div class="filters rv" role="group" aria-label="Filter products">
+          <button class="chip active" data-filter="all" type="button">All Pieces</button>
+          <button class="chip" data-filter="pret" type="button">Pret &amp; Suits</button>
+          <button class="chip" data-filter="formal" type="button">Formal</button>
+          <button class="chip" data-filter="bridal" type="button">Bridal</button>
+          <button class="chip" data-filter="accessories" type="button">Dupattas &amp; Shawls</button>
+        </div>
+        <div class="prod-grid" id="prodGrid">
+          <article class="prod rv" data-cat="pret">
+            <div class="ph"><img src="assets/p-suit.jpg" alt="Rose pink embroidered three-piece suit with maroon accents" loading="lazy" /><span class="tag">Bestseller</span></div>
+            <div class="bd">
+              <span class="cat">Luxury Pret</span>
+              <h3>Embroidered 3-Piece Suit</h3>
+              <p class="desc">Rose-pink shirt with fine thread-work, matching trousers and a soft chiffon dupatta.</p>
+              <div class="price-row"><span class="price">Rs 8,999</span><span class="demo-note">Demo price</span></div>
+              <a class="order" target="_blank" rel="noopener" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20am%20interested%20in%20the%20Embroidered%203-Piece%20Suit%20(Rs%208%2C999)%20on%20your%20website.%20Is%20it%20available%3F">Order on WhatsApp</a>
+            </div>
+          </article>
+          <article class="prod rv" data-cat="formal">
+            <div class="ph"><img src="assets/p-chiffon.jpg" alt="Dusty rose chiffon party dress with delicate beaded straps" loading="lazy" /><span class="tag">New In</span></div>
+            <div class="bd">
+              <span class="cat">Formal / Party</span>
+              <h3>Chiffon Party Dress</h3>
+              <p class="desc">Flowing dusty-rose chiffon with hand-set beadwork on the shoulders — made for receptions.</p>
+              <div class="price-row"><span class="price">Rs 12,499</span><span class="demo-note">Demo price</span></div>
+              <a class="order" target="_blank" rel="noopener" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20am%20interested%20in%20the%20Chiffon%20Party%20Dress%20(Rs%2012%2C499)%20on%20your%20website.%20Is%20it%20available%3F">Order on WhatsApp</a>
+            </div>
+          </article>
+          <article class="prod rv" data-cat="pret">
+            <div class="ph"><img src="assets/p-kurti.jpg" alt="Blush kurti with deep pink hand embroidery and mirror work on the neckline" loading="lazy" /></div>
+            <div class="bd">
+              <span class="cat">Everyday Elegance</span>
+              <h3>Hand-Worked Kurti</h3>
+              <p class="desc">Blush kurti with hand embroidery and tiny mirror accents — pretty enough for guests, easy enough for daily wear.</p>
+              <div class="price-row"><span class="price">Rs 6,499</span><span class="demo-note">Demo price</span></div>
+              <a class="order" target="_blank" rel="noopener" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20am%20interested%20in%20the%20Hand-Worked%20Kurti%20(Rs%206%2C499)%20on%20your%20website.%20Is%20it%20available%3F">Order on WhatsApp</a>
+            </div>
+          </article>
+          <article class="prod rv" data-cat="accessories">
+            <div class="ph"><img src="assets/p-dupatta.jpg" alt="Vibrant multicoloured silk dupatta draped over an outfit" loading="lazy" /></div>
+            <div class="bd">
+              <span class="cat">Dupattas &amp; Shawls</span>
+              <h3>Silk Dupatta</h3>
+              <p class="desc">Pure silk with a jewel-toned print — the one piece that lifts a plain suit into an outfit.</p>
+              <div class="price-row"><span class="price">Rs 2,999</span><span class="demo-note">Demo price</span></div>
+              <a class="order" target="_blank" rel="noopener" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20am%20interested%20in%20the%20Silk%20Dupatta%20(Rs%202%2C999)%20on%20your%20website.%20Is%20it%20available%3F">Order on WhatsApp</a>
+            </div>
+          </article>
+          <article class="prod rv" data-cat="formal">
+            <div class="ph"><img src="assets/p-gown.jpg" alt="Champagne embellished formal gown photographed inside a boutique" loading="lazy" /><span class="tag">Evening Edit</span></div>
+            <div class="bd">
+              <span class="cat">Formal / Party</span>
+              <h3>Formal Gown</h3>
+              <p class="desc">Champagne gown with all-over embellishment and a graceful fall — walima and engagement favourite.</p>
+              <div class="price-row"><span class="price">Rs 18,999</span><span class="demo-note">Demo price</span></div>
+              <a class="order" target="_blank" rel="noopener" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20am%20interested%20in%20the%20Formal%20Gown%20(Rs%2018%2C999)%20on%20your%20website.%20Is%20it%20available%3F">Order on WhatsApp</a>
+            </div>
+          </article>
+          <article class="prod rv" data-cat="pret">
+            <div class="ph"><img src="assets/p-lawn.jpg" alt="Lavender luxury lawn suit with white embroidery and lace cuffs" loading="lazy" /><span class="tag">Summer Edit</span></div>
+            <div class="bd">
+              <span class="cat">Seasonal Edit</span>
+              <h3>Lawn Luxury Suit</h3>
+              <p class="desc">Lavender luxury lawn with white embroidery and lace-finished sleeves, with a bordered dupatta.</p>
+              <div class="price-row"><span class="price">Rs 7,299</span><span class="demo-note">Demo price</span></div>
+              <a class="order" target="_blank" rel="noopener" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20am%20interested%20in%20the%20Lawn%20Luxury%20Suit%20(Rs%207%2C299)%20on%20your%20website.%20Is%20it%20available%3F">Order on WhatsApp</a>
+            </div>
+          </article>
+          <article class="prod rv" data-cat="accessories">
+            <div class="ph"><img src="assets/p-shawl.jpg" alt="Woman wearing an elegant black velvet shawl outfit" loading="lazy" /><span class="tag">Winter Edit</span></div>
+            <div class="bd">
+              <span class="cat">Dupattas &amp; Shawls</span>
+              <h3>Velvet Shawl</h3>
+              <p class="desc">Deep, soft velvet with a finished border — Abbottabad winters, wrapped in luxury.</p>
+              <div class="price-row"><span class="price">Rs 3,499</span><span class="demo-note">Demo price</span></div>
+              <a class="order" target="_blank" rel="noopener" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20am%20interested%20in%20the%20Velvet%20Shawl%20(Rs%203%2C499)%20on%20your%20website.%20Is%20it%20available%3F">Order on WhatsApp</a>
+            </div>
+          </article>
+          <article class="prod rv" data-cat="bridal">
+            <div class="ph"><img src="assets/p-lehenga.jpg" alt="Red and gold hand-embroidered bridal lehenga in a palace setting" loading="lazy" /><span class="tag bridal">Display Piece</span></div>
+            <div class="bd">
+              <span class="cat">Bridal Trousseau</span>
+              <h3>Bridal Lehenga</h3>
+              <p class="desc">Our signature display lehenga — antique gold hand-work on deep red. Orders and customisations in-store.</p>
+              <div class="price-row"><span class="price">Rs 45,000</span><span class="demo-note">Demo price</span></div>
+              <a class="order" target="_blank" rel="noopener" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20am%20interested%20in%20the%20Bridal%20Lehenga%20(Rs%2045%2C000)%20on%20your%20website.%20Can%20I%20book%20a%20viewing%3F">Order on WhatsApp</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-photo rv rv-left">
+          <div class="frame"><img id="aboutImg" src="assets/about.jpg" alt="Inside the boutique — pastel dresses on brass rails with roses and soft light" loading="lazy" /></div>
+          <div class="stamp"><b>Jadoon Plaza</b><span>Phase 3 · Mandian</span></div>
+        </div>
+        <div class="about-txt rv rv-right">
+          <span class="kicker">About the Boutique</span>
+          <h2 style="font-size:clamp(2rem,4.5vw,2.9rem);margin:12px 0 14px">A small boutique with a big heart</h2>
+          <p>Zahra Rubab Ladies Boutique sits at Shop 146, Jadoon Plaza Phase 3 — a name Abbottabad’s families already know and trust. We are a ladies-only boutique where mothers, daughters and brides shop together, at ease.</p>
+          <p>Every piece on our rails is chosen by hand: fabrics we have touched, embroidery we have checked stitch by stitch, and colours that flatter real women. If a suit needs a tuck, a longer sleeve or a matching dupatta, we help you sort it before you leave — that is simply how a neighbourhood boutique should work.</p>
+          <div class="stats" id="stats">
+            <div class="stat"><b><span class="count" data-count="5">5</span></b><span>Curated collections</span></div>
+            <div class="stat"><b><span class="count" data-count="100" data-suffix="s">100s</span></b><span>Designs each season</span></div>
+            <div class="stat"><b>1-to-1</b><span>Styling help, free</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY US ============ -->
+    <section class="why" id="why">
+      <div class="wrap">
+        <div class="sec-head center rv">
+          <span class="kicker center">Why Zahra Rubab</span>
+          <h2>Chosen with care, worn with confidence</h2>
+          <p>Four simple promises behind every purchase.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card rv" style="--d:0s">
+            <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9l4-6Z"/><path d="M2 9h20"/><path d="M12 21L8 9l2.5-6L12 8l1.5-5L16 9l-4 12Z"/></svg></span>
+            <h3>Premium Quality</h3>
+            <p>Fabrics and finishing checked piece by piece — embroidery that stays beautiful wash after wash, season after season.</p>
+          </div>
+          <div class="why-card rv" style="--d:.12s">
+            <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.4L12 15l-1.9-4.6L5.5 9l4.6-1.4L12 3Z"/><path d="M18.5 15.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9.9-2.1Z"/><path d="M5 16.5l.7 1.8 1.8.7-1.8.7L5 21.5l-.7-1.8-1.8-.7 1.8-.7L5 16.5Z"/></svg></span>
+            <h3>Latest Designs</h3>
+            <p>Fresh edits land with every season and every occasion — Eid, shaadi season, winter velvets — so you are never wearing last year.</p>
+          </div>
+          <div class="why-card rv" style="--d:.24s">
+            <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></span>
+            <h3>Personal Styling Help</h3>
+            <p>Tell us the occasion and your budget — we will pull the right colours, sizes and dupattas for you, honestly and without pressure.</p>
+          </div>
+          <div class="why-card rv" style="--d:.36s">
+            <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5.2L12 2 4 5.2V12c0 6.4 8 10 8 10Z"/><path d="m9 11.6 2.2 2.2L15.4 9.6"/></svg></span>
+            <h3>A Trusted Name</h3>
+            <p>A known address at Jadoon Plaza, Mandian — families across Abbottabad shop with us for their biggest days and their everyday ones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIRTUAL TRY-ON STUDIO ============ -->
+    <section class="studio" id="tryon">
+      <span class="bigword" aria-hidden="true">STYLE</span>
+      <div class="wrap">
+        <div class="sec-head center rv">
+          <span class="kicker center">Virtual Fitting Room</span>
+          <h2>Try it on, right here</h2>
+          <p>Pick a category, tap any piece, and see it on our studio model instantly — then choose your colour and order on WhatsApp.</p>
+        </div>
+        <div class="tryon-tabs rv" id="tryonTabs" role="tablist" aria-label="Try-on categories">
+          <button class="ttab active" type="button" data-slot="kurti" role="tab">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 3 7l2 3 2-1v12h10V9l2 1 2-3-5-4a4 4 0 0 1-8 0Z"/></svg>
+            Kurti
+          </button>
+          <button class="ttab" type="button" data-slot="frock" role="tab">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1 6 4 12H6l4-12-1-6Z"/><path d="M9.5 9h5"/></svg>
+            Frock
+          </button>
+          <button class="ttab" type="button" data-slot="bridal" role="tab">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9l4-6Z"/><path d="M2 9h20"/><path d="M12 21 8 9l2.5-6L12 8l1.5-5L16 9l-4 12Z"/></svg>
+            Bridal
+          </button>
+          <button class="ttab" type="button" data-slot="shoes" role="tab">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16c4 0 6-1 8-3l2-3c1 3 3 4 8 5v3H3v-2Z"/><path d="M17 15v3"/></svg>
+            Shoes
+          </button>
+        </div>
+        <div class="stage-area" id="stageArea">
+          <div class="coverflow" id="coverflow" aria-label="Products to try on"></div>
+          <button class="cf-nav prev" id="cfPrev" type="button" aria-label="Scroll products left">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg>
+          </button>
+          <button class="cf-nav next" id="cfNext" type="button" aria-label="Scroll products right">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg>
+          </button>
+          <div class="stage-wrap">
+            <div class="stage" id="stage">
+              <img class="outfit" id="stageImg" src="assets/p-kurti.jpg" alt="Studio model wearing the selected outfit" />
+              <div class="stage-chip"><b id="stageName">Hand-Worked Kurti</b><span class="p" id="stagePrice">Rs 6,499</span></div>
+              <div class="stage-shoe" id="stageShoe" hidden>
+                <img id="stageShoeImg" src="assets/shoe-khussa-green.jpg" alt="Selected shoes worn with the outfit" />
+                <span id="stageShoeName"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tryon-bar rv" id="tryonBar">
+          <img class="tb-thumb" id="tbThumb" src="assets/p-kurti.jpg" alt="" />
+          <span class="tb-ic" id="tbIcon"></span>
+          <span>
+            <span class="tb-name" id="tbName">Hand-Worked Kurti</span><br />
+            <span class="tb-sub" id="tbSub">Colour: Blush Pink</span>
+          </span>
+          <span class="swatches" id="swatches" aria-label="Choose a colour"></span>
+          <a class="tb-order" id="tbOrder" href="https://wa.me/923145209444" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.3.8-1.7 1.6-2.4 1.6-.6.1-1.4.2-4.6-1-3.9-1.6-6.4-5.5-6.6-5.8-.2-.3-1.6-2.1-1.6-4s.8-2.8 1.1-3.2c.3-.4.6-.5.8-.5h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg>
+            Order This Look
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DRAG-TO-ORBIT WHEEL ============ -->
+    <section class="mech" id="orbitSec">
+      <div class="wrap">
+        <div class="m-head rv">
+          <span class="m-kicker">Hero Pieces · Drag the Wheel</span>
+          <h2 class="m-title">The Orbit Edit</h2>
+          <p class="m-sub">Drag the wheel to spin our hero pieces around — the one at the front is the one in the spotlight. Tap it for a closer look.</p>
+        </div>
+        <div class="orbit-grid">
+          <div class="orbit-stage" id="orbitStage" aria-label="Drag to rotate the product wheel">
+            <span class="orbit-ring" aria-hidden="true"></span>
+            <span class="orbit-hint">← Drag to rotate →</span>
+          </div>
+          <div class="orbit-info" id="orbitInfo"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CURVED HOVER RAIL ============ -->
+    <section class="mech alt" id="railSec">
+      <div class="wrap">
+        <div class="m-head rv">
+          <span class="m-kicker">Signature Collection</span>
+          <h2 class="m-title">On the Rail</h2>
+          <p class="m-sub">Our signature pieces, hanging on one rail. Hover or tap a piece to bring it into the light — tap it again to view it up close.</p>
+        </div>
+        <div class="rail-stage" id="railStage">
+          <svg class="rail-svg" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true"><path id="railPath" d="M -20 70 Q 500 250 1020 70" fill="none" stroke="#c9bba9" stroke-width="2"/></svg>
+        </div>
+        <div class="rail-caption" id="railCaption"></div>
+      </div>
+    </section>
+
+    <!-- ============ SHUFFLE GRID — TRY THE LOOK ============ -->
+    <section class="mech" id="looksSec">
+      <div class="wrap">
+        <div class="m-head rv">
+          <span class="m-kicker">Complete Outfits</span>
+          <h2 class="m-title">Try the Look</h2>
+          <p class="m-sub">Six complete looks, styled head to toe by the boutique. Shuffle them around, then tap a look to see every piece inside it.</p>
+        </div>
+        <div class="looks-row" id="looksRow"></div>
+        <div class="looks-bar">
+          <button class="m-pill" id="shuffleBtn" type="button">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>
+            Shuffle Looks
+          </button>
+          <span style="color:#8a7d78;font-size:.92rem">Tap any look to open its pieces, prices and full-look order.</span>
+        </div>
+        <div class="look-detail" id="lookDetail" hidden></div>
+      </div>
+    </section>
+
+    <!-- ============ QUICK VIEW ============ -->
+    <div class="qv-overlay" id="qvOverlay" hidden role="dialog" aria-modal="true" aria-label="Product quick view">
+      <div class="qv-card">
+        <button class="qv-close" id="qvClose" type="button" aria-label="Close quick view">✕</button>
+        <div class="qv-media">
+          <img id="qvImg" src="assets/p-suit.jpg" alt="" />
+          <div class="qv-view-toggle" id="qvViewToggle" style="display:none">
+            <button type="button" data-view="front" class="active">Front</button>
+            <button type="button" data-view="back">Back</button>
+          </div>
+        </div>
+        <div class="qv-body" id="qvBody"></div>
+      </div>
+    </div>
+
+    <!-- ============ VISIT / CONTACT ============ -->
+    <section id="visit">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="kicker">Visit Us</span>
+          <h2>Come, sit, and find your dress</h2>
+          <p>We are easy to find — and even easier to talk to. Call, WhatsApp, or simply walk in.</p>
+        </div>
+        <div class="visit-grid">
+          <div class="visit-card rv rv-left">
+            <h3 id="visitShopName">Zahra Rubab Ladies Boutique</h3>
+            <div class="row">
+              <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div><b>Our Address</b><p id="visitAddress">Shop 146, Jadoon Plaza Phase 3,<br />Mansehra Road, Mandian, Abbottabad</p></div>
+            </div>
+            <div class="row">
+              <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+              <div><b>Boutique Timings</b><p id="visitTiming">Mon–Thu &amp; Sat–Sun · 10:00 AM – 10:00 PM · Fri 3:00 PM – 10:00 PM</p></div>
+            </div>
+            <div class="row">
+              <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+              <div><b>Call the Boutique</b><a class="val" id="visitPhone" href="tel:+923145209444">0314 5209444</a></div>
+            </div>
+            <div class="row">
+              <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.3.8-1.7 1.6-2.4 1.6-.6.1-1.4.2-4.6-1-3.9-1.6-6.4-5.5-6.6-5.8-.2-.3-1.6-2.1-1.6-4s.8-2.8 1.1-3.2c.3-.4.6-.5.8-.5h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg></span>
+              <div><b>WhatsApp Orders</b><p>Message us any piece from this page — we reply with sizes, colours and availability.</p></div>
+            </div>
+            <div class="row">
+              <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-7.2h2.42l.36-2.8H13.5V9.7c0-.81.23-1.36 1.4-1.36h1.5V5.85c-.26-.03-1.15-.11-2.19-.11-2.17 0-3.65 1.32-3.65 3.75v2H8.13v2.8h2.43v7.2a10 10 0 0 0 2.94 0Z"/></svg></span>
+              <div><b>Follow Us</b><a class="val" href="https://www.facebook.com/1882214125235077/" target="_blank" rel="noopener">Zahra Rubab Ladies Boutique on Facebook</a></div>
+            </div>
+            <div class="visit-ctas">
+              <a class="btn btn-wa" id="visitWa" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20have%20a%20question%20about%20Zahra%20Rubab%20Ladies%20Boutique." target="_blank" rel="noopener">Chat on WhatsApp</a>
+              <a class="btn btn-ghost" id="callBtn" href="tel:+923145209444">Call 0314 5209444</a>
+            </div>
+          </div>
+          <div class="map-card rv rv-right">
+            <div>
+              <div class="map-pin"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <h3>Jadoon Plaza Phase 3</h3>
+              <p>On Mansehra Road in Mandian — one of Abbottabad’s best-known shopping addresses, easy to reach from anywhere in the city.</p>
+              <a class="btn btn-plum" href="https://www.google.com/maps/search/?api=1&amp;query=Jadoon+Plaza+Phase+3+Mansehra+Road+Mandian+Abbottabad" target="_blank" rel="noopener">Get Directions</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap rv rv-zoom">
+        <div class="fb grad-text" id="footerName">Zahra Rubab Ladies Boutique</div>
+        <p id="footerLine">Shop 146, Jadoon Plaza Phase 3, Mansehra Road, Mandian, Abbottabad · 0314 5209444</p>
+        <p style="font-size:.82rem">Demo website — product photographs and prices shown are sample/demo content for illustration.</p>
+        <a class="admin-link admin-open" href="#admin">Admin Panel</a>
+        <a class="admin-link" style="margin-left:16px" href="https://www.facebook.com/1882214125235077/" target="_blank" rel="noopener">Facebook Page</a>
+        <p class="credit-line">Developed by Future AI Technologies © 2026 Zahra Rubab Ladies Boutique. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <a class="wa-float" id="waFloat" href="https://wa.me/923145209444?text=Assalam-o-Alaikum!%20I%20saw%20the%20Zahra%20Rubab%20Ladies%20Boutique%20website%20and%20I%20would%20like%20to%20ask%20about%20a%20dress." target="_blank" rel="noopener" aria-label="Chat or order on WhatsApp">
+      <svg width="27" height="27" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.3.8-1.7 1.6-2.4 1.6-.6.1-1.4.2-4.6-1-3.9-1.6-6.4-5.5-6.6-5.8-.2-.3-1.6-2.1-1.6-4s.8-2.8 1.1-3.2c.3-.4.6-.5.8-.5h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg>
+      <span class="lbl">Chat / Order</span>
+    </a>
+
+    <!-- ============ ADMIN PANEL ============ -->
+    <div class="admin-overlay" id="adminOverlay" hidden role="dialog" aria-modal="true" aria-label="Admin panel">
+      <div class="admin-shell">
+        <div class="admin-top">
+          <div class="admin-brand">
+            <span class="mono">ZR</span>
+            <span><b>Admin Panel</b><small id="adminShopName">Zahra Rubab Ladies Boutique</small></span>
+          </div>
+          <button class="btn btn-ghost btn-sm" id="adminClose" type="button">← Back to Store</button>
+        </div>
+
+        <div class="login-card" id="adminLogin">
+          <h2>Owner Login</h2>
+          <p>Enter your PIN to manage products, offers and shop settings. Everything you change here updates the storefront instantly.</p>
+          <label for="pinInput">Panel PIN</label>
+          <input class="pin-input" id="pinInput" type="password" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="••••" />
+          <p class="pin-hint">Demo hint: the PIN is <b>1234</b></p>
+          <p class="pin-error" id="pinError" hidden>Incorrect PIN — please try again.</p>
+          <button class="btn btn-grad" id="pinBtn" type="button">Unlock Panel</button>
+        </div>
+
+        <div id="adminDash" hidden>
+          <div class="admin-tabs" role="tablist" aria-label="Admin sections">
+            <button class="atab active" type="button" data-tab="products">Products</button>
+            <button class="atab" type="button" data-tab="offers">Offers &amp; Banners</button>
+            <button class="atab" type="button" data-tab="settings">Settings</button>
+          </div>
+
+          <div class="apane" id="pane-products">
+            <div class="pane-head">
+              <h3>Products</h3>
+              <button class="btn btn-grad btn-sm" id="addProductBtn" type="button">+ Add Product</button>
+            </div>
+            <p class="pane-note">Add, edit or delete pieces — the shop grid and the Virtual Fitting Room update the moment you save.</p>
+            <div class="admin-list" id="adminProductList"></div>
+            <form class="admin-form" id="productForm" hidden>
+              <h3 id="pfTitle">Add Product</h3>
+              <input type="hidden" id="pfId" />
+              <input type="hidden" id="pfPhotoData" />
+              <div class="fgrid">
+                <div class="field"><label for="pfName">Product name *</label><input id="pfName" type="text" required placeholder="e.g. Embroidered 3-Piece Suit" /></div>
+                <div class="field"><label for="pfPrice">Price (PKR) *</label><input id="pfPrice" type="number" min="0" step="1" required placeholder="e.g. 8999" /></div>
+                <div class="field"><label for="pfCat">Category (shop filter)</label>
+                  <select id="pfCat">
+                    <option value="pret">Pret &amp; Suits</option>
+                    <option value="formal">Formal</option>
+                    <option value="bridal">Bridal</option>
+                    <option value="accessories">Dupattas &amp; Shawls</option>
+                  </select>
+                </div>
+                <div class="field"><label for="pfCollection">Collection label</label><input id="pfCollection" type="text" placeholder="e.g. Luxury Pret" /></div>
+                <div class="field"><label for="pfSlot">Virtual Fitting Room</label>
+                  <select id="pfSlot">
+                    <option value="auto">Auto (from category)</option>
+                    <option value="kurti">Kurti</option>
+                    <option value="frock">Frock</option>
+                    <option value="bridal">Bridal</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="none">Don’t show in Fitting Room</option>
+                  </select>
+                </div>
+                <div class="field"><label for="pfTag">Badge (optional)</label><input id="pfTag" type="text" placeholder="e.g. Bestseller, New In" /></div>
+                <div class="field"><label for="pfPhotoSelect">Demo photo</label><select id="pfPhotoSelect"></select></div>
+                <div class="field"><label for="pfPhotoFile">…or upload a photo</label><input id="pfPhotoFile" type="file" accept="image/*" /><p class="hint">Uploaded photos are resized and saved with the product.</p></div>
+                <div class="field full"><div class="photo-preview"><img id="pfPreview" src="assets/p-suit.jpg" alt="Product photo preview" /><span id="pfPreviewName">Current photo</span></div></div>
+                <div class="field full"><label for="pfDesc">Description</label><textarea id="pfDesc" placeholder="Short, lovely description of the piece…"></textarea></div>
+                <div class="field"><label for="pfSizes">Sizes (comma separated)</label><input id="pfSizes" type="text" placeholder="S, M, L" /></div>
+                <div class="field"><label for="pfColours">Colours (comma separated)</label><input id="pfColours" type="text" placeholder="Rose Pink, Maroon" /></div>
+              </div>
+              <div class="form-acts">
+                <button class="btn btn-grad btn-sm" type="submit">Save Product</button>
+                <button class="btn btn-ghost btn-sm" id="pfCancel" type="button">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="apane" id="pane-offers" hidden>
+            <div class="pane-head">
+              <h3>Offers &amp; Banners</h3>
+              <button class="btn btn-grad btn-sm" id="addOfferBtn" type="button">+ Add Offer</button>
+            </div>
+            <p class="pane-note">Shown offers appear in the “Specials at the boutique” strip on the storefront.</p>
+            <div class="admin-list" id="adminOfferList"></div>
+            <form class="admin-form" id="offerForm" hidden>
+              <h3 id="ofTitle">Add Offer</h3>
+              <input type="hidden" id="ofId" />
+              <div class="fgrid">
+                <div class="field"><label for="ofOfferTitle">Offer title *</label><input id="ofOfferTitle" type="text" required placeholder="e.g. New Season Arrivals" /></div>
+                <div class="field"><label for="ofActive">Visibility</label>
+                  <select id="ofActive"><option value="1">Shown on storefront</option><option value="0">Hidden</option></select>
+                </div>
+                <div class="field full"><label for="ofText">Offer text</label><textarea id="ofText" placeholder="What is the offer?"></textarea></div>
+              </div>
+              <div class="form-acts">
+                <button class="btn btn-grad btn-sm" type="submit">Save Offer</button>
+                <button class="btn btn-ghost btn-sm" id="ofCancel" type="button">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="apane" id="pane-settings" hidden>
+            <div class="pane-head"><h3>Shop Settings</h3></div>
+            <p class="pane-note">These details appear across the whole storefront — header, visit card and footer.</p>
+            <form class="admin-form" id="settingsForm" style="margin-top:0">
+              <div class="fgrid">
+                <div class="field"><label for="sfName">Shop name</label><input id="sfName" type="text" /></div>
+                <div class="field"><label for="sfPhone">Display phone</label><input id="sfPhone" type="text" placeholder="0314 5209444" /></div>
+                <div class="field"><label for="sfWhatsapp">WhatsApp number (with country code)</label><input id="sfWhatsapp" type="text" inputmode="numeric" placeholder="923145209444" /><p class="hint">Used by every Order / Chat button on the site.</p></div>
+                <div class="field"><label for="sfTiming">Boutique timings</label><input id="sfTiming" type="text" /></div>
+                <div class="field full"><label for="sfAddress">Address (one line per row)</label><textarea id="sfAddress"></textarea></div>
+              </div>
+              <div class="form-acts">
+                <button class="btn btn-grad btn-sm" type="submit">Save Settings</button>
+              </div>
+              <div class="reset-zone">
+                <p>Start again? This restores the original demo products, offers and settings.</p>
+                <button class="btn btn-danger btn-sm" id="resetBtn" type="button">Reset Demo Data</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+      function fmt(n){ return String(Math.round(Number(n) || 0)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+      function $(id){ return document.getElementById(id); }
+
+      /* ================= Shared boutique state (Admin Panel <-> Storefront <-> Fitting Room) ================= */
+      var LS_KEY = 'zr-boutique-v1';
+      var CATS = { pret:'Pret & Suits', formal:'Formal', bridal:'Bridal', accessories:'Dupattas & Shawls' };
+      var PHOTOS = [
+        ['assets/p-suit.jpg','Embroidered Suit'],['assets/p-chiffon.jpg','Chiffon Dress'],['assets/p-kurti.jpg','Hand-Worked Kurti'],
+        ['assets/p-dupatta.jpg','Silk Dupatta'],['assets/p-gown.jpg','Formal Gown'],['assets/p-lawn.jpg','Lawn Suit'],
+        ['assets/p-shawl.jpg','Velvet Shawl'],['assets/p-lehenga.jpg','Bridal Lehenga'],['assets/hero.jpg','Ivory Formal — Hero'],
+        ['assets/col-pret.jpg','Luxury Pret Rail'],['assets/col-formal.jpg','Formal Gowns'],['assets/col-bridal.jpg','Bridal Look'],
+        ['assets/col-everyday.jpg','Everyday Kurta'],['assets/col-seasonal.jpg','Seasonal Lawn'],['assets/about.jpg','Boutique Interior'],
+        ['assets/shoe-khussa-green.jpg','Teal Khussa'],['assets/shoe-heels-rosegold.jpg','Rose Gold Heels'],['assets/shoe-khussa-white.jpg','Ivory Khussa']
+      ];
+      var SEED = {
+        settings: {
+          shopName: 'Zahra Rubab Ladies Boutique',
+          whatsapp: '923145209444',
+          phoneDisplay: '0314 5209444',
+          address: 'Shop 146, Jadoon Plaza Phase 3,\nMansehra Road, Mandian, Abbottabad',
+          timing: 'Mon–Thu & Sat–Sun · 10:00 AM – 10:00 PM · Fri 3:00 PM – 10:00 PM'
+        },
+        products: [
+          { id:'p1', name:'Embroidered 3-Piece Suit', price:8999, cat:'pret', collection:'Luxury Pret', slot:'kurti', tag:'Bestseller', img:'assets/p-suit.jpg', desc:'Rose-pink shirt with fine thread-work, matching trousers and a soft chiffon dupatta.', sizes:'S, M, L', colours:'Rose Pink, Maroon' },
+          { id:'p2', name:'Chiffon Party Dress', price:12499, cat:'formal', collection:'Formal / Party', slot:'frock', tag:'New In', img:'assets/p-chiffon.jpg', desc:'Flowing dusty-rose chiffon with hand-set beadwork on the shoulders — made for receptions.', sizes:'S, M, L', colours:'Dusty Rose' },
+          { id:'p3', name:'Hand-Worked Kurti', price:6499, cat:'pret', collection:'Everyday Elegance', slot:'kurti', tag:'', img:'assets/p-kurti.jpg', desc:'Blush kurti with hand embroidery and tiny mirror accents — pretty enough for guests, easy enough for daily wear.', sizes:'S, M, L, XL', colours:'Blush Pink' },
+          { id:'p4', name:'Silk Dupatta', price:2999, cat:'accessories', collection:'Dupattas & Shawls', slot:'none', tag:'', img:'assets/p-dupatta.jpg', desc:'Pure silk with a jewel-toned print — the one piece that lifts a plain suit into an outfit.', sizes:'Free Size', colours:'Multicolour' },
+          { id:'p5', name:'Formal Gown', price:18999, cat:'formal', collection:'Formal / Party', slot:'frock', tag:'Evening Edit', img:'assets/p-gown.jpg', desc:'Champagne gown with all-over embellishment and a graceful fall — walima and engagement favourite.', sizes:'S, M, L', colours:'Champagne, Gold' },
+          { id:'p6', name:'Lawn Luxury Suit', price:7299, cat:'pret', collection:'Seasonal Edit', slot:'kurti', tag:'Summer Edit', img:'assets/p-lawn.jpg', desc:'Lavender luxury lawn with white embroidery and lace-finished sleeves, with a bordered dupatta.', sizes:'S, M, L', colours:'Lavender, White' },
+          { id:'p7', name:'Velvet Shawl', price:3499, cat:'accessories', collection:'Dupattas & Shawls', slot:'none', tag:'Winter Edit', img:'assets/p-shawl.jpg', desc:'Deep, soft velvet with a finished border — Abbottabad winters, wrapped in luxury.', sizes:'Free Size', colours:'Black' },
+          { id:'p8', name:'Bridal Lehenga', price:45000, cat:'bridal', collection:'Bridal Trousseau', slot:'bridal', tag:'Display Piece', img:'assets/p-lehenga.jpg', desc:'Our signature display lehenga — antique gold hand-work on deep red. Orders and customisations in-store.', sizes:'Made to Order', colours:'Deep Red, Gold' }
+        ],
+        shoes: [
+          { id:'s1', name:'Teal Embroidered Khussa', price:2499, img:'assets/shoe-khussa-green.jpg', colours:'Teal Green, Multicolour', sizes:'EU 36–42' },
+          { id:'s2', name:'Rose Gold Block Heels', price:3999, img:'assets/shoe-heels-rosegold.jpg', colours:'Rose Gold', sizes:'EU 36–41' },
+          { id:'s3', name:'Ivory Floral Khussa', price:2299, img:'assets/shoe-khussa-white.jpg', colours:'Ivory White, Peach', sizes:'EU 36–42' }
+        ],
+        offers: [
+          { id:'o1', title:'New Season Arrivals', text:'Fresh luxury pret, lawns and formals have just landed in store — visit us at Jadoon Plaza to see the full rails.', active:true },
+          { id:'o2', title:'Bridal Viewings Open', text:'Book a bridal trousseau viewing on WhatsApp and let us style your big day, trousseau to dupatta.', active:true }
+        ]
+      };
+      function clone(o){ return JSON.parse(JSON.stringify(o)); }
+      var state = (function(){
+        try {
+          var raw = localStorage.getItem(LS_KEY);
+          if (raw) { var p = JSON.parse(raw); if (p && p.settings && p.products && p.offers) { if (!p.shoes) p.shoes = clone(SEED.shoes); return p; } }
+        } catch (e) {}
+        return clone(SEED);
+      })();
+      var storageOk = true;
+      function save(){
+        try { localStorage.setItem(LS_KEY, JSON.stringify(state)); }
+        catch (e) { if (storageOk) { storageOk = false; toast('This browser could not save — changes will last for this visit only.'); } }
+      }
+      function slotOf(p){
+        if (p.slot && p.slot !== 'auto') return p.slot;
+        return { pret:'kurti', formal:'frock', bridal:'bridal', accessories:'none' }[p.cat] || 'none';
+      }
+      function waLink(text){ return 'https://wa.me/' + state.settings.whatsapp + '?text=' + encodeURIComponent(text); }
+
+      /* ================= Toast ================= */
+      var toastTimer = null;
+      function toast(msg){
+        var t = $('toast'); if (!t) return;
+        t.textContent = msg; t.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2800);
+      }
+
+      /* ================= Ribbon loop ================= */
+      (function(){ var t = $('ribbonTrack'); if (t) t.innerHTML += t.innerHTML; })();
+
+      /* ================= Scroll reveal ================= */
+      var revealIO = null;
+      (function(){
+        var els = document.querySelectorAll('.rv');
+        if (!('IntersectionObserver' in window) || reduceMotion) {
+          els.forEach(function(e){ e.classList.add('in'); });
+          return;
+        }
+        revealIO = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if (en.isIntersecting) { en.target.classList.add('in'); revealIO.unobserve(en.target); }
+          });
+        }, { threshold: 0.02, rootMargin: '0px 0px 220px 0px' });
+        els.forEach(function(e){ revealIO.observe(e); });
+        setTimeout(function(){ document.querySelectorAll('.rv').forEach(function(e){ e.classList.add('in'); }); }, 1400);
+      })();
+      function watchRv(el){ if (revealIO) revealIO.observe(el); else el.classList.add('in'); }
+
+      /* ================= Storefront rendering ================= */
+      function applySettings(){
+        var s = state.settings;
+        document.title = s.shopName + ' — Demo Website';
+        var b = document.querySelector('.brand b'), small = document.querySelector('.brand small');
+        if (b) b.textContent = (s.shopName === 'Zahra Rubab Ladies Boutique') ? 'Zahra Rubab' : s.shopName;
+        if (small) small.textContent = 'Ladies Boutique';
+        $('visitShopName').textContent = s.shopName;
+        $('adminShopName').textContent = s.shopName;
+        $('footerName').textContent = s.shopName;
+        $('visitAddress').innerHTML = esc(s.address).replace(/\n/g, '<br />');
+        $('visitTiming').textContent = s.timing;
+        $('footerLine').textContent = s.address.replace(/\n/g, ' ') + ' · ' + s.phoneDisplay;
+        var nc = $('navCall'); nc.setAttribute('href', 'tel:+' + s.whatsapp); nc.textContent = s.phoneDisplay;
+        var vp = $('visitPhone'); vp.setAttribute('href', 'tel:+' + s.whatsapp); vp.textContent = s.phoneDisplay;
+        var cb = $('callBtn'); cb.setAttribute('href', 'tel:+' + s.whatsapp); cb.textContent = 'Call ' + s.phoneDisplay;
+        $('heroWa').setAttribute('href', waLink('Assalam-o-Alaikum! I saw the ' + s.shopName + ' website and I would like to ask about a dress.'));
+        $('visitWa').setAttribute('href', waLink('Assalam-o-Alaikum! I have a question about ' + s.shopName + '.'));
+        $('waFloat').setAttribute('href', waLink('Assalam-o-Alaikum! I saw the ' + s.shopName + ' website and I would like to ask about a dress.'));
+      }
+
+      var activeFilter = 'all';
+      function renderProducts(instant){
+        var grid = $('prodGrid'); if (!grid) return;
+        var shown = 0;
+        var html = state.products.map(function(p){
+          var show = (activeFilter === 'all' || p.cat === activeFilter);
+          if (show) shown++;
+          var meta = [];
+          if (p.sizes) meta.push('<b>Sizes:</b> ' + esc(String(p.sizes).replace(/,\s*/g, ' · ')));
+          if (p.colours) meta.push('<b>Colours:</b> ' + esc(p.colours));
+          return '<article class="prod rv' + (instant ? ' in' : '') + (show ? '' : ' hide') + '" data-cat="' + esc(p.cat) + '">'
+            + '<div class="ph"><img src="' + esc(p.img) + '" alt="' + esc(p.name) + ' — ' + esc(p.collection || '') + '" loading="lazy" />'
+            + (p.tag ? '<span class="tag' + (p.cat === 'bridal' ? ' bridal' : '') + '">' + esc(p.tag) + '</span>' : '') + '</div>'
+            + '<div class="bd"><span class="cat">' + esc(p.collection || CATS[p.cat] || '') + '</span>'
+            + '<h3>' + esc(p.name) + '</h3><p class="desc">' + esc(p.desc) + '</p>'
+            + (meta.length ? '<p class="meta">' + meta.join(' &nbsp;·&nbsp; ') + '</p>' : '')
+            + '<div class="price-row"><span class="price">Rs ' + fmt(p.price) + '</span><span class="demo-note">Demo price</span></div>'
+            + '<a class="order" target="_blank" rel="noopener" href="' + waLink('Assalam-o-Alaikum! I am interested in the ' + p.name + ' (Rs ' + fmt(p.price) + ') on your website. Is it available?') + '">Order on WhatsApp</a>'
+            + '</div></article>';
+        }).join('');
+        if (!shown) html = '<p class="empty-note">New pieces are being stitched for this rail — please ask us on WhatsApp what is in store today.</p>';
+        grid.innerHTML = html;
+        if (!instant) grid.querySelectorAll('.rv').forEach(watchRv);
+      }
+
+      function renderOffers(){
+        var sec = $('offers'), wrap = $('offerGrid'); if (!sec || !wrap) return;
+        var act = state.offers.filter(function(o){ return o.active; });
+        if (!act.length) { sec.hidden = true; return; }
+        sec.hidden = false;
+        wrap.innerHTML = act.map(function(o, i){
+          return '<div class="offer-card rv" style="--d:' + (i * 0.12) + 's"><h3>' + esc(o.title) + '</h3><p>' + esc(o.text) + '</p></div>';
+        }).join('');
+        wrap.querySelectorAll('.rv').forEach(watchRv);
+      }
+
+      function syncStorefront(instant){
+        applySettings();
+        renderProducts(instant);
+        renderOffers();
+        if (typeof renderCoverflow === 'function') renderCoverflow();
+        if (typeof validateWorn === 'function') validateWorn();
+        if (typeof renderMechanics === 'function') renderMechanics();
+      }
+
+      /* ================= Filters ================= */
+      (function(){
+        var chips = document.querySelectorAll('.chip');
+        chips.forEach(function(chip){
+          chip.addEventListener('click', function(){
+            chips.forEach(function(c){ c.classList.remove('active'); });
+            chip.classList.add('active');
+            activeFilter = chip.getAttribute('data-filter');
+            renderProducts(true);
+            if (!reduceMotion) {
+              var i = 0;
+              $('prodGrid').querySelectorAll('.prod:not(.hide)').forEach(function(p){
+                p.style.animationDelay = (i * 0.07) + 's';
+                p.classList.remove('pop'); void p.offsetWidth; p.classList.add('pop');
+                i++;
+              });
+            }
+          });
+        });
+      })();
+
+      /* ================= Animated counters (final values are the HTML fallback) ================= */
+      (function(){
+        var stats = $('stats'); if (!stats) return;
+        var counters = stats.querySelectorAll('.count');
+        var done = false;
+        function run(){
+          if (done) return; done = true;
+          counters.forEach(function(el){
+            var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+            var suffix = el.getAttribute('data-suffix') || '';
+            if (reduceMotion) { el.textContent = target + suffix; return; }
+            var start = null, dur = 1500;
+            function step(ts){
+              if (!start) start = ts;
+              var t = Math.min((ts - start) / dur, 1);
+              var eased = 1 - Math.pow(1 - t, 3);
+              el.textContent = Math.round(target * eased) + suffix;
+              if (t < 1) requestAnimationFrame(step); else el.textContent = target + suffix;
+            }
+            requestAnimationFrame(step);
+          });
+        }
+        if (!('IntersectionObserver' in window) || reduceMotion) return; // fallback text already correct
+        var cio = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){ if (en.isIntersecting) { run(); cio.disconnect(); } });
+        }, { threshold: 0.35 });
+        cio.observe(stats);
+      })();
+
+      /* ================= Scroll effects: progress, header, parallax ================= */
+      (function(){
+        var bar = $('progress'), header = $('siteHeader'), heroImg = $('heroImg'), aboutImg = $('aboutImg');
+        var ticking = false;
+        function update(){
+          ticking = false;
+          var y = window.scrollY || window.pageYOffset;
+          var max = document.documentElement.scrollHeight - window.innerHeight;
+          if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+          if (header) header.classList.toggle('scrolled', y > 12);
+          if (!reduceMotion) {
+            if (heroImg && y < window.innerHeight * 1.2) heroImg.style.transform = 'translateY(' + (y * -0.055) + 'px)';
+            if (aboutImg) {
+              var r = aboutImg.getBoundingClientRect();
+              var off = (r.top + r.height / 2 - window.innerHeight / 2) * -0.045;
+              if (off > -34 && off < 34) aboutImg.style.transform = 'translateY(' + off + 'px)';
+            }
+          }
+        }
+        window.addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+        update();
+      })();
+
+      /* ================= Virtual Fitting Room ================= */
+      var SLOT_LABEL = { kurti:'Kurti', frock:'Frock', bridal:'Bridal', shoes:'Shoes' };
+      var SLOT_ICON = {
+        kurti:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 3 7l2 3 2-1v12h10V9l2 1 2-3-5-4a4 4 0 0 1-8 0Z"/></svg>',
+        frock:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1 6 4 12H6l4-12-1-6Z"/><path d="M9.5 9h5"/></svg>',
+        bridal:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9l4-6Z"/><path d="M2 9h20"/><path d="M12 21 8 9l2.5-6L12 8l1.5-5L16 9l-4 12Z"/></svg>',
+        shoes:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16c4 0 6-1 8-3l2-3c1 3 3 4 8 5v3H3v-2Z"/><path d="M17 15v3"/></svg>'
+      };
+      var SWATCH = { multicolour:'linear-gradient(135deg,#e8a2b4,#c39a6b,#8b5cf6)', multi:'linear-gradient(135deg,#e8a2b4,#c39a6b,#8b5cf6)', pink:'#e8a2b4', blush:'#f2c4ce', rose:'#b76e79', maroon:'#7b2d3b', red:'#c0272d', gold:'#c39a6b', champagne:'#e7cf9f', lavender:'#b9a7e6', purple:'#8b5cf6', violet:'#8b5cf6', teal:'#2e7f7a', green:'#3f7d4e', black:'#26202a', white:'#f6f1ea', ivory:'#efe3cb', peach:'#f5b98c', blue:'#7fa8d9' };
+      function swatchBg(name){
+        var k = String(name || '').toLowerCase();
+        for (var key in SWATCH) { if (k.indexOf(key) > -1) return SWATCH[key]; }
+        return '#cbb7c4';
+      }
+      function colourList(item){ return String(item.colours || '').split(',').map(function(c){ return c.trim(); }).filter(Boolean); }
+
+      function tryonItems(slot){
+        var items = state.products.filter(function(p){ return slotOf(p) === slot; }).map(function(p){
+          return { id:p.id, name:p.name, price:p.price, img:p.img, colours:p.colours, sizes:p.sizes, slot:slot, variants:p.variants || null };
+        });
+        if (slot === 'shoes') {
+          items = items.concat(state.shoes.map(function(s){
+            return { id:s.id, name:s.name, price:s.price, img:s.img, colours:s.colours, sizes:s.sizes, slot:'shoes', variants:s.variants || null };
+          }));
+        }
+        return items;
+      }
+      function findTryon(id){
+        var slots = ['kurti','frock','bridal','shoes'];
+        for (var i = 0; i < slots.length; i++) {
+          var list = tryonItems(slots[i]);
+          for (var j = 0; j < list.length; j++) if (list[j].id === id) return list[j];
+        }
+        return null;
+      }
+
+      var tryonTab = 'kurti';
+      var worn = { outfit:null, outfitSlot:'kurti', shoe:null, focus:null, focusSlot:'kurti', colour:'' };
+
+      var ACCENTS = { kurti:'#b76e79', frock:'#8b5cf6', bridal:'#c39a6b', shoes:'#2e7f7a' };
+      var WORDS = { kurti:'STYLE', frock:'GRACE', bridal:'GLAM', shoes:'CHIC' };
+      var orbit = { offset: 0, kick: 0, last: 0, running: false, visible: false, hover: false, cardW: 158 };
+
+      function renderCoverflow(keepOffset){
+        var cf = $('coverflow'); if (!cf) return;
+        var items = tryonItems(tryonTab);
+        if (!keepOffset) { orbit.offset = 0; orbit.kick = 0; }
+        if (!items.length) {
+          cf.innerHTML = '<p class="empty-note" style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 20px">No pieces in this category yet — the owner can add some from the Admin Panel.</p>';
+          return;
+        }
+        cf.innerHTML = items.map(function(it){
+          var isWorn = (tryonTab === 'shoes') ? (worn.shoe && worn.shoe.id === it.id) : (worn.outfit && worn.outfit.id === it.id);
+          return '<button type="button" class="cf-card' + (isWorn ? ' worn' : '') + '" data-id="' + esc(it.id) + '" aria-label="Try on ' + esc(it.name) + '">'
+            + '<span class="ph"><img src="' + esc(it.img) + '" alt="' + esc(it.name) + '" loading="lazy" />'
+            + '<span class="cf-try" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></span>'
+            + '<h4>' + esc(it.name) + '</h4><p class="cp">Rs ' + fmt(it.price) + '</p>'
+            + (it.sizes ? '<p class="cs">' + esc(it.sizes) + '</p>' : '') + '</button>';
+        }).join('');
+        cf.querySelectorAll('.cf-card').forEach(function(card){
+          card.addEventListener('click', function(){
+            var it = findTryon(card.getAttribute('data-id'));
+            if (it) wear(it);
+          });
+        });
+        layoutOrbit();
+      }
+
+      /* Continuous slow orbit — cards drift past the model; centre = big & opaque, edges = small & faded */
+      function layoutOrbit(){
+        var cf = $('coverflow'); if (!cf) return;
+        var cards = cf.querySelectorAll('.cf-card');
+        if (!cards.length) return;
+        var W = cf.clientWidth; if (!W) return;
+        var cw = cards[0].offsetWidth || orbit.cardW; orbit.cardW = cw;
+        var n = cards.length;
+        var spacing = cw + 20;
+        var total = spacing * n;
+        var minTotal = W + cw * 2;
+        if (total < minTotal) { spacing = minTotal / n; total = minTotal; }
+        cards.forEach(function(card, i){
+          var x = (((i * spacing - orbit.offset) % total) + total) % total - cw;
+          var cx = x + cw / 2;
+          var d = Math.min(Math.abs(cx - W / 2) / (W / 2 + cw), 1);
+          var s = 0.72 + 0.36 * (1 - d);
+          card.style.transform = 'translate(' + x.toFixed(1) + 'px,-50%) scale(' + s.toFixed(3) + ')';
+          card.style.opacity = (0.3 + 0.7 * (1 - d)).toFixed(2);
+          card.style.zIndex = String(Math.round((1 - d) * 10));
+        });
+      }
+      function orbitLoop(ts){
+        if (!orbit.running) return;
+        if (!orbit.last) orbit.last = ts;
+        var dt = Math.min(ts - orbit.last, 64); orbit.last = ts;
+        if (orbit.visible && !orbit.hover && !document.hidden) {
+          orbit.offset += dt * 0.016; /* ≈16px per second — calm, premium drift */
+          if (Math.abs(orbit.kick) > 0.4) { var step = orbit.kick * 0.06; orbit.offset += step; orbit.kick -= step; }
+          layoutOrbit();
+        }
+        requestAnimationFrame(orbitLoop);
+      }
+      function startOrbit(){
+        if (reduceMotion) { layoutOrbit(); return; }
+        if (orbit.running) return;
+        orbit.running = true; orbit.last = 0;
+        requestAnimationFrame(orbitLoop);
+      }
+
+      function wear(it){
+        if (it.slot === 'shoes') {
+          worn.shoe = it;
+          var ss = $('stageShoe');
+          $('stageShoeImg').src = it.img;
+          $('stageShoeName').textContent = it.name;
+          ss.hidden = false;
+          ss.style.animation = 'none'; void ss.offsetWidth; ss.style.animation = '';
+        } else {
+          worn.outfit = it; worn.outfitSlot = it.slot;
+          var img = $('stageImg');
+          img.src = it.img; img.alt = 'Studio model wearing ' + it.name;
+          img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
+          $('stageName').textContent = it.name;
+          $('stagePrice').textContent = 'Rs ' + fmt(it.price);
+          var st = $('stage');
+          st.classList.remove('swap'); void st.offsetWidth; st.classList.add('swap');
+          setTimeout(function(){ st.classList.remove('swap'); }, 850);
+          st.style.boxShadow = '0 34px 70px rgba(71,37,64,.22), 0 0 0 6px ' + hexA(swatchBg(colourList(it)[0] || ''), '59');
+        }
+        worn.focus = it; worn.focusSlot = it.slot;
+        var cols = colourList(it);
+        worn.colour = cols.length ? cols[0] : '';
+        renderBar();
+        renderCoverflow(true);
+      }
+      function hexA(bg, a){
+        if (bg && bg.charAt(0) === '#' && bg.length === 7) return bg + a;
+        return 'rgba(255,255,255,.35)';
+      }
+
+      function renderBar(){
+        var it = worn.focus || worn.outfit; if (!it) return;
+        $('tbThumb').src = it.img;
+        $('tbIcon').innerHTML = SLOT_ICON[worn.focusSlot] || SLOT_ICON.kurti;
+        $('tbName').textContent = it.name;
+        var cols = colourList(it);
+        if (cols.length && cols.indexOf(worn.colour) === -1) worn.colour = cols[0];
+        if (cols.length && !colourPhoto(it, worn.colour)) worn.colour = cols[0]; /* never select a colour whose real photo we don't have */
+        $('tbThumb').src = colourPhoto(it, worn.colour) || it.img;
+        $('tbSub').textContent = (cols.length ? 'Colour: ' + worn.colour + ' · ' : '') + 'Rs ' + fmt(it.price) + ' · ' + (SLOT_LABEL[worn.focusSlot] || '');
+        $('swatches').innerHTML = cols.map(function(c){
+          var av = !!colourPhoto(it, c);
+          return '<button type="button" class="swatch' + (c === worn.colour ? ' active' : '') + (av ? '' : ' unavailable') + '" data-colour="' + esc(c) + '"' + (av ? '' : ' disabled aria-disabled="true"') + ' title="' + esc(c) + (av ? '' : ' — photo not available') + '" aria-label="Colour ' + esc(c) + (av ? '' : ' (photo not available)') + '" style="background:' + swatchBg(c) + '"></button>';
+        }).join('');
+        $('swatches').querySelectorAll('.swatch:not(.unavailable)').forEach(function(sw){
+          sw.addEventListener('click', function(){
+            var c = sw.getAttribute('data-colour');
+            var it2 = worn.focus; if (!it2) return;
+            var photo = colourPhoto(it2, c);
+            if (!photo) { toast(c + ' photo is not available for this piece yet.'); return; }
+            worn.colour = c;
+            /* Swap the model's photo to THIS colour's real photo — never a tint or recolour */
+            if (it2.slot === 'shoes') {
+              var sImg = $('stageShoeImg'); sImg.src = photo;
+              var ss = $('stageShoe'); ss.style.animation = 'none'; void ss.offsetWidth; ss.style.animation = '';
+            } else {
+              var mImg = $('stageImg'); mImg.src = photo; mImg.alt = 'Studio model wearing ' + it2.name + ' in ' + c;
+              mImg.style.animation = 'none'; void mImg.offsetWidth; mImg.style.animation = '';
+              $('stage').style.boxShadow = '0 34px 70px rgba(71,37,64,.22), 0 0 0 6px ' + hexA(swatchBg(c), '59');
+            }
+            renderBar();
+            toast(it2.name + ' — colour: ' + c);
+          });
+        });
+        $('tbOrder').setAttribute('href', waLink('Assalam-o-Alaikum! I tried on the ' + it.name + ' (Rs ' + fmt(it.price) + ')' + (worn.colour ? ', colour ' + worn.colour : '') + ' in your Virtual Fitting Room. Is it available?'));
+      }
+
+      function validateWorn(){
+        if (worn.outfit && !findTryon(worn.outfit.id)) {
+          var first = tryonItems('kurti')[0] || tryonItems('frock')[0] || tryonItems('bridal')[0];
+          if (first) { worn.outfit = null; wear(first); return; }
+        }
+        if (worn.shoe && !findTryon(worn.shoe.id)) { worn.shoe = null; $('stageShoe').hidden = true; }
+        if (worn.focus && !findTryon(worn.focus.id)) { worn.focus = worn.outfit; worn.focusSlot = worn.outfitSlot; renderBar(); }
+      }
+
+      /* Category switch = gentle crossfade: showroom fades out, new category fades in */
+      function switchTab(slot){
+        if (slot === tryonTab) return;
+        var area = $('stageArea'), word = document.querySelector('.bigword'), bar = $('tryonBar');
+        function apply(){
+          tryonTab = slot;
+          document.querySelectorAll('.ttab').forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-slot') === slot); });
+          if (word) word.textContent = WORDS[slot] || 'STYLE';
+          $('tryon').style.setProperty('--accent', ACCENTS[slot] || '#b76e79');
+          renderCoverflow();
+          area.classList.remove('fading');
+          if (word) word.classList.remove('fading');
+          if (bar) bar.classList.remove('fading');
+        }
+        if (reduceMotion) { apply(); return; }
+        area.classList.add('fading');
+        if (word) word.classList.add('fading');
+        if (bar) bar.classList.add('fading');
+        setTimeout(apply, 400);
+      }
+
+      (function initTryon(){
+        var cf = $('coverflow'); if (!cf) return;
+        document.querySelectorAll('.ttab').forEach(function(tab){
+          tab.addEventListener('click', function(){ switchTab(tab.getAttribute('data-slot')); });
+        });
+        $('cfPrev').addEventListener('click', function(){
+          if (reduceMotion) { orbit.offset -= 240; layoutOrbit(); } else orbit.kick -= 240;
+        });
+        $('cfNext').addEventListener('click', function(){
+          if (reduceMotion) { orbit.offset += 240; layoutOrbit(); } else orbit.kick += 240;
+        });
+        var area = $('stageArea');
+        area.addEventListener('mouseenter', function(){ orbit.hover = true; });
+        area.addEventListener('mouseleave', function(){ orbit.hover = false; });
+        /* Touch: hold the drift still while a finger is down (and briefly after), so cards are easy to tap */
+        var resumeTimer = null;
+        area.addEventListener('pointerdown', function(){ orbit.hover = true; clearTimeout(resumeTimer); });
+        window.addEventListener('pointerup', function(){ clearTimeout(resumeTimer); resumeTimer = setTimeout(function(){ orbit.hover = false; }, 900); });
+        window.addEventListener('pointercancel', function(){ clearTimeout(resumeTimer); resumeTimer = setTimeout(function(){ orbit.hover = false; }, 900); });
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function(en){ orbit.visible = en[0].isIntersecting; }, { threshold: 0.04 }).observe($('tryon'));
+        } else { orbit.visible = true; }
+        window.addEventListener('resize', layoutOrbit);
+        var first = tryonItems('kurti')[0];
+        renderCoverflow();
+        if (first) wear(first);
+        startOrbit();
+      })();
+
+      /* ================= Admin Panel ================= */
+      var loggedIn = false;
+      var overlay = $('adminOverlay');
+
+      function openAdmin(){
+        overlay.hidden = false;
+        document.body.style.overflow = 'hidden';
+        if (loggedIn) { $('adminLogin').hidden = true; $('adminDash').hidden = false; }
+        else { $('adminLogin').hidden = false; $('adminDash').hidden = true; setTimeout(function(){ $('pinInput').focus(); }, 80); }
+      }
+      function closeAdmin(){
+        overlay.hidden = true;
+        document.body.style.overflow = '';
+      }
+      document.querySelectorAll('.admin-open').forEach(function(a){
+        a.addEventListener('click', function(e){ e.preventDefault(); openAdmin(); });
+      });
+      $('adminClose').addEventListener('click', closeAdmin);
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !overlay.hidden) closeAdmin(); });
+
+      function tryPin(){
+        if ($('pinInput').value === '1234') {
+          loggedIn = true;
+          $('pinError').hidden = true;
+          $('adminLogin').hidden = true;
+          $('adminDash').hidden = false;
+          renderAdminProducts(); renderAdminOffers(); fillSettings();
+          toast('Welcome back! Panel unlocked.');
+        } else {
+          $('pinError').hidden = false;
+          var card = $('adminLogin');
+          card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+          $('pinInput').value = '';
+        }
+      }
+      $('pinBtn').addEventListener('click', tryPin);
+      $('pinInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') tryPin(); });
+
+      document.querySelectorAll('.atab').forEach(function(tab){
+        tab.addEventListener('click', function(){
+          document.querySelectorAll('.atab').forEach(function(t){ t.classList.remove('active'); });
+          tab.classList.add('active');
+          ['products','offers','settings'].forEach(function(k){ $('pane-' + k).hidden = (k !== tab.getAttribute('data-tab')); });
+        });
+      });
+
+      function armable(btn, fn){
+        btn.addEventListener('click', function(){
+          if (btn.dataset.armed) { btn.dataset.armed = ''; btn.textContent = btn.dataset.label; btn.classList.remove('confirm'); fn(); }
+          else {
+            btn.dataset.armed = '1'; btn.dataset.label = btn.textContent; btn.textContent = 'Confirm?'; btn.classList.add('confirm');
+            setTimeout(function(){ btn.dataset.armed = ''; btn.textContent = btn.dataset.label; btn.classList.remove('confirm'); }, 2600);
+          }
+        });
+      }
+
+      /* ---------- Products admin ---------- */
+      function renderAdminProducts(){
+        var list = $('adminProductList'); if (!list) return;
+        if (!state.products.length) { list.innerHTML = '<p class="pane-note">No products yet — add your first piece above.</p>'; return; }
+        list.innerHTML = '';
+        state.products.forEach(function(p){
+          var row = document.createElement('div'); row.className = 'admin-row';
+          row.innerHTML = '<img src="' + esc(p.img) + '" alt="" />'
+            + '<div class="info"><b>' + esc(p.name) + '</b><span>Rs ' + fmt(p.price) + ' · ' + esc(CATS[p.cat] || p.cat) + ' · ' + esc(p.collection || '') + '</span></div>'
+            + '<span class="pill">' + esc(SLOT_LABEL[slotOf(p)] || 'Shop only') + '</span>'
+            + '<div class="acts"><button type="button" class="btn btn-ghost btn-sm act-edit">Edit</button>'
+            + '<button type="button" class="btn btn-danger btn-sm act-del">Delete</button></div>';
+          row.querySelector('.act-edit').addEventListener('click', function(){ fillProductForm(p); });
+          armable(row.querySelector('.act-del'), function(){
+            state.products = state.products.filter(function(x){ return x.id !== p.id; });
+            save(); syncStorefront(true); renderAdminProducts();
+            toast('“' + p.name + '” deleted — storefront updated.');
+          });
+          list.appendChild(row);
+        });
+      }
+
+      function setPreview(src, label){
+        $('pfPreview').src = src;
+        $('pfPreviewName').textContent = label || 'Current photo';
+      }
+      function fillProductForm(p){
+        $('productForm').hidden = false;
+        $('pfTitle').textContent = p ? 'Edit Product' : 'Add Product';
+        $('pfId').value = p ? p.id : '';
+        $('pfName').value = p ? p.name : '';
+        $('pfPrice').value = p ? p.price : '';
+        $('pfCat').value = p ? p.cat : 'pret';
+        $('pfCollection').value = p ? (p.collection || '') : '';
+        $('pfSlot').value = p ? (p.slot || 'auto') : 'auto';
+        $('pfTag').value = p ? (p.tag || '') : '';
+        $('pfDesc').value = p ? (p.desc || '') : '';
+        $('pfSizes').value = p ? (p.sizes || '') : '';
+        $('pfColours').value = p ? (p.colours || '') : '';
+        $('pfPhotoData').value = '';
+        $('pfPhotoFile').value = '';
+        var sel = $('pfPhotoSelect');
+        sel.value = p && PHOTOS.some(function(ph){ return ph[0] === p.img; }) ? p.img : '';
+        setPreview(p ? p.img : 'assets/p-suit.jpg', p ? 'Current photo' : 'Pick a photo');
+        $('productForm').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+      }
+      $('addProductBtn').addEventListener('click', function(){ fillProductForm(null); });
+      $('pfCancel').addEventListener('click', function(){ $('productForm').hidden = true; });
+      $('pfPhotoSelect').addEventListener('change', function(){
+        if (this.value) { $('pfPhotoData').value = ''; setPreview(this.value, 'Demo photo selected'); }
+      });
+      $('pfPhotoFile').addEventListener('change', function(){
+        var file = this.files && this.files[0]; if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(){
+          var img = new Image();
+          img.onload = function(){
+            var max = 900, w = img.width, h = img.height, sc = Math.min(1, max / Math.max(w, h));
+            var c = document.createElement('canvas');
+            c.width = Math.round(w * sc); c.height = Math.round(h * sc);
+            c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+            var url = c.toDataURL('image/jpeg', 0.82);
+            $('pfPhotoData').value = url; $('pfPhotoSelect').value = '';
+            setPreview(url, 'Uploaded photo');
+          };
+          img.onerror = function(){ $('pfPhotoData').value = reader.result; setPreview(reader.result, 'Uploaded photo'); };
+          img.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      });
+      $('productForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        var name = $('pfName').value.trim();
+        var price = parseInt($('pfPrice').value, 10);
+        if (!name || isNaN(price)) { toast('Please add a product name and price.'); return; }
+        var img = $('pfPhotoData').value || $('pfPhotoSelect').value || 'assets/p-suit.jpg';
+        var data = {
+          name: name, price: price,
+          cat: $('pfCat').value,
+          collection: $('pfCollection').value.trim() || CATS[$('pfCat').value],
+          slot: $('pfSlot').value,
+          tag: $('pfTag').value.trim(),
+          img: img,
+          desc: $('pfDesc').value.trim(),
+          sizes: $('pfSizes').value.trim(),
+          colours: $('pfColours').value.trim()
+        };
+        var id = $('pfId').value;
+        if (id) {
+          state.products = state.products.map(function(p){ return p.id === id ? Object.assign({}, p, data) : p; });
+          toast('“' + name + '” updated — storefront & fitting room refreshed.');
+        } else {
+          data.id = 'p' + Date.now();
+          state.products.push(data);
+          toast('“' + name + '” added — now live on the storefront.');
+        }
+        save(); syncStorefront(true); renderAdminProducts();
+        $('productForm').hidden = true;
+      });
+
+      /* ---------- Offers admin ---------- */
+      function renderAdminOffers(){
+        var list = $('adminOfferList'); if (!list) return;
+        if (!state.offers.length) { list.innerHTML = '<p class="pane-note">No offers yet — add one above.</p>'; return; }
+        list.innerHTML = '';
+        state.offers.forEach(function(o){
+          var row = document.createElement('div'); row.className = 'admin-row';
+          row.innerHTML = '<div class="info"><b>' + esc(o.title) + '</b><span>' + esc(o.text) + '</span></div>'
+            + '<span class="pill ' + (o.active ? 'on' : 'off') + '">' + (o.active ? 'Shown' : 'Hidden') + '</span>'
+            + '<div class="acts"><button type="button" class="btn btn-ghost btn-sm act-tog">' + (o.active ? 'Hide' : 'Show') + '</button>'
+            + '<button type="button" class="btn btn-ghost btn-sm act-edit">Edit</button>'
+            + '<button type="button" class="btn btn-danger btn-sm act-del">Delete</button></div>';
+          row.querySelector('.act-tog').addEventListener('click', function(){
+            o.active = !o.active; save(); renderOffers(); renderAdminOffers();
+            toast(o.active ? 'Offer is now shown on the storefront.' : 'Offer hidden from the storefront.');
+          });
+          row.querySelector('.act-edit').addEventListener('click', function(){
+            $('offerForm').hidden = false;
+            $('ofTitle').textContent = 'Edit Offer';
+            $('ofId').value = o.id;
+            $('ofOfferTitle').value = o.title;
+            $('ofText').value = o.text;
+            $('ofActive').value = o.active ? '1' : '0';
+            $('offerForm').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+          });
+          armable(row.querySelector('.act-del'), function(){
+            state.offers = state.offers.filter(function(x){ return x.id !== o.id; });
+            save(); renderOffers(); renderAdminOffers();
+            toast('Offer deleted.');
+          });
+          list.appendChild(row);
+        });
+      }
+      $('addOfferBtn').addEventListener('click', function(){
+        $('offerForm').hidden = false;
+        $('ofTitle').textContent = 'Add Offer';
+        $('ofId').value = ''; $('ofOfferTitle').value = ''; $('ofText').value = ''; $('ofActive').value = '1';
+      });
+      $('ofCancel').addEventListener('click', function(){ $('offerForm').hidden = true; });
+      $('offerForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        var title = $('ofOfferTitle').value.trim();
+        if (!title) { toast('Please add an offer title.'); return; }
+        var data = { title: title, text: $('ofText').value.trim(), active: $('ofActive').value === '1' };
+        var id = $('ofId').value;
+        if (id) state.offers = state.offers.map(function(o){ return o.id === id ? Object.assign({}, o, data) : o; });
+        else { data.id = 'o' + Date.now(); state.offers.push(data); }
+        save(); renderOffers(); renderAdminOffers();
+        $('offerForm').hidden = true;
+        toast('Offer saved — storefront updated.');
+      });
+
+      /* ---------- Settings admin ---------- */
+      function fillSettings(){
+        var s = state.settings;
+        $('sfName').value = s.shopName;
+        $('sfWhatsapp').value = s.whatsapp;
+        $('sfPhone').value = s.phoneDisplay;
+        $('sfAddress').value = s.address;
+        $('sfTiming').value = s.timing;
+      }
+      $('settingsForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        var wa = $('sfWhatsapp').value.replace(/\D/g, '');
+        if (!wa) { toast('Please add a WhatsApp number.'); return; }
+        state.settings = {
+          shopName: $('sfName').value.trim() || state.settings.shopName,
+          whatsapp: wa,
+          phoneDisplay: $('sfPhone').value.trim() || state.settings.phoneDisplay,
+          address: $('sfAddress').value.trim() || state.settings.address,
+          timing: $('sfTiming').value.trim() || state.settings.timing
+        };
+        save(); syncStorefront(true);
+        toast('Settings saved — the whole storefront now uses them.');
+      });
+      armable($('resetBtn'), function(){
+        state = clone(SEED);
+        try { localStorage.removeItem(LS_KEY); } catch (e) {}
+        save(); fillSettings(); syncStorefront(true); renderAdminProducts(); renderAdminOffers();
+        toast('Demo data restored to the original pieces.');
+      });
+
+      /* ================= 2026 Mechanics: Orbit Wheel · Curved Rail · Shuffle Looks · Quick View ================= */
+      function splitList(v){ return String(v || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean); }
+      /* A colour may ONLY be shown with its own real photo: the product's main photo depicts its
+         first listed colour; any other colour needs a real variant photo stored in item.variants.
+         Returns null when no real photo exists for that colour (dot is then disabled/unavailable).
+         No tint, recolour, filter or overlay is ever applied. */
+      function colourPhoto(item, colour){
+        if (!item) return null;
+        if (item.variants && item.variants[colour]) return item.variants[colour];
+        var cols = colourList(item);
+        if (!cols.length || colour === cols[0]) return item.img;
+        return null;
+      }
+
+      /* ---------- Quick View (shared by orbit + rail) ---------- */
+      var qv = { item: null, size: '', colour: '', view: 'front' };
+      function openQuickView(p){
+        if (!p) return;
+        qv.item = p; qv.view = 'front';
+        var sizes = splitList(p.sizes); var cols = splitList(p.colours);
+        qv.size = sizes.length ? sizes[0] : '';
+        qv.colour = cols.length ? cols[0] : '';
+        renderQuickView();
+        $('qvOverlay').hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+      function closeQuickView(){ $('qvOverlay').hidden = true; document.body.style.overflow = ''; }
+      function renderQuickView(){
+        var p = qv.item; if (!p) return;
+        var img = $('qvImg');
+        var hasBack = !!p.imgBack; /* Front/Back toggle only when a REAL separate back photo is stored */
+        if (!hasBack) qv.view = 'front';
+        img.src = (qv.view === 'back' && hasBack) ? p.imgBack : (colourPhoto(p, qv.colour) || p.img);
+        img.alt = p.name + (qv.view === 'back' ? ' — back view' : '');
+        img.classList.remove('back');
+        $('qvViewToggle').style.display = hasBack ? 'flex' : 'none';
+        $('qvViewToggle').querySelectorAll('button').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-view') === qv.view); });
+        var sizes = splitList(p.sizes); var cols = splitList(p.colours);
+        $('qvBody').innerHTML =
+          '<span class="m-kicker">' + esc(p.collection || CATS[p.cat] || 'Boutique Piece') + (hasBack ? ' · ' + (qv.view === 'back' ? 'Back View' : 'Front View') : '') + '</span>'
+          + '<h3 class="q-name">' + esc(p.name) + '</h3>'
+          + '<div class="q-price">Rs ' + fmt(p.price) + '</div>'
+          + '<p class="q-desc">' + esc(p.desc || '') + '</p>'
+          + (sizes.length ? '<span class="m-label">Select Size</span><div class="size-row">' + sizes.map(function(s){ return '<button type="button" class="size-box qv-size' + (s === qv.size ? ' active' : '') + '" data-size="' + esc(s) + '">' + esc(s) + '</button>'; }).join('') + '</div>' : '')
+          + (cols.length ? '<span class="m-label">Colour</span><div class="qv-swatches">' + cols.map(function(c){ var av = !!colourPhoto(p, c); return '<button type="button" class="swatch qv-col' + (c === qv.colour ? ' active' : '') + (av ? '' : ' unavailable') + '" data-colour="' + esc(c) + '"' + (av ? '' : ' disabled aria-disabled="true"') + ' title="' + esc(c) + (av ? '' : ' — photo not available') + '" aria-label="Colour ' + esc(c) + (av ? '' : ' (photo not available)') + '" style="background:' + swatchBg(c) + ';width:30px;height:30px"></button>'; }).join('') + '</div><p style="font-size:.85rem;color:#8a7d78;margin:8px 0 0">Colour: <b>' + esc(qv.colour) + '</b></p>' : '')
+          + '<div class="qv-actions"><a class="m-pill" id="qvOrder" target="_blank" rel="noopener" href="#">Order on WhatsApp</a>'
+          + '<button type="button" class="m-pill ghost" id="qvBackBtn">Keep Browsing</button></div>';
+        function updOrder(){
+          $('qvOrder').setAttribute('href', waLink('Assalam-o-Alaikum! I am interested in the ' + p.name + ' (Rs ' + fmt(p.price) + ')' + (qv.size ? ', size ' + qv.size : '') + (qv.colour ? ', colour ' + qv.colour : '') + ' on your website. Is it available?'));
+        }
+        updOrder();
+        $('qvBody').querySelectorAll('.qv-size').forEach(function(b){ b.addEventListener('click', function(){ qv.size = b.getAttribute('data-size'); renderQuickView(); }); });
+        $('qvBody').querySelectorAll('.qv-col').forEach(function(b){ b.addEventListener('click', function(){ qv.colour = b.getAttribute('data-colour'); renderQuickView(); }); });
+        $('qvBackBtn').addEventListener('click', closeQuickView);
+      }
+      $('qvClose').addEventListener('click', closeQuickView);
+      $('qvOverlay').addEventListener('click', function(e){ if (e.target === this) closeQuickView(); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !$('qvOverlay').hidden) closeQuickView(); });
+      $('qvViewToggle').querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click', function(){ qv.view = b.getAttribute('data-view'); renderQuickView(); });
+      });
+
+      /* ---------- 1) Drag-to-Orbit Wheel ---------- */
+      var orbit2 = { angle: Math.PI / 2, items: [], front: -1, selSize: '' };
+      function orbitItems(){ return state.products.slice(0, 10); }
+      function layoutWheel(){
+        var stage = $('orbitStage'); if (!stage) return;
+        var cards = stage.querySelectorAll('.orbit-card');
+        if (!cards.length) return;
+        var W = stage.clientWidth, H = stage.clientHeight;
+        var cx = W / 2, cy = H / 2, rx = W * 0.36, ry = H * 0.30;
+        var n = orbit2.items.length, step = (Math.PI * 2) / Math.max(n, 1);
+        var best = -1, bestD = -2;
+        cards.forEach(function(card, i){
+          var a = orbit2.angle + i * step;
+          var x = cx + rx * Math.cos(a), y = cy + ry * Math.sin(a);
+          var depth = (Math.sin(a) + 1) / 2; /* 1 = front (bottom), 0 = back */
+          var s = 0.55 + 0.62 * depth;
+          card.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + s.toFixed(3) + ')';
+          card.style.opacity = (0.32 + 0.68 * depth).toFixed(2);
+          card.style.zIndex = String(Math.round(depth * 30));
+          card.style.filter = depth < 0.45 ? 'blur(0.6px)' : 'none';
+          if (depth > bestD) { bestD = depth; best = i; }
+        });
+        if (best !== orbit2.front && best > -1) { orbit2.front = best; renderOrbitInfo(); }
+      }
+      function renderOrbitInfo(){
+        var info = $('orbitInfo'); if (!info) return;
+        var items = orbit2.items, p = items[orbit2.front];
+        if (!p) { info.innerHTML = '<p class="empty-note">No hero pieces yet — add products from the Admin Panel.</p>'; return; }
+        var sizes = splitList(p.sizes);
+        if (!sizes.length || sizes.indexOf(orbit2.selSize) === -1) orbit2.selSize = sizes.length ? sizes[0] : '';
+        info.innerHTML =
+          '<span class="o-coll">' + esc(p.collection || CATS[p.cat] || '') + '</span>'
+          + '<h3 class="o-name">' + esc(p.name) + '</h3>'
+          + '<div class="o-price">Rs ' + fmt(p.price) + '</div>'
+          + '<p class="o-desc">' + esc(p.desc || '') + '</p>'
+          + (sizes.length ? '<span class="m-label">Size</span><div class="size-row">' + sizes.map(function(s){ return '<button type="button" class="size-box o-size' + (s === orbit2.selSize ? ' active' : '') + '" data-size="' + esc(s) + '">' + esc(s) + '</button>'; }).join('') + '</div>' : '')
+          + '<div style="margin-top:20px"><button type="button" class="m-pill" id="orbitViewBtn">Quick View</button></div>'
+          + '<div class="orbit-thumbs">' + items.map(function(it, i){ return '<button type="button" class="o-thumb' + (i === orbit2.front ? ' active' : '') + '" data-i="' + i + '" aria-label="Show ' + esc(it.name) + '"><img src="' + esc(it.img) + '" alt="" loading="lazy" /></button>'; }).join('') + '</div>'
+          + '<div class="orbit-count"><b>' + String(orbit2.front + 1).padStart(2, '0') + '</b> / ' + String(items.length).padStart(2, '0') + '</div>';
+        info.querySelectorAll('.o-size').forEach(function(b){ b.addEventListener('click', function(){ orbit2.selSize = b.getAttribute('data-size'); renderOrbitInfo(); }); });
+        info.querySelectorAll('.o-thumb').forEach(function(b){
+          b.addEventListener('click', function(){
+            var i = parseInt(b.getAttribute('data-i'), 10);
+            if (i === orbit2.front) { openQuickView(items[i]); return; }
+            rotateOrbitTo(i);
+          });
+        });
+        $('orbitViewBtn').addEventListener('click', function(){ openQuickView(p); });
+      }
+      function rotateOrbitTo(i){
+        var n = orbit2.items.length; if (!n) return;
+        var step = (Math.PI * 2) / n;
+        var target = Math.PI / 2 - i * step;
+        var cur = orbit2.angle % (Math.PI * 2);
+        var diff = ((target - cur) % (Math.PI * 2) + Math.PI * 3) % (Math.PI * 2) - Math.PI;
+        orbit2.angle = cur + diff;
+        layoutWheel(); renderOrbitInfo();
+      }
+      function renderOrbit(){
+        var stage = $('orbitStage'); if (!stage) return;
+        orbit2.items = orbitItems();
+        stage.querySelectorAll('.orbit-card').forEach(function(c){ c.remove(); });
+        if (!orbit2.items.length) { $('orbitInfo').innerHTML = '<p class="empty-note">No hero pieces yet — add products from the Admin Panel.</p>'; return; }
+        if (orbit2.front >= orbit2.items.length) orbit2.front = 0;
+        orbit2.items.forEach(function(p, i){
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'orbit-card';
+          b.setAttribute('aria-label', p.name);
+          b.innerHTML = '<img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy" /><span>' + esc(p.name) + '</span>';
+          b.addEventListener('click', function(){
+            if (stage.dataset.moved === '1') return;
+            if (i === orbit2.front) openQuickView(p); else rotateOrbitTo(i);
+          });
+          stage.appendChild(b);
+        });
+        layoutWheel(); renderOrbitInfo();
+      }
+      (function initOrbitDrag(){
+        var stage = $('orbitStage'); if (!stage) return;
+        var dragging = false, startX = 0, startAngle = 0, moved = 0;
+        stage.addEventListener('pointerdown', function(e){
+          dragging = true; moved = 0; startX = e.clientX; startAngle = orbit2.angle;
+          stage.dataset.moved = '0'; stage.classList.add('dragging');
+          try { stage.setPointerCapture(e.pointerId); } catch (err) {}
+        });
+        stage.addEventListener('pointermove', function(e){
+          if (!dragging) return;
+          var dx = e.clientX - startX;
+          moved = Math.max(moved, Math.abs(dx));
+          if (moved > 6) stage.dataset.moved = '1';
+          orbit2.angle = startAngle + dx * 0.008; /* angle → position/scale, recalculated live */
+          layoutWheel();
+        });
+        function end(){ dragging = false; stage.classList.remove('dragging'); setTimeout(function(){ stage.dataset.moved = '0'; }, 60); }
+        stage.addEventListener('pointerup', end);
+        stage.addEventListener('pointercancel', end);
+        window.addEventListener('resize', layoutWheel);
+      })();
+
+      /* ---------- 2) Curved Hover Rail ---------- */
+      var rail = { items: [], active: 0 };
+      function railItems(){
+        var sig = state.products.filter(function(p){ return p.cat === 'pret' || p.cat === 'formal'; });
+        return (sig.length >= 3 ? sig : state.products).slice(-7); /* latest pieces hang on the rail, so new additions show */
+      }
+      function railPoint(t, W, H){
+        /* Quadratic bezier matching the SVG path M -20 70 Q 500 250 1020 70 (viewBox 1000x240) */
+        var x0 = -20, y0 = 70, x1 = 500, y1 = 250, x2 = 1020, y2 = 70;
+        var x = (1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * x1 + t * t * x2;
+        var y = (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * y1 + t * t * y2;
+        return { x: x / 1000 * W, y: y / 240 * H };
+      }
+      function layoutRail(){
+        var stage = $('railStage'); if (!stage) return;
+        var W = stage.clientWidth, H = stage.clientHeight; if (!W) return;
+        var n = rail.items.length;
+        stage.querySelectorAll('.rail-card').forEach(function(card, i){
+          var tEdge = W < 560 ? 0.17 : 0.10; /* keep end cards fully on-screen at phone widths */
+          var t = n === 1 ? 0.5 : tEdge + (1 - 2 * tEdge) * (i / (n - 1));
+          var pt = railPoint(t, W, H);
+          var isA = i === rail.active;
+          card.style.left = pt.x.toFixed(1) + 'px';
+          card.style.top = (pt.y + 22).toFixed(1) + 'px';
+          card.style.transform = 'translateY(0) scale(' + (isA ? 1.22 : 0.92) + ')';
+          card.style.zIndex = isA ? '6' : '2';
+          card.classList.toggle('active', isA);
+        });
+      }
+      function renderRailCaption(){
+        var cap = $('railCaption'); if (!cap) return;
+        var p = rail.items[rail.active];
+        if (!p) { cap.innerHTML = '<p class="empty-note">The rail is empty — add products from the Admin Panel.</p>'; return; }
+        cap.innerHTML =
+          '<div><span class="m-kicker">' + esc(p.collection || CATS[p.cat] || '') + '</span>'
+          + '<div class="r-name">' + esc(p.name) + '</div>'
+          + '<p class="r-desc">' + esc(p.desc || '') + '</p></div>'
+          + '<div style="text-align:right"><div class="r-price">Rs ' + fmt(p.price) + '</div>'
+          + '<button type="button" class="m-pill" id="railViewBtn" style="margin-top:12px">Quick View</button></div>';
+        $('railViewBtn').addEventListener('click', function(){ openQuickView(p); });
+      }
+      function setRailActive(i){
+        rail.active = i;
+        $('railStage').classList.add('has-active');
+        layoutRail(); renderRailCaption();
+      }
+      function renderRail(){
+        var stage = $('railStage'); if (!stage) return;
+        rail.items = railItems();
+        if (rail.active >= rail.items.length) rail.active = 0;
+        stage.querySelectorAll('.rail-card').forEach(function(c){ c.remove(); });
+        rail.items.forEach(function(p, i){
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'rail-card';
+          b.setAttribute('aria-label', p.name);
+          b.innerHTML = '<img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy" /><span>' + esc(p.name) + '</span>';
+          b.addEventListener('mouseenter', function(){ setRailActive(i); });
+          b.addEventListener('focus', function(){ setRailActive(i); });
+          b.addEventListener('click', function(){
+            if (rail.active !== i) { setRailActive(i); return; } /* first tap spotlights, second opens */
+            openQuickView(p);
+          });
+          stage.appendChild(b);
+        });
+        stage.classList.toggle('has-active', rail.items.length > 0);
+        layoutRail(); renderRailCaption();
+      }
+
+      /* ---------- 3) Shuffle Grid — Try the Look ---------- */
+      var looks = { list: [], order: [], selected: 0, included: {} };
+      function buildLooks(){
+        var prods = state.products;
+        var list = [];
+        if (!prods.length) { looks.list = []; looks.order = []; return; }
+        var extras = prods.filter(function(p){ return p.cat === 'accessories'; });
+        var mains = prods.filter(function(p){ return p.cat !== 'accessories'; });
+        var pool = mains.length ? mains : prods;
+        var count = Math.min(6, Math.max(pool.length, 1));
+        for (var i = 0; i < count; i++) {
+          var mainIdx = (count === pool.length || count < 2) ? i : Math.round(i * (pool.length - 1) / (count - 1)); /* spread across the pool so newly added pieces also star in looks */
+          var main = pool[mainIdx % pool.length];
+          var pieces = [main];
+          var ex = extras.length ? extras[i % extras.length] : null;
+          if (ex && ex.id !== main.id) pieces.push(ex);
+          var second = pool[(mainIdx + 2) % pool.length];
+          if (second && second.id !== main.id && pieces.length < 3 && i % 2 === 0) pieces.push(second);
+          var shoe = state.shoes.length ? state.shoes[i % state.shoes.length] : null;
+          if (shoe) pieces.push({ id: shoe.id, name: shoe.name, price: shoe.price, img: shoe.img, isShoe: true });
+          list.push({ id: 'look' + i, title: 'Look ' + (i + 1) + ' — ' + main.name, main: main, pieces: pieces });
+        }
+        looks.list = list;
+        looks.order = list.map(function(_, i){ return i; });
+        if (looks.selected >= list.length) looks.selected = 0;
+      }
+      function renderLooks(){
+        var row = $('looksRow'); if (!row) return;
+        if (!looks.list.length) { row.innerHTML = '<p class="empty-note">Looks are being styled — add products from the Admin Panel.</p>'; $('lookDetail').hidden = true; return; }
+        var n = looks.order.length, mid = (n - 1) / 2;
+        row.innerHTML = looks.order.map(function(li, pos){
+          var look = looks.list[li];
+          var dist = Math.abs(pos - mid);
+          var s = Math.max(0.78, 1.14 - dist * 0.13);
+          var op = Math.max(0.45, 1 - dist * 0.17);
+          var total = look.pieces.reduce(function(sum, pc){ return sum + (Number(pc.price) || 0); }, 0);
+          return '<button type="button" class="look-card' + (li === looks.selected ? ' selected' : '') + '" data-look="' + li + '" style="transform:scale(' + s.toFixed(2) + ');opacity:' + op.toFixed(2) + ';z-index:' + (10 - Math.round(dist)) + '" aria-label="' + esc(look.title) + '">'
+            + '<img src="' + esc(look.main.img) + '" alt="' + esc(look.main.name) + ' styled look" loading="lazy" />'
+            + '<b>' + esc(look.title) + '</b><span>Full look · Rs ' + fmt(total) + '</span></button>';
+        }).join('');
+        row.querySelectorAll('.look-card').forEach(function(card){
+          card.addEventListener('click', function(){
+            looks.selected = parseInt(card.getAttribute('data-look'), 10);
+            looks.included = {};
+            renderLooks(); renderLookDetail();
+            if (!reduceMotion) $('lookDetail').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          });
+        });
+      }
+      function lookTotal(look){
+        return look.pieces.reduce(function(sum, pc, idx){
+          return sum + (looks.included[look.id + ':' + idx] === false ? 0 : (Number(pc.price) || 0));
+        }, 0);
+      }
+      function renderLookDetail(){
+        var box = $('lookDetail'); if (!box) return;
+        var look = looks.list[looks.selected];
+        if (!look) { box.hidden = true; return; }
+        box.hidden = false;
+        box.innerHTML =
+          '<div class="ld-img"><img src="' + esc(look.main.img) + '" alt="' + esc(look.main.name) + ' — complete styled look" /></div>'
+          + '<div><span class="m-kicker">In This Look</span>'
+          + '<h3 style="font-family:Jost,sans-serif;font-weight:700;text-transform:uppercase;font-size:1.35rem;color:#111;margin:8px 0 4px">' + esc(look.title) + '</h3>'
+          + '<p style="color:#8a7d78;font-size:.93rem;margin:0 0 6px">Tap + to include a piece in your order — the total updates as you choose.</p>'
+          + look.pieces.map(function(pc, idx){
+              var inc = looks.included[look.id + ':' + idx] !== false;
+              return '<div class="piece-row' + (inc ? '' : ' excluded') + '"><img src="' + esc(pc.img) + '" alt="" />'
+                + '<div class="pi"><b>' + esc(pc.name) + '</b><span>Rs ' + fmt(pc.price) + (pc.isShoe ? ' · Shoes' : '') + '</span></div>'
+                + '<button type="button" class="piece-add' + (inc ? ' added' : '') + '" data-idx="' + idx + '" aria-label="' + (inc ? 'Remove ' : 'Add ') + esc(pc.name) + '">' + (inc ? '✓' : '+') + '</button></div>';
+            }).join('')
+          + '<div class="look-total"><span>Total</span><b>Rs ' + fmt(lookTotal(look)) + '</b></div>'
+          + '<a class="m-pill" id="orderLookBtn" target="_blank" rel="noopener" href="#" style="width:100%;margin-top:10px">Order Full Look</a></div>';
+        box.querySelectorAll('.piece-add').forEach(function(b){
+          b.addEventListener('click', function(){
+            var idx = b.getAttribute('data-idx'), key = look.id + ':' + idx;
+            looks.included[key] = looks.included[key] === false ? true : false;
+            renderLookDetail();
+          });
+        });
+        var chosen = look.pieces.filter(function(pc, idx){ return looks.included[look.id + ':' + idx] !== false; });
+        var lines = chosen.map(function(pc){ return '• ' + pc.name + ' — Rs ' + fmt(pc.price); }).join('\n');
+        $('orderLookBtn').setAttribute('href', waLink('Assalam-o-Alaikum! I would like to order this complete look from Zahra Rubab Ladies Boutique:\n' + lines + '\nTotal: Rs ' + fmt(lookTotal(look)) + '\nIs it available?'));
+      }
+      $('shuffleBtn').addEventListener('click', function(){
+        for (var i = looks.order.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = looks.order[i]; looks.order[i] = looks.order[j]; looks.order[j] = tmp;
+        }
+        if (looks.order.length > 1 && looks.order[0] === looks.selected) { /* keep it lively */ }
+        renderLooks();
+        toast('Looks shuffled — a fresh order, fresh inspiration.');
+      });
+
+      function renderMechanics(){
+        renderOrbit();
+        renderRail();
+        buildLooks();
+        renderLooks();
+        renderLookDetail();
+      }
+      window.addEventListener('resize', function(){ layoutRail(); });
+
+      /* ================= Init ================= */
+      (function(){
+        var sel = $('pfPhotoSelect');
+        if (sel) {
+          sel.innerHTML = '<option value="">Choose a demo photo…</option>' + PHOTOS.map(function(ph){
+            return '<option value="' + ph[0] + '">' + ph[1] + '</option>';
+          }).join('');
+        }
+        syncStorefront(false);
+        if (window.location.hash === '#admin') openAdmin();
+      })();
+    </script>
+  </body>
+</html>
