@@ -414,7 +414,19 @@ button[disabled],.btn-disabled{opacity:.45;cursor:not-allowed !important;pointer
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}.rv,.h-anim,.hero h1 .w,.hero-photo,.float-card,.wa-float{opacity:1 !important;transform:none !important}.progress{transform:scaleX(0) !important}.toast{opacity:0}.toast.show{opacity:1}}
 
     </style>
-  </head>
+  <style>
+/* TO-FIX 2026-11-24: mobile try-on repair */
+
+@media (max-width:900px){
+  /* Coverflow becomes a strip under the model on mobile; cards entering or
+     leaving the strip dissolve at the edges instead of being sliced. */
+  .coverflow{-webkit-mask-image:linear-gradient(90deg,transparent,#000 44px,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,transparent,#000 44px,#000 calc(100% - 44px),transparent)}
+  /* Stage name/price chip: allow wrapping so a longer product name can never clip at the pill edges */
+  .stage-chip{flex-wrap:wrap;justify-content:center;white-space:normal;text-align:center;line-height:1.3}
+}
+
+</style>
+</head>
   <body>
     <div class="progress" id="progress" aria-hidden="true"></div>
 
